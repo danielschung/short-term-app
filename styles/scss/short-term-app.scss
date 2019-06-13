@@ -102,7 +102,7 @@ form#form {
 				color:$light-purple;
 				outline:none;
 				padding:15px 40px;
-				margin:0 auto;
+				margin:30px auto 0 auto;
 				@extend .hover;
 			}
 
@@ -145,25 +145,22 @@ form#form {
 
 			input#applicant-first-name,
 			input#applicant-last-name,
+			input#spouse-first-name,
+			input#spouse-last-name,
 			input#dependent-first-name,
-			input#dependent-last-name {
-				width:170px;
-			}
+			input#dependent-last-name {width:170px;}
 
 			input#applicant-MI,
-			input#dependent-MI, {
-				width:67px;
-			}
+			input#spouse-MI,
+			input#dependent-MI, {width:67px;}
 
 			input#applicant-SSN,
-			input#dependent-SSN {
-				width:145px;
-			}
+			input#spouse-SSN,
+			input#dependent-SSN {width:145px;}
 
 			input#applicant-birthday,
-			input#dependent-birthday {
-				width:149px;
-			}
+			input#spouse-birthday,
+			input#dependent-birthday {width:149px;}
 
     		div.radio {
     			display:inline-block;
@@ -207,24 +204,32 @@ form#form {
 
     		input#applicant-email {width:245px;}
 
-    		input#applicant-home-phone, input#applicant-work-phone {width:163px;}
+    		input#applicant-home-phone,
+    		input#applicant-work-phone {width:163px;}
 
     		select#applicant-marital-status {width:161px;}
 
     		input#applicant-prior-last-name {width:185px;}
 
-    		input#applicant-age {width:102px;}
+    		input#applicant-age,
+    		input#spouse-age {width:102px;}
 
-    		input#applicant-height, input#applicant-weight {width:106px;}
+    		input#applicant-height,
+    		input#applicant-weight,
+    		input#spouse-height,
+    		input#spouse-weight {width:106px;}
 
-    		input#applicant-pcp-first-name, input#applicant-pcp-last-name {width:300px;}
+    		input#applicant-pcp-first-name,
+    		input#applicant-pcp-last-name,
+    		input#spouse-pcp-first-name,
+    		input#spouse-pcp-last-name {width:300px;}
 
     		div.question {
     			border:1px solid $light-grey;
     			border-radius:5px;
     			padding:25px;
     			height:auto;
-    			margin-bottom:20px;
+    			margin-bottom:30px;
 
 				p {
     				max-width:80%;
@@ -264,14 +269,50 @@ form#form {
     			p {
     				position:relative;
     				transform:translateY(50%);
-    				margin-right:37px;
+    				margin-right:27px;
     			}
 
-    			input#num-of-dependents {width:76px;}
+    			input#num-of-dependents {width:85px;}
 
     		}
 
-    		select#benefit-period-length, select#coverage-plan-type {width:283px;}
+    		div#spouse-block {
+
+	    		div.codeBlock {
+	    			input {
+						border:1px solid $light-grey;
+						border-radius:5px;
+						display:inline-block;
+						line-height:0;
+						margin:0 20px 20px 0;
+						padding:17px 11px;
+					}
+
+					select {
+						background-image:none;
+						border:1px solid $light-grey;
+						border-radius:5px;
+						display:inline-block;
+						margin:0 17px 20px 0;
+						height:52px;
+						padding:25px 19px;
+						text-indent:10px;
+					}
+
+	    			p.authorize {
+	    				margin:20px auto 0 auto;
+	    			}
+
+	    			p.bullet {
+						margin:20px auto 0 auto;
+						width:98%;
+					}
+	    		}
+
+	    	}
+
+    		select#benefit-period-length,
+    		select#coverage-plan-type {width:283px;}
 
     		div.coverage-table {
     			width:1031px;
@@ -353,15 +394,21 @@ form#form {
 
     		input#applicant-agreement-signature,
     		input#spouse-agreement-signature,
-    		input#dependent-agreement-signature {
-    			width:610px;
-    		}
+    		input#dependent-agreement-signature,
+    		input#spouse-authorization-signature,
+    		input#dependent-authorization-signature,
+    		input#applicant-authorization-signature {width:610px;}
+
+    		input#applicant-authorization-signature {margin-top:30px;}
 
     		input#applicant-agreement-signature-date,
     		input#spouse-agreement-signature-date,
-    		input#dependent-agreement-signature-date {
-    			width:147px;
-    		}
+    		input#dependent-agreement-signature-date,
+    		input#spouse-authorization-signature-date,
+    		input#dependent-authorization-signature-date,
+    		input#applicant-authorization-signature-date {width:147px;}
+
+    		input#applicant-relationship {width:781px;}
 
     		div.agree {
     			width:991px;
@@ -377,6 +424,10 @@ form#form {
 
     		}
 
+		}
+
+		div.expanded.last {
+			border-radius:0 0 5px 5px;
 		}
 
 	}
