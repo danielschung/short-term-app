@@ -1,0 +1,384 @@
+$light-grey:#E3E3E3;
+$purple:#5844A7;
+$light-purple:#978EBA;
+$black:#282828;
+$white:#EFEFEF;
+
+
+div.wrapper {
+	margin:0 auto;
+	max-width:1123px;
+	padding:0 20px;
+}
+
+div.clear {
+	clear:both;
+}
+
+div, p, input, select {
+	margin:0;
+}
+
+.hover {
+	-o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+
+.hide {
+	visibility:hidden;
+}
+
+
+// body rules
+
+header {
+	height:100px;
+	width:100%;
+
+	div.logo {
+		height:50px;
+		position:relative;
+		top:50%;
+		left:20px;
+		transform:translateY(-50%);
+		width:180px;
+	}
+
+}
+
+div.wrapper {
+
+	div.intro {
+		margin-top:98px;
+		max-width:828px;
+	}
+
+	nav	{
+		padding-left:0;
+	}
+}
+
+form#form {
+	margin-top:67px;
+
+	fieldset {
+
+		div.accordian.first {
+			border-radius:5px 5px 0 0;
+		}
+
+		div.accordian {
+			background-color:$white;
+			border:1px solid $white;
+			border-bottom:none;
+			color:$purple;
+			height:65px;
+			padding:20px 25px;
+			text-align:left;
+			width:100%;
+		}
+
+		div.accordian.closed {
+			background-color:$light-purple;
+			border:1px solid $light-purple;
+			color:white;
+		}
+
+		div.expanded {
+			border:1px solid $light-grey;
+			border-top:none;
+			color:$light-purple;
+			padding:20px 25px 40px 25px;
+
+			p.header {
+				margin:20px 0 12px 0;
+				width:100%;
+			}
+
+			button.next {
+				border:1px solid $light-purple;
+				color:$light-purple;
+				outline:none;
+				padding:15px 40px;
+				margin:0 auto;
+				@extend .hover;
+			}
+
+			button.next:hover {
+				background-color:$light-purple;
+				color:white;
+			}
+
+			input {
+				border:1px solid $light-grey;
+				border-radius:5px;
+				display:inline-block;
+				line-height:0;
+				margin:0 20px 20px 0;
+				padding:25px 19px;
+			}
+
+			select {
+				background-image:none;
+				border:1px solid $light-grey;
+				border-radius:5px;
+				display:inline-block;
+				margin:0 17px 20px 0;
+				height:52px;
+				padding:25px 19px;
+				text-indent:10px;
+			}
+
+			input:focus::-webkit-input-placeholder {
+				color:$light-grey;
+			}
+
+			input::placeholder,
+			select:invalid {
+				color:$light-purple;
+				font-weight:300;
+			}
+
+			//input specific styling (widths)
+
+			input#applicant-first-name,
+			input#applicant-last-name,
+			input#dependent-first-name,
+			input#dependent-last-name {
+				width:170px;
+			}
+
+			input#applicant-MI,
+			input#dependent-MI, {
+				width:67px;
+			}
+
+			input#applicant-SSN,
+			input#dependent-SSN {
+				width:145px;
+			}
+
+			input#applicant-birthday,
+			input#dependent-birthday {
+				width:149px;
+			}
+
+    		div.radio {
+    			display:inline-block;
+    			position:relative;
+
+    			p {
+    				float:left;
+    			}
+
+    			div.right {
+    				float:right;
+
+    				label {
+    					color:$light-purple;
+    					display:inline-block;
+    					margin:0 5px 0 10px;
+    				}
+
+    				input {
+    					margin:0;
+    				}
+
+    			}
+
+    		}
+
+    		div.radio.gender {
+    			top:7px;
+    			width:150px;
+    		}
+
+    		input#applicant-address {width:370px;}
+
+    		input#applicant-city {width:205px;}
+
+    		select#applicant-state {width:86px;}
+
+    		input#applicant-zipcode {width:108px;}
+
+    		input#applicant-county {width:148px;}
+
+    		input#applicant-email {width:245px;}
+
+    		input#applicant-home-phone, input#applicant-work-phone {width:163px;}
+
+    		select#applicant-marital-status {width:161px;}
+
+    		input#applicant-prior-last-name {width:185px;}
+
+    		input#applicant-age {width:102px;}
+
+    		input#applicant-height, input#applicant-weight {width:106px;}
+
+    		input#applicant-pcp-first-name, input#applicant-pcp-last-name {width:300px;}
+
+    		div.question {
+    			border:1px solid $light-grey;
+    			border-radius:5px;
+    			padding:25px;
+    			height:auto;
+    			margin-bottom:20px;
+
+				p {
+    				max-width:80%;
+    				float:left;
+    				
+    			}
+
+    			div.right {
+    				text-align:right;
+
+    				label {
+    					color:$light-purple;
+    					display:inline-block;
+    					margin:0 5px 0 10px;
+    				}
+
+    				input {
+    					margin:0;
+    				}
+
+    			}
+
+    		}
+
+    		div.radio.spouse {
+    			margin:30px 47px 20px 0;
+    		}
+
+    		div.radio.dependents {
+    			margin:30px 93px 20px 0;
+    		}
+
+    		div.radio.number-input {
+    			top:14px;
+    			margin-bottom:20px;
+
+    			p {
+    				position:relative;
+    				transform:translateY(50%);
+    				margin-right:37px;
+    			}
+
+    			input#num-of-dependents {width:76px;}
+
+    		}
+
+    		select#benefit-period-length, select#coverage-plan-type {width:283px;}
+
+    		div.coverage-table {
+    			width:1031px;
+
+    			div.left {
+    				width:50px;
+    				float:left;
+    				position:relative;
+    				top:140px;
+
+    				input.coverage-table {
+    					margin:22px 10px 0 0;
+    				}
+
+    			}
+
+    			table {
+    				margin-bottom:40px;
+    				text-align:center;
+    				width:981px;
+
+    				thead {
+    					background-color:white;
+    					border:0.5px solid $light-grey;
+
+    					th {
+    						border:0.5px solid $light-grey;
+    						color:$light-purple;
+    						font-weight:300;
+    						padding:21px 0;
+    						text-align:center;
+    					}
+
+    				}
+
+    				tbody {
+    					border:0.5px solid $light-grey;
+
+    					tr {
+	    					border:0.5px solid $light-grey;
+
+	    					td {
+		    					border:0.5px solid $light-grey;
+		    				}
+
+	    				}
+
+	    				tr.selected {
+	    					background-color:$light-purple;
+	    					color:white;
+	    				}
+
+    				}		
+
+    			}
+    		}
+
+    		input#coverage-effective-date {width:203px;}
+
+    		div.disclaimer-text {
+    			border:1px solid $light-grey;
+    			height:310px;
+    			margin-bottom:30px;
+    			overflow:scroll;
+
+    			p {
+    				color:$black;
+    				font-size:12px;
+    				margin:20px auto 0 auto;
+					width:98%;
+    			}
+
+    			p.bullet {
+					margin:20px auto 0 auto;
+					width:95%;
+				}
+
+    		}
+
+    		input#applicant-agreement-signature,
+    		input#spouse-agreement-signature,
+    		input#dependent-agreement-signature {
+    			width:610px;
+    		}
+
+    		input#applicant-agreement-signature-date,
+    		input#spouse-agreement-signature-date,
+    		input#dependent-agreement-signature-date {
+    			width:147px;
+    		}
+
+    		div.agree {
+    			width:991px;
+
+    			label {
+    				color:$light-purple;
+    				height:27px;
+    				-webkit-user-select: none;  /* Chrome all / Safari all */
+  					-moz-user-select: none;     /* Firefox all */
+  					-ms-user-select: none;      /* IE 10+ */
+  					user-select: none; 
+    			}
+
+    		}
+
+		}
+
+	}
+
+}
