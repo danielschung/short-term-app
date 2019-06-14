@@ -6,7 +6,7 @@ $white:#EFEFEF;
 
 
 div.wrapper {
-	margin:0 auto;
+	margin:0 auto 100px auto;
 	max-width:1123px;
 	padding:0 20px;
 }
@@ -111,6 +111,19 @@ form#form {
 				color:white;
 			}
 
+			button.update {
+				border:1px solid $light-grey;
+				color:$light-purple;
+				outline:none;
+				padding:17px;
+				margin:0 auto;
+				@extend .hover;
+			}
+
+			button.update:hover {
+				border:1px solid $light-purple;
+			}
+
 			input {
 				border:1px solid $light-grey;
 				border-radius:5px;
@@ -128,7 +141,7 @@ form#form {
 				margin:0 17px 20px 0;
 				height:52px;
 				padding:25px 19px;
-				text-indent:10px;
+				// text-indent:10px;
 			}
 
 			input:focus::-webkit-input-placeholder {
@@ -141,6 +154,14 @@ form#form {
 				font-weight:300;
 			}
 
+			input.invalid {
+				border:1px solid red;
+			}
+
+			input:optional::placeholder {
+				color:$light-grey;
+			}
+
 			//input specific styling (widths)
 
 			input#applicant-first-name,
@@ -148,19 +169,19 @@ form#form {
 			input#spouse-first-name,
 			input#spouse-last-name,
 			input#dependent-first-name,
-			input#dependent-last-name {width:170px;}
+			input#dependent-last-name {max-width:170px;}
 
 			input#applicant-MI,
 			input#spouse-MI,
-			input#dependent-MI, {width:67px;}
+			input#dependent-MI, {max-width:67px;}
 
 			input#applicant-SSN,
 			input#spouse-SSN,
-			input#dependent-SSN {width:145px;}
+			input#dependent-SSN {max-width:145px;}
 
 			input#applicant-birthday,
 			input#spouse-birthday,
-			input#dependent-birthday {width:149px;}
+			input#dependent-birthday {max-width:149px;}
 
     		div.radio {
     			display:inline-block;
@@ -189,40 +210,55 @@ form#form {
 
     		div.radio.gender {
     			top:7px;
-    			width:150px;
+    			width:200px;
     		}
 
-    		input#applicant-address {width:370px;}
+    		input#applicant-address {max-width:370px;}
 
-    		input#applicant-city {width:205px;}
+    		input#applicant-city {max-width:205px;}
 
-    		select#applicant-state {width:86px;}
+    		select#applicant-state {max-width:86px;}
 
-    		input#applicant-zipcode {width:108px;}
+    		input#applicant-zipcode {max-width:108px;}
 
-    		input#applicant-county {width:148px;}
+    		input#applicant-county {max-width:148px;}
 
-    		input#applicant-email {width:245px;}
+    		input#applicant-email {max-width:245px;}
 
     		input#applicant-home-phone,
-    		input#applicant-work-phone {width:163px;}
+    		input#applicant-work-phone {max-width:163px;}
 
-    		select#applicant-marital-status {width:161px;}
+    		select#applicant-marital-status {max-width:161px;}
 
-    		input#applicant-prior-last-name {width:185px;}
+    		input#applicant-prior-last-name {max-width:185px;}
 
     		input#applicant-age,
-    		input#spouse-age {width:102px;}
+    		input#spouse-age,
+    		input#dependent-age {max-width:102px;}
 
     		input#applicant-height,
     		input#applicant-weight,
     		input#spouse-height,
-    		input#spouse-weight {width:106px;}
+    		input#spouse-weight,
+    		input#dependent-height,
+    		input#dependent-weight {max-width:106px;}
 
     		input#applicant-pcp-first-name,
     		input#applicant-pcp-last-name,
     		input#spouse-pcp-first-name,
-    		input#spouse-pcp-last-name {width:300px;}
+    		input#spouse-pcp-last-name,
+    		input#dependent-pcp-first-name,
+    		input#dependent-pcp-last-name, {max-width:300px;}
+
+    		input#agent-name,
+    		input#agent-email {max-width:379px;}
+    		input#agent-ID,
+    		input#agent-phone {max-width:227px;}
+    		input#agent-agency,
+    		input#producer-signature {max-width:631px;}
+    		input#producer-signature-date {max-width:128px;}
+
+    		input#files {max-width:730px;}
 
     		div.question {
     			border:1px solid $light-grey;
@@ -230,11 +266,11 @@ form#form {
     			padding:25px;
     			height:auto;
     			margin-bottom:30px;
+    			min-width:none;
 
 				p {
-    				max-width:80%;
+    				width:75%;
     				float:left;
-    				
     			}
 
     			div.right {
@@ -249,9 +285,7 @@ form#form {
     				input {
     					margin:0;
     				}
-
     			}
-
     		}
 
     		div.radio.spouse {
@@ -272,29 +306,31 @@ form#form {
     				margin-right:27px;
     			}
 
-    			input#num-of-dependents {width:85px;}
+    			input#num-of-dependents {max-width:84px;}
 
     		}
 
-    		div#spouse-block {
+    		div#spouse-block,
+    		div#dependent-block,
+    		div#agent-block {
 
 	    		div.codeBlock {
+	    			margin-top:50px;
+
 	    			input {
 						border:1px solid $light-grey;
 						border-radius:5px;
 						display:inline-block;
 						line-height:0;
-						margin:0 20px 20px 0;
-						padding:17px 11px;
+						padding:25px 19px;
 					}
 
 					select {
 						background-image:none;
 						border:1px solid $light-grey;
 						border-radius:5px;
-						display:inline-block;
 						margin:0 17px 20px 0;
-						height:52px;
+						height:auto;
 						padding:25px 19px;
 						text-indent:10px;
 					}
@@ -307,49 +343,59 @@ form#form {
 						margin:20px auto 0 auto;
 						width:98%;
 					}
+
 	    		}
 
 	    	}
 
+	    	div#download-block {
+	    		div.codeBlock{
+	    			p.header {
+	    				margin-top:50px;
+	    			}
+	    		}
+	    	}
+
+	    	div#dependent-block {
+
+	    		input#applicant-authorization-signature {
+					margin-top:30px;
+				}
+
+	    	}
+
     		select#benefit-period-length,
-    		select#coverage-plan-type {width:283px;}
+    		select#coverage-plan-type {max-width:283px;}
 
     		div.coverage-table {
-    			width:1031px;
-
-    			div.left {
-    				width:50px;
-    				float:left;
-    				position:relative;
-    				top:140px;
-
-    				input.coverage-table {
-    					margin:22px 10px 0 0;
-    				}
-
-    			}
+    			height:314px;
 
     			table {
     				margin-bottom:40px;
+    				max-width:100%;
     				text-align:center;
-    				width:981px;
-
-    				thead {
-    					background-color:white;
-    					border:0.5px solid $light-grey;
-
-    					th {
-    						border:0.5px solid $light-grey;
-    						color:$light-purple;
-    						font-weight:300;
-    						padding:21px 0;
-    						text-align:center;
-    					}
-
-    				}
+    				padding-left:50px;
 
     				tbody {
-    					border:0.5px solid $light-grey;
+    					border:none;
+
+    					th.inputs {
+    						div.container {
+    							position:relative;
+    							top:75px;
+
+    							input.coverage-table {
+	    							border:none;
+	    							display:block;
+			    					margin:0 0 25.7px 10px;
+			    					background-color:red;
+			    				}
+    						}					
+    					}
+
+    					th.table-head {
+    						border: 1px solid $light-grey;
+    					}
 
     					tr {
 	    					border:0.5px solid $light-grey;
@@ -357,20 +403,17 @@ form#form {
 	    					td {
 		    					border:0.5px solid $light-grey;
 		    				}
-
 	    				}
 
 	    				tr.selected {
 	    					background-color:$light-purple;
 	    					color:white;
 	    				}
-
     				}		
-
     			}
     		}
 
-    		input#coverage-effective-date {width:203px;}
+    		input#coverage-effective-date {max-width:203px;}
 
     		div.disclaimer-text {
     			border:1px solid $light-grey;
@@ -397,7 +440,7 @@ form#form {
     		input#dependent-agreement-signature,
     		input#spouse-authorization-signature,
     		input#dependent-authorization-signature,
-    		input#applicant-authorization-signature {width:610px;}
+    		input#applicant-authorization-signature {max-width:610px;}
 
     		input#applicant-authorization-signature {margin-top:30px;}
 
@@ -406,30 +449,45 @@ form#form {
     		input#dependent-agreement-signature-date,
     		input#spouse-authorization-signature-date,
     		input#dependent-authorization-signature-date,
-    		input#applicant-authorization-signature-date {width:147px;}
+    		input#applicant-authorization-signature-date {max-width:147px;}
 
-    		input#applicant-relationship {width:781px;}
+    		input#applicant-relationship {max-width:781px;}
 
     		div.agree {
-    			width:991px;
+    			max-width:991px;
 
     			label {
     				color:$light-purple;
     				height:27px;
+    				line-height:0;
+    				margin-top:20px;
+    				margin-bottom:40px;
     				-webkit-user-select: none;  /* Chrome all / Safari all */
   					-moz-user-select: none;     /* Firefox all */
   					-ms-user-select: none;      /* IE 10+ */
   					user-select: none; 
     			}
-
     		}
-
+    		div.g-recaptcha {
+    			margin-top:50px;
+    		}
 		}
 
 		div.expanded.last {
 			border-radius:0 0 5px 5px;
 		}
-
 	}
 
+	input#submit {
+		background-color:$light-purple;
+		border-radius:5px;
+		color:white;
+		margin-top:40px;
+		padding:15px 40px;
+		@extend .hover;
+	}
+
+	input#submit:hover {
+		background-color:$purple;
+	}
 }

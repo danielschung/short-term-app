@@ -4,7 +4,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content='width=device-width, initial-scale=1.0' />
     <meta itemprop="name" content="Health Alliance" />
     <meta name="description" content="">
     <title>Short Term Application</title>
@@ -101,14 +100,14 @@
                         onblur="(this.placeholder='Work Phone')"
                     minlength="12" maxlength="32"  pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$">
 
-                    <select required id="applicant-marital-status" name="applicant-marital-status">
+                    <select required id="applicant-marital-status" name="applicant-marital-status" onchange="priorName();">
                         <option value="" disabled selected class="placeholder">Marital Status</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                         <option value="divorced">Divorced</option>
                     </select>
 
-                    <input placeholder="Prior Last Name" optional id="applicant-prior-last-name" name="applicant-prior-last-name" minlength="2" maxlength="32" type="text">
+                    <input placeholder="Prior Last Name" optional id="applicant-prior-last-name" name="applicant-prior-last-name" minlength="2" maxlength="32" type="text" class="hide">
 
                     <p class="header">Health Information</p>
                     <input type="text" placeholder="Age" required id="applicant-age" name="applicant-age" class="age" minlength="1" maxlength="3">
@@ -228,8 +227,10 @@
                         <div class="right">
                             <input type="text" name="num-of-dependents" id="num-of-dependents" class="num"
                                 onfocus="(this.placeholder='3 max')"
-                                onblur="(this.placeholder='')" 
+                                onblur="(this.placeholder='')"
+                                onkeyup="colorize();"
                             minlength="1" maxlength="2" max="3">
+                            <button type="button" class="update" onclick="numOfDependents();">Update</button>
                         </div>
                     </div>
 
@@ -273,6 +274,17 @@
                             <input type="text" placeholder="Primary Care Physician (First Name)" required id="spouse-pcp-first-name" name="spouse-pcp-first-name" minlength="2" maxlength="128">
 
                             <input type="text" placeholder="Primary Care Physician (Last Name)" required id="spouse-pcp-last-name" name="spouse-pcp-last-name" minlength="2" maxlength="128">
+
+                            <div class="question">
+                                <p>Are you an established patient?</p>
+                                <div class="right">
+                                    <label>Y</label>
+                                    <input type="radio" required name="applicant-question-1" value="yes">
+                                    <label>N</label>
+                                    <input type="radio" required name="applicant-question-1" value="no">
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
@@ -369,7 +381,7 @@
                         </div> -->
                     </div>
 
-                    <div class="dependent-block">
+                    <div id="dependent-block">
                         <!-- <div class="codeBlock">
                             <p class="header">Dependent Personal Information</p>
 
@@ -515,7 +527,6 @@
                             <div class="agree">
                                 <label><input type="checkbox" required id="authorization-applicant-signature-valid" name="authorization-applicant-signature-valid" value="valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                             </div>
-
                         </div> -->
                     </div>
 
@@ -547,19 +558,20 @@
                     <p class="header">Choose a Deductible and Out-of-Pocket Maximum Combination</p>
 
                     <div class="coverage-table">
-                        <div class="left">
-                            <input type="radio" id="coverage-A" name="coverage-table" class="coverage-table" value="A" required>
-                            <input type="radio" id="coverage-B" name="coverage-table" class="coverage-table" value="B" required>
-                            <input type="radio" id="coverage-C" name="coverage-table" class="coverage-table" value="C" required>
-                            <input type="radio" id="coverage-D" name="coverage-table" class="coverage-table" value="D" required>
-                        </div>
-
                         <table>
-                            <thead>
-                                <th colspan="4">Deductible</th>
-                                <th colspan="4">Out-of-Pocket Maximum</th>
-                            </thead>
                             <tbody>
+                                <tr>
+                                    <th rowspan="7" class="inputs">
+                                        <div class="container">
+                                            <input type="radio" id="coverage-A" name="coverage-table" class="coverage-table" value="A" required>
+                                            <input type="radio" id="coverage-B" name="coverage-table" class="coverage-table" value="B" required>
+                                            <input type="radio" id="coverage-C" name="coverage-table" class="coverage-table" value="C" required>
+                                            <input type="radio" id="coverage-D" name="coverage-table" class="coverage-table" value="D" required>
+                                        </div>        
+                                    </th>
+                                    <th colspan="4" class="table-head">Deductible</th>
+                                    <th colspan="4" class="table-head">Out-of-Pocket Maximum</th>
+                                </tr>
                                 <tr>
                                     <td colspan="2">In-Network</td>
                                     <td colspan="2">Out-of-Network</td>
@@ -633,6 +645,56 @@
             </fieldset>
 
             <fieldset>
+                <div class="accordian">Agent Information</div>
+                <div class="expanded">
+                    <div class="radio agent">
+                        <p>Would you like to add an agent?</p>
+                        <div class="right">
+                            <label>Y</label>
+                            <input type="radio" required name="add-agent" value="yes" onclick="addAgent();">
+                            <label>N</label>
+                            <input type="radio" required name="add-agent" value="no" onclick="removeAgent();">
+                        </div>
+                    </div>
+
+                    <div id="agent-block">
+                        <!-- <div class="codeBlock">
+                            <p class="header">I certify that:</p>
+                            <p class="bullet">• All answers provided in this application were completed by or provided by the applicant.</p>
+                            <p class="bullet">• I have reviewed this enrollment form to ensure that all required items have been completed.</p>
+                            <p class="bullet">• I am not aware of any information not disclosed on this enrollment form relating to the health, habits or reputation of any person listed on this enrollment form, which might have a bearing on the risk.</p>
+
+                            <p class="header">Agent / Broker Information</p>
+
+                            <input type="text" placeholder="Full Name" required id="agent-name" name="agent-name" minlength="2" maxlength="128">
+
+                            <input type="text" placeholder="ID# / Code" required id="agent-ID" name="agent-ID"
+                                onfocus="(this.placeholder='00-000-0000')"
+                                onblur="(this.placeholder='ID# / Code')"
+                            minlength="2" maxlength="12">
+
+                            <input type="text" placeholder="Agency" required id="agent-agency" name="agent-agency" minlength="2" maxlength="256">
+                            <br>
+                            <input type="text" placeholder="Home Phone" required id="agent-phone" name="agent-phone" class="phone" minlength="10" maxlength="14" pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$">
+
+                            <input type="email" placeholder="Email" required id="agent-email" name="agent-email" minlength="3" maxlength="256">
+
+                            <input type="text" placeholder="Producer Signature" required id="producer-signature" name="producer-signature" minlength="2" maxlength="128">
+
+                            <input type="text" placeholder="Date of Sign" required id="producer-signature-date" name="producer-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                                onfocus="(this.placeholder='MM-DD-YYYY')"
+                                onblur="(this.placeholder='Date of Sign')"
+                            maxlength="10">
+
+                            <div class="agree">
+                                <label><input type="checkbox" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
                 <div class="accordian">Disclaimer and Agreement</div>
                 <div class="expanded">
                     <div class="disclaimer-text">
@@ -693,25 +755,45 @@
             <fieldset>
                 <div class="accordian">Finish and Submit</div>
                 <div class="expanded last">
+                    <div class="radio download">
+                        <p>Would you prefer to submit a hard copy (pdf) of this application?</p>
+                        <div class="right">
+                            <label>Y</label>
+                            <input type="radio" required name="download-pdf" value="yes" onclick="addPDF();">
+                            <label>N</label>
+                            <input type="radio" required name="download-pdf" value="no" onclick="removePDF();">
+                        </div>
+                    </div>
+
+                    <div id="download-block">
+                        <!-- <div class="codeBlock">
+                            <p class="header">Download a hard copy instead of the application above upload below. <a href="/media/Resources/ind-ILshorttermapp-1118fill.pdf" target="_blank">(Download here)</a></p>
+                            <input type="file"
+                               name="files" 
+                               id="files" 
+                               multiple="multiple"
+                               accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                               data-val="true" 
+                               data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx" />
+                        </div> -->
+                    </div>
+
                     <div class="g-recaptcha" data-sitekey="6LdQDSwUAAAAAMo-N-bxe8AJXovPiVMmIHGmXICH"></div>
                     <!-- DEV -->
                     <!-- <div class="g-recaptcha" data-sitekey="6LcwMCwUAAAAANc4fdZewktvexbxabAVgfG8s96T"></div> --><!-- QA -->
                     <!-- <div class="g-recaptcha" data-sitekey="6LdoLiwUAAAAAHDhkieXnV382WVvtsMKrPorvdVe"></div> --><!-- UAT -->
                     <!-- <div class="g-recaptcha" data-sitekey="6LdrLCwUAAAAACbajL9h5-AwKTsKemsnjymPoa7A"></div> --><!-- PROD -->
 
-                    <input type="file"
-                       name="Files" 
-                       id="Files" 
-                       multiple="multiple"
-                       accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                       data-val="true" 
-                       data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx" />
-                    
+                    <a href="#form"><button type="button" class="next" onclick="next();">Next</button></a>
+         
                 </div>
             </fieldset>
                 
             <label for="Request_RedirectUrl">RedirectUrl</label>
             <input data-val="true" data-val-maxlength="The field RedirectUrl must be a string or array type with a maximum length of &#39;512&#39;." data-val-maxlength-max="512" id="Request_RedirectUrl" maxlength="512" name="Request.RedirectUrl" type="text" value="" />
+
+            <input type="submit" value="Submit" id="submit"
+            onclick="window.location.href = './confirmed.html','_blank';">
 
         </form>
     </div>
