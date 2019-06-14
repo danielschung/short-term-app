@@ -53,6 +53,21 @@ div.wrapper {
 	div.intro {
 		margin-top:98px;
 		max-width:828px;
+
+		button.return {
+			border:1px solid $light-purple;
+			color:$light-purple;
+			outline:none;
+			padding:15px 20px;
+			margin:30px auto 0 auto;
+			@extend .hover;
+		}
+
+		button.return:hover {
+			background-color:$purple;
+			border:1px solid $purple;
+			color:white;
+		}
 	}
 
 	nav	{
@@ -149,13 +164,14 @@ form#form {
 			}
 
 			input::placeholder,
-			select:invalid {
+			select.purple-format {
 				color:$light-purple;
 				font-weight:300;
 			}
 
-			input.invalid {
-				border:1px solid red;
+			input.invalid,
+			select.invalid {
+				box-shadow: 0 0 3px 1px red;
 			}
 
 			input:optional::placeholder {

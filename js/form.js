@@ -46,28 +46,36 @@ $(document).ready(function(){
 	 
 });
 
-//Prior last name function
-const priorName = () => {
-	let maritalStatus = document.getElementById('applicant-marital-status').value;
-	if ( maritalStatus === 'married' || maritalStatus === 'divorced' ) {
-		$('input#applicant-prior-last-name').removeClass('hide');
-		console.log(maritalStatus);
-	} else {
-		$('input#applicant-prior-last-name').addClass('hide');
-		console.log(maritalStatus);
-	}
-}
-
-//next button function
+//validation functions
+const applicantFirstName = document.getElementById('applicant-first-name');
 const next = () => {
 	$(event.target).parent().parent().slideToggle();
 	$(event.target).parent().parent().prev().toggleClass('closed');
-	console.log('this button works');
 };
+const validate = () => {
+	let container = $(event.target).parent().parent();
+	let inputs = container.find('input, select').toArray();
+	for (let i = 0; i < inputs.length; ++i) {
+		if ( i.value == '' ) {
+			$( '#'+[i] ).addClass('invalid');
+		} 
+	}
+	
+}
+
+//Prior last name function
+const priorName = () => {
+	const maritalStatus = document.getElementById('applicant-marital-status').value;
+	if ( maritalStatus === 'married' || maritalStatus === 'divorced' ) {
+		$('input#applicant-prior-last-name').removeClass('hide');
+	} else {
+		$('input#applicant-prior-last-name').addClass('hide');
+	}
+}
 
 //spouse form progress
 const spouseProgress = () => {
-	let nextElement = $(event.target).parent().parent().next();
+	const nextElement = $(event.target).parent().parent().next();
 	if ( nextElement.hasClass('hide') ) {
 		nextElement.removeClass('hide');
 	} else {
@@ -84,27 +92,19 @@ const removeSpouse = () => {
 
 //dependents form progress
 const dependentsProgress = () => {
-	let nextElement = $(event.target).parent().parent().next();
+	const nextElement = $(event.target).parent().parent().next();
 	if ( nextElement.hasClass('hide') ) {
 		nextElement.removeClass('hide');
 	} else {
 		return;
 	}
 }
-const dependentsDigress = () => {
-	let nextElement = $(event.target).parent().parent().next();
-	if ( nextElement.hasClass('hide') ) {
-		return;
-	} else {
-		nextElement.addClass('hide');
-	}
-}
 const numOfDependents = () => {
-	let inputBox = $('input#num-of-dependents');
-	let amount = inputBox.val();
-	let dependentBlock = document.getElementById('dependent-block');
+	const inputBox = $('input#num-of-dependents');
+	const amount = inputBox.val();
+	const dependentBlock = document.getElementById('dependent-block');
 	let codeBlock = '<div class="codeBlock"> <p class="header">Dependent Personal Information</p><input type="text" placeholder="First Name" required id="dependent-first-name" name="dependent-first-name" minlength="2" maxlength="128"> <input type="text" placeholder="MI" required id="dependent-MI" name="dependent-MI" maxlength="1"> <input type="text" placeholder="Last Name" required id="dependent-last-name" name="dependent-last-name" minlength="2" maxlength="128"> <input type="text" placeholder="SSN" required id="dependent-SSN" name="dependent-SSN" class="SSN" minlength="9" maxlength="9"> <input type="text" placeholder="Birthday" required id="dependent-birthday" name="dependent-birthday" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Birthday\')" maxlength="10"> <div class="radio gender"> <p class="gender">Gender</p><div class="right"> <label>M</label> <input type="radio" name="dependent-gender" value="male" required> <label>F</label> <input type="radio" name="dependent-gender" value="female" required> </div></div><p class="header">Health Information</p><input type="text" placeholder="Age" required id="dependent-age" name="dependent-age" class="age" minlength="1" maxlength="3"> <input type="text" placeholder="Height" required id="dependent-height" name="dependent-height" class="height" onfocus="(this.placeholder=\'0&lsquo; 00&ldquo;\')" onblur="(this.placeholder=\'Height\')" minlength="2" maxlength="6"> <input type="text" placeholder="Weight" required id="dependent-weight" name="dependent-weight" class="weight" minlength="2" maxlength="4"> <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name" name="dependent-pcp-first-name" minlength="2" maxlength="128"> <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent-pcp-last-name" name="dependent-pcp-last-name" minlength="2" maxlength="128"> <div class="question"> <p>Are you an established patient?</p><div class="right"> <label>Y</label> <input type="radio" required name="dependent-question-1" value="yes"> <label>N</label> <input type="radio" required name="dependent-question-1" value="no"> <div class="clear"></div></div></div><div class="question"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><div class="right"> <label>Y</label> <input type="radio" required name="dependent-question-2" value="yes"> <label>N</label> <input type="radio" required name="dependent-question-2" value="no"> <div class="clear"></div></div></div><div class="question"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><div class="right"> <label>Y</label> <input type="radio" required name="dependent-question-3" value="yes"> <label>N</label> <input type="radio" required name="dependent-question-3" value="no"> <div class="clear"></div></div></div><div class="question"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><div class="right"> <label>Y</label> <input type="radio" required name="dependent-question-4" value="yes"> <label>N</label> <input type="radio" required name="dependent-question-4" value="no"> <div class="clear"></div></div></div><div class="question"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><div class="right"> <label>Y</label> <input type="radio" required name="dependent-question-5" value="yes"> <label>N</label> <input type="radio" required name="dependent-question-5" value="no"> <div class="clear"></div></div></div><div class="question"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p><div class="right"> <label>Y</label> <input type="radio" required name="dependent-question-6" value="yes"> <label>N</label> <input type="radio" required name="dependent-question-6" value="no"> <div class="clear"></div></div></div><div class="question"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><div class="right"> <label>Y</label> <input type="radio" required name="dependent-question-7" value="yes"> <label>N</label> <input type="radio" required name="dependent-question-7" value="no"> <div class="clear"></div></div></div><input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="dependent-authorization-signature" minlength="2" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="dependent-authorization-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"> <div class="agree"> <label><input type="checkbox" required id="authorization-dependent-signature-valid" name="authorization-dependent-signature-valid" value="valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label> </div><p class="header">Authorization</p><p class="authorize">I hereby authorize and direct Health Alliance to obtain all protected health information, including medical records from any healthcare provider who either advised, treated, attended or rendered service to me or my dependents or who has in his or her possession any information or records with respect to advice, treatment or services. This authorization is limited only to protected health information, including medical records, obtained for underwriting purposes as are necessary for Health Alliance to determine the acceptability of this application.</p><p class="authorize">I have read, and I understand and acknowledge the following statements about my rights:</p><p class="bullet">• I may revoke this authorization at any time prior to the use of the protected health information stated above, by notifying Health Alliance in writing. Please note, however, the revocation will not have any effect on actions taken before the revocation was received.</p><p class="bullet">• If the person or organization to whom this information is disclosed is not a covered entity under the federal privacy rules, the information may no longer be protected by the federal privacy rules after such disclosure is made.</p><p class="bullet">• I further understand that eligibility of enrollment in this plan will be conditioned on receiving authorization to obtain protected health information, including medical records, with the exception of psychotherapy notes.</p><p class="authorize">A copy of this authorization and release shall be valid as the original and will remain in effect for two and one-half (2 ½) years from the latest signature date below or until revoked by me in writing.</p><input type="text" placeholder="Signature of Applicant or Legally Authorized Representative" required id="applicant-authorization-signature" name="applicant-authorization-signature" minlength="2" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="applicant-authorization-signature-date" name="applicant-authorization-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"> <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" name="applicant-relationship" minlength="2" maxlength="128"> <div class="agree"> <label><input type="checkbox" required id="authorization-applicant-signature-valid" name="authorization-applicant-signature-valid" value="valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label> </div></div>';
-	let validateOutput = () => {
+	const validateOutput = () => {
 		let countDiv = $('#dependent-block').children().length;
 		if ( countDiv < amount ) {
 			let difference = amount - countDiv;
@@ -131,10 +131,18 @@ const numOfDependents = () => {
 	} else {
 	}
 }
-
+const dependentsDigress = () => {
+	const nextElement = $(event.target).parent().parent().next();
+	if ( nextElement.hasClass('hide') ) {
+		return;
+	} else {
+		nextElement.addClass('hide');
+		$('div#dependent-block').children().remove();
+	};
+}
 const colorize = () => {
-	let inputBox = $('input#num-of-dependents');
-	let amount = inputBox.val();
+	const inputBox = $('input#num-of-dependents');
+	const amount = inputBox.val();
 	if ( amount <= 3 ) {
 		inputBox.removeClass('invalid');
 	} else if ( amount > 3 ) {

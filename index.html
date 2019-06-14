@@ -26,7 +26,8 @@
                 <ul class="breadcrumbs">
                   <li><a href="/">Home</a></li>
                   <li><a href="/individual/plans">Individual &amp; Family Plans</a></li>
-                  <li><span class="show-for-sr">Current: </span> Short-Term Plans</li>
+                  <li><a href="/short-term-plans">Short-Term Plans</a></li>
+                  <li><span class="show-for-sr">Current: </span>Application</li>
                 </ul>
             </nav>
             <h1>Short-Term Enrollment</h1>
@@ -35,17 +36,17 @@
     </div>
 
     <div class="wrapper">
-        <form action="/ShortTermMemberApplication/Submit" autocomplete="off" enctype="multipart/form-data" method="post" id="form">
-            <fieldset>
+        <form action="/ShortTermMemberApplication/Submit" autocomplete="off" enctype="multipart/form-data" method="post" id="form" name="Form">
+            <fieldset id="applicantFields">
                 <div class="accordian first">Applicant / Member Information</div>
                 <div class="expanded">
                     <p class="header">Personal Information</p>
 
-                    <input type="text" placeholder="First Name" required id="applicant-first-name" name="applicant-first-name" minlength="2" maxlength="128">
+                    <input type="text" placeholder="First Name" required id="applicant-first-name" name="applicant-first-name" minlength="1" maxlength="128">
 
-                    <input type="text" placeholder="MI" required id="applicant-MI" name="applicant-MI" maxlength="1">
+                    <input type="text" placeholder="MI" required id="applicant-MI" name="applicant-MI"minlength="1" maxlength="1">
 
-                    <input type="text" placeholder="Last Name" required id="applicant-last-name" name="applicant-last-name" minlength="2" maxlength="128">
+                    <input type="text" placeholder="Last Name" required id="applicant-last-name" name="applicant-last-name" minlength="1" maxlength="128">
 
                     <input type="text" placeholder="SSN" required id="applicant-SSN" name="applicant-SSN" class="SSN"
                         onfocus="(this.placeholder='000-00-0000')"
@@ -55,7 +56,7 @@
                     <input type="text" placeholder="Birthday" required id="applicant-birthday" name="applicant-birthday" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
                         onfocus="(this.placeholder='MM-DD-YYYY')"
                         onblur="(this.placeholder='Birthday')"
-                    maxlength="10">
+                    minlength="10" maxlength="10">
 
                     <div class="radio gender">
                         <p class="gender">Gender</p>
@@ -69,11 +70,11 @@
 
                     <p class="header">Contact Information</p>
 
-                    <input type="text" placeholder="Street Address" required id="applicant-address" name="applicant-address" minlength="2" maxlength="256">
+                    <input type="text" placeholder="Street Address" required id="applicant-address" name="applicant-address" minlength="1" maxlength="256">
 
-                    <input type="text" placeholder="City" required id="applicant-city" name="applicant-city" minlength="2" maxlength="128">
+                    <input type="text" placeholder="City" required id="applicant-city" name="applicant-city" minlength="1" maxlength="128">
 
-                    <select required id="applicant-state" name="applicant-state">
+                    <select required id="applicant-state" value="" class="purple-format" name="applicant-state">
                         <option value="" disabled selected class="placeholder">State</option>
                         <option value="IL">Illinois</option>
                         <option value="IN">Indiana</option>
@@ -86,9 +87,9 @@
                         onblur="(this.placeholder='Zipcode')"
                     minlength="5" maxlength="5" pattern="[0-9]{5}" >
 
-                    <input type="text" placeholder="County" required id="applicant-county" name="applicant-county" minlength="2" maxlength="128">
+                    <input type="text" placeholder="County" required id="applicant-county" name="applicant-county" minlength="1" maxlength="128">
 
-                    <input type="email" placeholder="Email" required id="applicant-email" name="applicant-email" minlength="3" maxlength="256">
+                    <input type="email" placeholder="Email" required id="applicant-email" name="applicant-email" minlength="1" maxlength="256">
 
                     <input type="text" placeholder="Home Phone" required id="applicant-home-phone" name="applicant-home-phone" class="phone"
                         onfocus="(this.placeholder='(000) 000-0000')"
@@ -98,16 +99,16 @@
                     <input type="tel" placeholder="Work Phone" class="phone" required id="applicant-work-phone" name="applicant-work-phone"
                         onfocus="(this.placeholder='(000) 000-0000')"
                         onblur="(this.placeholder='Work Phone')"
-                    minlength="12" maxlength="32"  pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$">
+                    minlength="10" maxlength="14"  pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$">
 
-                    <select required id="applicant-marital-status" name="applicant-marital-status" onchange="priorName();">
+                    <select required id="applicant-marital-status" value="" name="applicant-marital-status" class="purple-format" onchange="priorName();">
                         <option value="" disabled selected class="placeholder">Marital Status</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                         <option value="divorced">Divorced</option>
                     </select>
 
-                    <input placeholder="Prior Last Name" optional id="applicant-prior-last-name" name="applicant-prior-last-name" minlength="2" maxlength="32" type="text" class="hide">
+                    <input placeholder="Prior Last Name" optional id="applicant-prior-last-name" name="applicant-prior-last-name" minlength="1" maxlength="32" type="text" class="hide">
 
                     <p class="header">Health Information</p>
                     <input type="text" placeholder="Age" required id="applicant-age" name="applicant-age" class="age" minlength="1" maxlength="3">
@@ -115,13 +116,13 @@
                     <input type="text" placeholder="Height" required id="applicant-height" name="applicant-height" class="height" 
                         onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                         onblur="(this.placeholder='Height')" 
-                    minlength="2" maxlength="6">
+                    minlength="1" maxlength="6">
 
-                    <input type="text" placeholder="Weight" required id="applicant-weight" name="applicant-weight" class="weight" minlength="2" maxlength="4">
+                    <input type="text" placeholder="Weight" required id="applicant-weight" name="applicant-weight" class="weight" minlength="1" maxlength="4">
 
-                    <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="applicant-pcp-first-name" minlength="2" maxlength="128">
+                    <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="applicant-pcp-first-name" minlength="1" maxlength="128">
 
-                    <input type="text" placeholder="Primary Care Physician (Last Name)" required id="applicant-pcp-last-name" name="applicant-pcp-last-name" minlength="2" maxlength="128">
+                    <input type="text" placeholder="Primary Care Physician (Last Name)" required id="applicant-pcp-last-name" name="applicant-pcp-last-name" minlength="1" maxlength="128">
 
                     <div class="question">
                         <p>Are you an established patient?</p>
@@ -195,7 +196,7 @@
                             <div class="clear"></div>
                         </div>
                     </div>
-                    <a href="#form"><button type="button" class="next" onclick="next();">Next</button></a>
+                    <a href="#form"><button type="button" class="next" onclick="validate();">Next</button></a>
                 </div>
             </fieldset>
 
@@ -539,7 +540,7 @@
                 <div class="expanded">
                     <p class="header">Coverage Applied For</p>
 
-                    <select required id="benefit-period-length" name="benefit-period-length">
+                    <select required id="benefit-period-length" name="benefit-period-length" value="" class="purple-format">
                         <option value="" disabled selected class="placeholder">Pick a benefit period length:</option>
                         <option value="1-month">1 month</option>
                         <option value="2-months">2 months</option>
@@ -549,7 +550,7 @@
                         <option value="6-months">6 months</option>
                     </select>
 
-                    <select required id="coverage-plan-type" name="coverage-plan-type">
+                    <select required id="coverage-plan-type" name="coverage-plan-type" class="purple-format">
                         <option value="" disabled selected class="placeholder">Pick a benefit period length:</option>
                         <option value="PPO">PPO</option>
                         <option value="POS">POS</option>
@@ -691,6 +692,7 @@
                             </div>
                         </div> -->
                     </div>
+                    <a href="#form"><button type="button" class="next" onclick="next();">Next</button></a>
                 </div>
             </fieldset>
 
@@ -753,7 +755,7 @@
             </fieldset>
 
             <fieldset>
-                <div class="accordian">Finish and Submit</div>
+                <div class="accordian">Final Steps</div>
                 <div class="expanded last">
                     <div class="radio download">
                         <p>Would you prefer to submit a hard copy (pdf) of this application?</p>
@@ -788,11 +790,8 @@
          
                 </div>
             </fieldset>
-                
-            <label for="Request_RedirectUrl">RedirectUrl</label>
-            <input data-val="true" data-val-maxlength="The field RedirectUrl must be a string or array type with a maximum length of &#39;512&#39;." data-val-maxlength-max="512" id="Request_RedirectUrl" maxlength="512" name="Request.RedirectUrl" type="text" value="" />
 
-            <input type="submit" value="Submit" id="submit"
+            <input type="submit" value="Submit" id="submit" 
             onclick="window.location.href = './confirmed.html','_blank';">
 
         </form>
