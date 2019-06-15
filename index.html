@@ -37,42 +37,53 @@
 
     <div class="wrapper">
         <form action="/ShortTermMemberApplication/Submit" autocomplete="off" enctype="multipart/form-data" method="post" id="form" name="Form">
-            <fieldset id="applicantFields">
+            <div id="alert"></div>
+            <fieldset>
                 <div class="accordian first">Applicant / Member Information</div>
                 <div class="expanded">
                     <p class="header">Personal Information</p>
 
-                    <input type="text" placeholder="First Name" required id="applicant-first-name" name="applicant-first-name" minlength="1" maxlength="128">
+                    <input type="text" placeholder="First Name" required
+                    id="applicant-first-name" name="applicant-first-name"
+                    minlength="1" maxlength="128"/>
 
-                    <input type="text" placeholder="MI" required id="applicant-MI" name="applicant-MI"minlength="1" maxlength="1">
+                    <input type="text" placeholder="MI" required
+                    id="applicant-MI" name="applicant-MI"
+                    minlength="1" maxlength="1"/>
 
-                    <input type="text" placeholder="Last Name" required id="applicant-last-name" name="applicant-last-name" minlength="1" maxlength="128">
+                    <input type="text" placeholder="Last Name" required
+                    id="applicant-last-name" name="applicant-last-name"
+                    minlength="1" maxlength="128"/>
 
-                    <input type="text" placeholder="SSN" required id="applicant-SSN" name="applicant-SSN" class="SSN"
-                        onfocus="(this.placeholder='000-00-0000')"
-                        onblur="(this.placeholder='SSN')
-                    "minlength="9" maxlength="9" pattern=[0-9]{9}>
+                    <input type="text" placeholder="SSN" required
+                    id="applicant-SSN" name="applicant-SSN" class="SSN"
+                    onfocus="(this.placeholder='000-00-0000')"
+                    onblur="(this.placeholder='SSN')"
+                    minlength="9" maxlength="9"
+                    pattern="[0-9]{9}"/>
 
-                    <input type="text" placeholder="Birthday" required id="applicant-birthday" name="applicant-birthday" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
-                        onfocus="(this.placeholder='MM-DD-YYYY')"
-                        onblur="(this.placeholder='Birthday')"
-                    minlength="10" maxlength="10">
+                    <input type="text" placeholder="Birthday" required
+                    id="applicant-birthday" name="applicant-birthday" class="date"
+                    onfocus="(this.placeholder='MM-DD-YYYY')"
+                    onblur="(this.placeholder='Birthday')"
+                    minlength="10" maxlength="10"
+                    pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"/>
 
-                    <div class="radio gender">
-                        <p class="gender">Gender</p>
-                        <div class="right">
-                            <label>M</label>
-                            <input type="radio" name="applicant-gender" value="male" required>
-                            <label>F</label>
-                            <input type="radio" name="applicant-gender" value="female" required>
-                        </div> 
-                    </div>
+                    <select required id="applicant-gender" value="" class="purple-format" name="applicant-gender">
+                        <option value="" disabled selected class="placeholder">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
 
                     <p class="header">Contact Information</p>
 
-                    <input type="text" placeholder="Street Address" required id="applicant-address" name="applicant-address" minlength="1" maxlength="256">
+                    <input type="text" placeholder="Street Address" required
+                    id="applicant-address" name="applicant-address"
+                    minlength="1" maxlength="256"/>
 
-                    <input type="text" placeholder="City" required id="applicant-city" name="applicant-city" minlength="1" maxlength="128">
+                    <input type="text" placeholder="City" required
+                    id="applicant-city" name="applicant-city"
+                    minlength="1" maxlength="128"/>
 
                     <select required id="applicant-state" value="" class="purple-format" name="applicant-state">
                         <option value="" disabled selected class="placeholder">State</option>
@@ -82,24 +93,34 @@
                         <option value="WA">Washington</option>
                     </select>
 
-                    <input type="text" placeholder="Zipcode" required id="applicant-zipcode" name="applicant-zipcode" class="zip"
-                        onfocus="(this.placeholder='00000')"
-                        onblur="(this.placeholder='Zipcode')"
-                    minlength="5" maxlength="5" pattern="[0-9]{5}" >
+                    <input type="text" placeholder="Zipcode" required
+                    id="applicant-zipcode" name="applicant-zipcode" class="zip"
+                    onfocus="(this.placeholder='00000')"
+                    onblur="(this.placeholder='Zipcode')"
+                    minlength="5" maxlength="5"
+                    pattern="[0-9]{5}"/>
 
-                    <input type="text" placeholder="County" required id="applicant-county" name="applicant-county" minlength="1" maxlength="128">
+                    <input type="text" placeholder="County" required
+                    id="applicant-county" name="applicant-county"
+                    minlength="1" maxlength="128"/>
 
-                    <input type="email" placeholder="Email" required id="applicant-email" name="applicant-email" minlength="1" maxlength="256">
+                    <input type="email" placeholder="Email" required
+                    id="applicant-email" name="applicant-email"
+                    minlength="1" maxlength="256"/>
 
-                    <input type="text" placeholder="Home Phone" required id="applicant-home-phone" name="applicant-home-phone" class="phone"
-                        onfocus="(this.placeholder='(000) 000-0000')"
-                        onblur="(this.placeholder='Home Phone')"
-                    minlength="10" maxlength="14" pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$">
+                    <input type="text" placeholder="Home Phone" required
+                    id="applicant-home-phone" name="applicant-home-phone" class="phone"
+                    onfocus="(this.placeholder='(000) 000-0000')"
+                    onblur="(this.placeholder='Home Phone')"
+                    minlength="10" maxlength="14"
+                    pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"/>
 
-                    <input type="tel" placeholder="Work Phone" class="phone" required id="applicant-work-phone" name="applicant-work-phone"
-                        onfocus="(this.placeholder='(000) 000-0000')"
-                        onblur="(this.placeholder='Work Phone')"
-                    minlength="10" maxlength="14"  pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$">
+                    <input type="tel" placeholder="Work Phone"
+                    id="applicant-work-phone" name="applicant-work-phone" class="phone"
+                    onfocus="(this.placeholder='(000) 000-0000')"
+                    onblur="(this.placeholder='Work Phone')"
+                    minlength="10" maxlength="14"
+                    pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"/>
 
                     <select required id="applicant-marital-status" value="" name="applicant-marital-status" class="purple-format" onchange="priorName();">
                         <option value="" disabled selected class="placeholder">Marital Status</option>
@@ -108,93 +129,87 @@
                         <option value="divorced">Divorced</option>
                     </select>
 
-                    <input placeholder="Prior Last Name" optional id="applicant-prior-last-name" name="applicant-prior-last-name" minlength="1" maxlength="32" type="text" class="hide">
+                    <input placeholder="Prior Last Name" id="applicant-prior-last-name" name="applicant-prior-last-name"minlength="1" maxlength="32" type="text" class="hide optional">
 
                     <p class="header">Health Information</p>
-                    <input type="text" placeholder="Age" required id="applicant-age" name="applicant-age" class="age" minlength="1" maxlength="3">
+                    <input type="text" placeholder="Age" required id="applicant-age"name="applicant-age" class="age"
+                    minlength="1" maxlength="3">
 
                     <input type="text" placeholder="Height" required id="applicant-height" name="applicant-height" class="height" 
-                        onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
-                        onblur="(this.placeholder='Height')" 
+                    onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
+                    onblur="(this.placeholder='Height')" 
                     minlength="1" maxlength="6">
 
                     <input type="text" placeholder="Weight" required id="applicant-weight" name="applicant-weight" class="weight" minlength="1" maxlength="4">
 
-                    <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="applicant-pcp-first-name" minlength="1" maxlength="128">
+                    <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="applicant-pcp-first-name"
+                    minlength="1" maxlength="128">
 
-                    <input type="text" placeholder="Primary Care Physician (Last Name)" required id="applicant-pcp-last-name" name="applicant-pcp-last-name" minlength="1" maxlength="128">
+                    <input type="text" placeholder="Primary Care Physician (Last Name)" required id="applicant-pcp-last-name" name="applicant-pcp-last-name"
+                    minlength="1" maxlength="128">
 
                     <div class="question">
                         <p>Are you an established patient?</p>
-                        <div class="right">
-                            <label>Y</label>
-                            <input type="radio" required name="applicant-question-1" value="yes">
-                            <label>N</label>
-                            <input type="radio" required name="applicant-question-1" value="no">
-                            <div class="clear"></div>
-                        </div>
+                        <select required id="applicant-question-1" value="" class="purple-format question" name="applicant-question-1">
+                            <option value="" disabled selected class="placeholder">Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="clear"></div>
                     </div>
-
                     <div class="question">
                         <p>Have you been declined for insurance due to health reasons within the past 18 months?</p>
-                        <div class="right">
-                            <label>Y</label>
-                            <input type="radio" required name="applicant-question-2" value="yes">
-                            <label>N</label>
-                            <input type="radio" required name="applicant-question-2" value="no">
-                            <div class="clear"></div>
-                        </div>
+                        <select required id="applicant-question-2" value="" class="purple-format question" name="applicant-question-2">
+                            <option value="" disabled selected class="placeholder">Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="clear"></div>
                     </div>
-
                     <div class="question">
                         <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p>
-                        <div class="right">
-                            <label>Y</label>
-                            <input type="radio" required name="applicant-question-3" value="yes">
-                            <label>N</label>
-                            <input type="radio" required name="applicant-question-3" value="no">
-                            <div class="clear"></div>
-                        </div>
+                        <select required id="applicant-question-3" value="" class="purple-format question" name="applicant-question-3">
+                            <option value="" disabled selected class="placeholder">Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="clear"></div>
                     </div>
                     <div class="question">
                         <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p>
-                        <div class="right">
-                            <label>Y</label>
-                            <input type="radio" required name="applicant-question-4" value="yes">
-                            <label>N</label>
-                            <input type="radio" required name="applicant-question-4" value="no">
-                            <div class="clear"></div>
-                        </div>
+                        <select required id="applicant-question-4" value="" class="purple-format question" name="applicant-question-4">
+                            <option value="" disabled selected class="placeholder">Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="clear"></div>
                     </div>
                     <div class="question">
                         <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p>
-                        <div class="right">
-                            <label>Y</label>
-                            <input type="radio" required name="applicant-question-5" value="yes">
-                            <label>N</label>
-                            <input type="radio" required name="applicant-question-5" value="no">
-                            <div class="clear"></div>
-                        </div>
+                        <select required id="applicant-question-5" value="" class="purple-format question" name="applicant-question-5">
+                            <option value="" disabled selected class="placeholder">Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="clear"></div>
                     </div>
                     <div class="question">
                         <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p>
-                        <div class="right">
-                            <label>Y</label>
-                            <input type="radio" required name="applicant-question-6" value="yes">
-                            <label>N</label>
-                            <input type="radio" required name="applicant-question-6" value="no">
-                            <div class="clear"></div>
-                        </div>
+                        <select required id="applicant-question-6" value="" class="purple-format question" name="applicant-question-6">
+                            <option value="" disabled selected class="placeholder">Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="clear"></div>
                     </div>
                     <div class="question">
                         <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p>
-                        <div class="right">
-                            <label>Y</label>
-                            <input type="radio" required name="applicant-question-7" value="yes">
-                            <label>N</label>
-                            <input type="radio" required name="applicant-question-7" value="no">
-                            <div class="clear"></div>
-                        </div>
+                        <select required id="applicant-question-7" value="" class="purple-format question" name="applicant-question-7">
+                            <option value="" disabled selected class="placeholder">Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="clear"></div>
                     </div>
                     <a href="#form"><button type="button" class="next" onclick="validate();">Next</button></a>
                 </div>
@@ -239,125 +254,112 @@
                         <!-- <div class="codeBlock">
                             <p class="header">Spouse Personal Information</p>
 
-                            <input type="text" placeholder="First Name" required id="spouse-first-name" name="spouse-first-name" minlength="2" maxlength="128">
+                            <input type="text" placeholder="First Name" required
+                            id="spouse-first-name" name="spouse-first-name" minlength="2" maxlength="128"/>
 
-                            <input type="text" placeholder="MI" required id="spouse-MI" name="spouse-MI" maxlength="1">
+                            <input type="text" placeholder="MI" required
+                            id="spouse-MI" name="spouse-MI" maxlength="1"/>
 
-                            <input type="text" placeholder="Last Name" required id="spouse-last-name" name="spouse-last-name" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Last Name" required
+                            id="spouse-last-name" name="spouse-last-name" minlength="2" maxlength="128"/>
 
-                            <input type="text" placeholder="SSN" required id="spouse-SSN" name="spouse-SSN" class="SSN" minlength="9" maxlength="9">
+                            <input type="text" placeholder="SSN" required
+                            id="spouse-SSN" name="spouse-SSN" class="SSN" minlength="9" maxlength="9"/>
 
-                            <input type="text" placeholder="Birthday" required id="spouse-birthday" name="spouse-birthday" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
-                                onfocus="(this.placeholder='MM-DD-YYYY')"
-                                onblur="(this.placeholder='Birthday')"
-                            maxlength="10">
+                            <input type="text" placeholder="Birthday" required
+                            id="spouse-birthday" name="spouse-birthday" class="date"pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onblur="(this.placeholder='Birthday')"
+                            maxlength="10"/>
 
-                            <div class="radio gender">
-                                <p class="gender">Gender</p>
-                                <div class="right">
-                                    <label>M</label>
-                                    <input type="radio" name="spouse-gender" value="male" required>
-                                    <label>F</label>
-                                    <input type="radio" name="spouse-gender" value="female" required>
-                                </div> 
-                            </div>
+                            <select required id="spouse-gender" value="" class="purple-format" name="spouse-gender">
+                                <option value="" disabled selected class="placeholder">Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
 
                             <p class="header">Health Information</p>
-                            <input type="text" placeholder="Age" required id="spouse-age" name="spouse-age" class="age" minlength="1" maxlength="3">
+                            <input type="text" placeholder="Age" required
+                            id="spouse-age" name="spouse-age" class="age"
+                            minlength="1" maxlength="3"/>
 
-                            <input type="text" placeholder="Height" required id="spouse-height" name="spouse-height" class="height" 
-                                onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
-                                onblur="(this.placeholder='Height')" 
-                            minlength="2" maxlength="6">
+                            <input type="text" placeholder="Height" required
+                            id="spouse-height" name="spouse-height" class="height" 
+                            onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
+                            onblur="(this.placeholder='Height')" 
+                            minlength="2" maxlength="6"/>
 
-                            <input type="text" placeholder="Weight" required id="spouse-weight" name="spouse-weight" class="weight" minlength="2" maxlength="4">
+                            <input type="text" placeholder="Weight" required
+                            id="spouse-weight" name="spouse-weight" class="weight" minlength="2" maxlength="4"/>
 
-                            <input type="text" placeholder="Primary Care Physician (First Name)" required id="spouse-pcp-first-name" name="spouse-pcp-first-name" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Primary Care Physician (First Name)" required
+                            id="spouse-pcp-first-name" name="spouse-pcp-first-name" minlength="2" maxlength="128"/>
 
-                            <input type="text" placeholder="Primary Care Physician (Last Name)" required id="spouse-pcp-last-name" name="spouse-pcp-last-name" minlength="2" maxlength="128">
-
-                            <div class="question">
-                                <p>Are you an established patient?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-1" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-1" value="no">
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
+                            <input type="text" placeholder="Primary Care Physician (Last Name)" required
+                            id="spouse-pcp-last-name" name="spouse-pcp-last-name" minlength="2" maxlength="128"/>
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-1" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-1" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="spouse-question-1" value="" class="purple-format question" name="spouse-question-1">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
-
                             <div class="question">
                                 <p>Have you been declined for insurance due to health reasons within the past 18 months?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-2" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-2" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="spouse-question-2" value="" class="purple-format question" name="spouse-question-2">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
-
                             <div class="question">
                                 <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-3" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-3" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="spouse-question-3" value="" class="purple-format question" name="spouse-question-3">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-4" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-4" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="spouse-question-4" value="" class="purple-format question" name="spouse-question-4">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-5" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-5" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="spouse-question-5" value="" class="purple-format question" name="spouse-question-5">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-6" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-6" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="spouse-question-6" value="" class="purple-format question" name="spouse-question-6">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="applicant-question-7" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="applicant-question-7" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="spouse-question-7" value="" class="purple-format question" name="spouse-question-7">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
 
                             <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="spouse-authorization-signature" minlength="2" maxlength="128">
@@ -368,7 +370,7 @@
                             maxlength="10">
 
                             <div class="agree">
-                                <label><input type="checkbox" required id="authorization-signature-valid" name="authorization-signature-valid" value="Bike">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
+                                <label><input type="checkbox" value="" required id="spouse-authorization-signature-agree" name="spouse-authorization-signature-agree"/>I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                             </div>
 
                             <p class="header">Authorization</p>
@@ -425,75 +427,66 @@
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="dependent-question-1" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="dependent-question-1" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="dependent-question-1" value="" class="purple-format question" name="dependent-question-1">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
-
                             <div class="question">
                                 <p>Have you been declined for insurance due to health reasons within the past 18 months?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="dependent-question-2" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="dependent-question-2" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="dependent-question-2" value="" class="purple-format question" name="dependent-question-2">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
-
                             <div class="question">
                                 <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="dependent-question-3" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="dependent-question-3" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="dependent-question-3" value="" class="purple-format question" name="dependent-question-3">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="dependent-question-4" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="dependent-question-4" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="dependent-question-4" value="" class="purple-format question" name="dependent-question-4">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="dependent-question-5" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="dependent-question-5" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="dependent-question-5" value="" class="purple-format question" name="dependent-question-5">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="dependent-question-6" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="dependent-question-6" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="dependent-question-6" value="" class="purple-format question" name="dependent-question-6">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
                             <div class="question">
                                 <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p>
-                                <div class="right">
-                                    <label>Y</label>
-                                    <input type="radio" required name="dependent-question-7" value="yes">
-                                    <label>N</label>
-                                    <input type="radio" required name="dependent-question-7" value="no">
-                                    <div class="clear"></div>
-                                </div>
+                                <select required id="dependent-question-7" value="" class="purple-format question" name="dependent-question-7">
+                                    <option value="" disabled selected class="placeholder">Choose</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <div class="clear"></div>
                             </div>
 
                             <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="dependent-authorization-signature" minlength="2" maxlength="128">
@@ -504,7 +497,7 @@
                             maxlength="10">
 
                             <div class="agree">
-                                <label><input type="checkbox" required id="authorization-dependent-signature-valid" name="authorization-dependent-signature-valid" value="valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
+                                <label><input type="checkbox" required id="authorization-dependent-signature-valid" name="authorization-dependent-signature-valid" value="">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                             </div>
 
                             <p class="header">Authorization</p>
@@ -526,12 +519,12 @@
                             <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" name="applicant-relationship" minlength="2" maxlength="128">
 
                             <div class="agree">
-                                <label><input type="checkbox" required id="authorization-applicant-signature-valid" name="authorization-applicant-signature-valid" value="valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
+                                <label><input type="checkbox" required id="authorization-applicant-signature-valid" name="authorization-applicant-signature-valid" value="">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                             </div>
                         </div> -->
                     </div>
 
-                    <a href="#form"><button type="button" class="next" onclick="next();">Next</button></a>
+                    <a href="#form"><button type="button" class="next" onclick="validate();">Next</button></a>
                 </div>
             </fieldset>
 
@@ -688,7 +681,7 @@
                             maxlength="10">
 
                             <div class="agree">
-                                <label><input type="checkbox" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
+                                <label><input type="checkbox" value="" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                             </div>
                         </div> -->
                     </div>
@@ -747,7 +740,7 @@
                     maxlength="10">
 
                     <div class="agree">
-                        <label><input type="checkbox" required id="agreement-signature-valid" name="agreement-signature-valid" value="Bike">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
+                        <label><input type="checkbox" required id="agreement-signature-valid" name="agreement-signature-valid" value="none">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                     </div>
 
                     <a href="#form"><button type="button" class="next" onclick="next();">Next</button></a>

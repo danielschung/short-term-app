@@ -156,7 +156,6 @@ form#form {
 				margin:0 17px 20px 0;
 				height:52px;
 				padding:25px 19px;
-				// text-indent:10px;
 			}
 
 			input:focus::-webkit-input-placeholder {
@@ -169,12 +168,13 @@ form#form {
 				font-weight:300;
 			}
 
+			div.invalid,
 			input.invalid,
 			select.invalid {
 				box-shadow: 0 0 3px 1px red;
 			}
 
-			input:optional::placeholder {
+			input.optional::placeholder {
 				color:$light-grey;
 			}
 
@@ -224,10 +224,9 @@ form#form {
 
     		}
 
-    		div.radio.gender {
-    			top:7px;
-    			width:200px;
-    		}
+    		select#applicant-gender,
+    		select#spouse-gender,
+    		select#dependent-gender {width:177px;}
 
     		input#applicant-address {max-width:370px;}
 
@@ -289,19 +288,12 @@ form#form {
     				float:left;
     			}
 
-    			div.right {
-    				text-align:right;
-
-    				label {
-    					color:$light-purple;
-    					display:inline-block;
-    					margin:0 5px 0 10px;
-    				}
-
-    				input {
-    					margin:0;
-    				}
-    			}
+				select.question {
+					float:right;
+					margin:0;
+					width:107px;
+					height:25px;
+				}
     		}
 
     		div.radio.spouse {
@@ -345,11 +337,32 @@ form#form {
 						background-image:none;
 						border:1px solid $light-grey;
 						border-radius:5px;
+						display:inline-block;
 						margin:0 17px 20px 0;
-						height:auto;
+						height:52px;
 						padding:25px 19px;
-						text-indent:10px;
 					}
+
+					div.question {
+		    			border:1px solid $light-grey;
+		    			border-radius:5px;
+		    			padding:25px;
+		    			height:auto;
+		    			margin-bottom:30px;
+		    			min-width:none;
+
+						p {
+		    				width:75%;
+		    				float:left;
+		    			}
+
+						select.question {
+							float:right;
+							margin:0;
+							width:107px;
+							height:25px;
+						}
+		    		}
 
 	    			p.authorize {
 	    				margin:20px auto 0 auto;
