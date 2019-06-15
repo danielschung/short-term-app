@@ -271,7 +271,7 @@ form#form {
     		input#agent-phone {max-width:227px;}
     		input#agent-agency,
     		input#producer-signature {max-width:631px;}
-    		input#producer-signature-date {max-width:128px;}
+    		input#producer-signature-date {max-width:147px;}
 
     		input#files {max-width:730px;}
 
@@ -395,6 +395,7 @@ form#form {
 
     		select#benefit-period-length,
     		select#coverage-plan-type {max-width:283px;}
+    		select#coverage-table-select {max-width:283px;}
 
     		div.coverage-table {
     			height:314px;
@@ -408,7 +409,7 @@ form#form {
     				tbody {
     					border:none;
 
-    					th.inputs {
+    					td.inputs {
     						div.container {
     							position:relative;
     							top:75px;
@@ -428,14 +429,16 @@ form#form {
 
     					tr {
 	    					border:0.5px solid $light-grey;
+	    					@extend .hover;
 
 	    					td {
 		    					border:0.5px solid $light-grey;
 		    				}
 	    				}
 
+	    				tr.selectable:hover,
 	    				tr.selected {
-	    					background-color:$light-purple;
+	    					background-color:$purple;
 	    					color:white;
 	    				}
     				}		
