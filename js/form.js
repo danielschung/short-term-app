@@ -18,35 +18,11 @@ $(document).ready(function(){
 	$('input.height').mask('0\' 00\"');
 	$('input.weight').mask('0000');
 	$('input.num').mask('0');
-
-	//table highlight
-	// $('div.coverage-table th.inputs').change(function() {
-	// 	if ( $('input#coverage-A').is(':checked') ) {
-	// 		$('div.coverage-table table tbody').children('tr').eq(3).toggleClass('selected');
-	// 	} else {
-	// 		$('div.coverage-table table tbody').children('tr').eq(3).removeClass('selected');
-	// 	}
-	// 	if ( $('input#coverage-B').is(':checked') ) {
-	// 		$('div.coverage-table table tbody').children('tr').eq(4).toggleClass('selected');
-	// 	} else {
-	// 		$('div.coverage-table table tbody').children('tr').eq(4).removeClass('selected');
-	// 	}
-	// 	if ( $('input#coverage-C').is(':checked') ) {
-	// 		$('div.coverage-table table tbody').children('tr').eq(5).toggleClass('selected');
-	// 	} else {
-	// 		$('div.coverage-table table tbody').children('tr').eq(5).removeClass('selected');
-	// 	}
-	// 	if ( $('input#coverage-D').is(':checked') ) {
-	// 		$('div.coverage-table table tbody').children('tr').eq(6).toggleClass('selected');
-	// 	} else {
-	// 		$('div.coverage-table table tbody').children('tr').eq(6).removeClass('selected');
-	// 	}
-	// })	 
 });
 
 //fields missing
 const alert = () => {
-	let codeBlock = '<div class="codeBlock"><p>You have missing fields. See below.</p></div>';
+	let codeBlock = '<div class="codeBlock"><p class="alert">You have missing fields. See below.</p></div>';
 	document.getElementById('alert').innerHTML = codeBlock;
 }
 const removeAlert = () => {
@@ -55,11 +31,13 @@ const removeAlert = () => {
 const next = () => {
 	$(event.target).parent().parent().slideToggle();
 	$(event.target).parent().parent().prev().toggleClass('closed');
-};
+}
 const validate = () => {
+	//declare constant variables
 	const container = $(event.target).parent().parent();
 	const inputs = container.find('input:required, select:required').toArray();
-	const checkBoxes = () => {
+	//validate checkboxes
+	const validateCheckBoxes = () => {
 		let boxArray = container.find( $('input[value="check"]') ).toArray();
 		if ( boxArray.length == 0 ) {
 			return true;
@@ -80,16 +58,104 @@ const validate = () => {
 		let values = inputs[i].value;
 		if ( values == '' || values == 'check') {
 			$(`#${names}`).addClass('invalid');
-			checkBoxes();
+			validateCheckBoxes();
 		} else {
 			$(`#${names}`).removeClass('invalid');
 		}
 	}
+	//validate ssn
+	const validateSSN = () => {
+		let thisBox = container.find('input.SSN');
+		let boxArray = thisBox.toArray();
+		const runLoop = () => {
+			for (i = 0; i < boxArray.length; i++) {
+				let names = boxArray[i].name;
+				let values = boxArray[i].value;
+				if ( values.length == 11 ) {
+					$(`#${names}`).removeClass('invalid');
+					return true;
+				} else {
+					$(`#${names}`).addClass('invalid');
+					return false;
+				}
+			}
+		}	
+		if ( boxArray.length == 0 ) {
+			return true;
+		} else {
+			runLoop();
+		}
+	}
+	validateSSN();
+	//validate dates
+	const validateDates = () => {
+		let thisBox = container.find('input.date');
+		let boxArray = thisBox.toArray();
+		const runLoop = () => {
+			for (i = 0; i < boxArray.length; i++) {
+				let names = boxArray[i].name;
+				let values = boxArray[i].value;
+				if ( values.length == 10 ) {
+					$(`#${names}`).removeClass('invalid');
+					return true;
+				} else {
+					$(`#${names}`).addClass('invalid');
+					return false;
+				}
+			}
+		}	
+		if ( boxArray.length == 0 ) {
+			return true;
+		} else {
+			runLoop();
+		}
+	}
+	validateDates();
+	//validate phone numbers
+	const validatePhone = () => {
+		let thisBox = container.find('input.phone');
+		let boxArray = thisBox.toArray();
+		const runLoop = () => {
+			for (i = 0; i < boxArray.length; i++) {
+				let names = boxArray[i].name;
+				let values = boxArray[i].value;
+				if ( values.length == 14 ) {
+					$(`#${names}`).removeClass('invalid');
+					return true;
+				} else {
+					$(`#${names}`).addClass('invalid');
+					return false;
+				}
+			}
+		}	
+		if ( boxArray.length == 0 ) {
+			return true;
+		} else {
+			runLoop();
+		}
+	}
+	validatePhone();
+	//final section check
 	let empty = container.find('input.invalid, select.invalid').toArray();
 	if ( empty.length == 0 ) {
 		removeAlert();
 		next();
 	} else {
+		alert();
+	}
+}
+
+const validateFinal = () => {
+	const container = $(event.target).parent().parent();
+	const button = container.find('input[name=download-pdf]');
+	const isChecked = button.prop('checked');
+	if ( isChecked ) {
+		button.removeClass('invalid');
+		removeAlert();
+		next();
+	} else {
+		button.addClass('invalid');
+		console.log('invalid');
 		alert();
 	}
 }
@@ -153,7 +219,6 @@ const numOfDependents = () => {
 			return;
 		}
 	}
-
 	if ( amount.length < 1 ) {
 		validateOutput();
 	} else if ( amount.length > 0 && amount <= 3 ) {
@@ -169,7 +234,7 @@ const dependentsDigress = () => {
 	} else {
 		nextElement.addClass('hide');
 		$('div#dependent-block').children().remove();
-	};
+	}
 }
 const colorize = () => {
 	const inputBox = $('input#num-of-dependents');
@@ -219,11 +284,14 @@ const removeAgent = () => {
 
 //download form function
 const addPDF = () => {
-	let codeBlock = '<div class="codeBlock"> <p class="header">Download a hard copy instead of the application above upload below. <a href="/media/Resources/ind-ILshorttermapp-1118fill.pdf" target="_blank">(Download here)</a></p><input type="file" name="files" id="files" multiple="multiple" accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-val="true" data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx"/> </div>';
+	$('div#payment-block').children().remove();
+	let codeBlock = '<div class="codeBlock"> <p class="header">Download a hard copy instead of the application above upload below. <a href="/media/Resources/ind-ILshorttermapp-1118fill.pdf" target="_blank">(Download Application)</a></p><input type="file" name="files" id="files" multiple="multiple" accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-val="true" data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx"/> </div>';
 	document.getElementById('download-block').innerHTML = codeBlock;
 }
 const removePDF = () => {
 	$('div#download-block').children().remove();
+	let codeBlock = '<div class="codeBlock"> <p class="header">Submit your payment details by downloading the pdf and upload below. <a href="/media/Resources/short-term-application-payment-form-2019.pdf" target="_blank">(Download Payment PDF)</a></p><input type="file" name="files" id="files" multiple="multiple" accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-val="true" data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx"/> </div>';
+	document.getElementById('payment-block').innerHTML = codeBlock;
 }
 
 

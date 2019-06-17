@@ -78,6 +78,10 @@ div.wrapper {
 form#form {
 	margin-top:67px;
 
+	div#alert p.alert {
+		color:red;
+	}
+
 	fieldset {
 
 		div.accordian.first {
@@ -240,7 +244,7 @@ form#form {
 
     		input#applicant-email {max-width:245px;}
 
-    		input#applicant-home-phone,
+    		input#applicant-main-phone,
     		input#applicant-work-phone {max-width:163px;}
 
     		select#applicant-marital-status {max-width:161px;}
@@ -377,7 +381,8 @@ form#form {
 
 	    	}
 
-	    	div#download-block {
+	    	div#download-block,
+	    	div#payment-block {
 	    		div.codeBlock{
 	    			p.header {
 	    				margin-top:50px;
@@ -501,7 +506,7 @@ form#form {
     			}
     		}
     		div.g-recaptcha {
-    			margin-top:50px;
+    			margin-top:30px;
     		}
 		}
 
@@ -509,6 +514,9 @@ form#form {
 			border-radius:0 0 5px 5px;
 		}
 	}
+
+	input#files {margin-top:30px;}
+	select#final-download {max-width:500px;}
 
 	input#submit {
 		background-color:$light-purple;
