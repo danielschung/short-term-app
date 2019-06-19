@@ -107,10 +107,10 @@
                     minlength="1" maxlength="256"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
 
-                    <input type="text" placeholder="Work Phone" required
+                    <input type="text" placeholder="Main Phone" required
                     id="applicant-main-phone" name="applicant-main-phone" class="phone"
                     onfocus="(this.placeholder='(000) 000-0000')"
-                    onblur="(this.placeholder='Home Phone')"
+                    onblur="(this.placeholder='Main Phone')"
                     minlength="10" maxlength="14"
                     pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"/>
 
@@ -497,7 +497,7 @@
 
                     <p class="header">Choose a Deductible and Out-of-Pocket Maximum Combination</p>
 
-                    <div class="coverage-table" id="coverage-table">
+                    <!-- <div class="coverage-table" id="coverage-table">
                         <table>
                             <tbody>
                                 <tr>     
@@ -567,7 +567,40 @@
                                 </tr>                             
                             </tbody>
                         </table>
+                    </div> -->
+
+                    <div class="coverage-table" id="coverage-table">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th colspan="2">Deductible</th>
+                                    <th colspan="2">OOP-Max</th>
+                                </tr>
+                                <tr class="selectable">
+                                    <td>A</td>
+                                    <td colspan="2">Single: $1,000<br>Family: $2,000</td>
+                                    <td colspan="2">Single: $1,000<br>Family: $2,000</td>
+                                </tr>
+                                <tr class="selectable">
+                                    <td>B</td>
+                                    <td colspan="2">Single: $2,000<br>Family: $4,000</td>
+                                    <td colspan="2">Single: $2,000<br>Family: $4,000</td>
+                                </tr>
+                                <tr class="selectable">
+                                    <td>C</td>
+                                    <td colspan="2">Single: $5,000<br>Family: $10,000</td>
+                                    <td colspan="2">Single: $5,000<br>Family: $10,000</td>
+                                </tr>
+                                <tr class="selectable">
+                                    <td>D</td>
+                                    <td colspan="2">Single: $7,500<br>Family: $15,000</td>
+                                    <td colspan="2">Single: $7,500<br>Family: $15,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <p class="note">Note: Cost of In-Network and Out-of-Network are the same.</p>
 
                     <select required id="coverage-table-select" name="coverage-table-select" value="" class="purple-format" onchange="tableSelect();">
                         <option value="" disabled selected class="placeholder">Choose a Combination</option>

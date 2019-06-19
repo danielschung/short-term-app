@@ -124,6 +124,11 @@ form#form {
 				width:98%;
 			}
 
+			p.note {
+				font-size:0.8rem;
+				margin-bottom:20px;
+			}
+
 
 			button.next {
 				border:1px solid $light-purple;
@@ -382,48 +387,21 @@ form#form {
 	    		}
 	    	}
 
-	    	div#download-block,
-	    	div#payment-block {
-	    		div.codeBlock{
-	    			p.header {
-	    				margin-top:50px;
-	    			}
-	    		}
-	    	}
-
     		select#benefit-period-length,
     		select#coverage-plan-type {max-width:283px;}
-    		select#coverage-table-select {max-width:283px;}
+    		select#coverage-table-select {max-width:470px;}
 
     		div.coverage-table {
-    			height:314px;
+    			
 
     			table {
     				margin-bottom:40px;
-    				max-width:100%;
+    				max-width:470px;
     				text-align:center;
     				padding-left:50px;
 
     				tbody {
     					border:none;
-
-    					td.inputs {
-    						div.container {
-    							position:relative;
-    							top:75px;
-
-    							input.coverage-table {
-	    							border:none;
-	    							display:block;
-			    					margin:0 0 25.7px 10px;
-			    					background-color:red;
-			    				}
-    						}					
-    					}
-
-    					th.table-head {
-    						border: 1px solid $light-grey;
-    					}
 
     					tr {
 	    					border:0.5px solid $light-grey;
@@ -489,10 +467,12 @@ form#form {
     		div.agree {
     			max-width:991px;
 
+    			input[type="checkbox"] {
+    				margin:0 10px 0 0;
+    			}
+
     			label {
     				color:$light-purple;
-    				height:27px;
-    				line-height:0;
     				margin-top:20px;
     				margin-bottom:40px;
     				-webkit-user-select: none;  /* Chrome all / Safari all */
@@ -508,6 +488,11 @@ form#form {
 
 		div.expanded.last {
 			border-radius:0 0 5px 5px;
+
+			div.g-recaptcha {
+				max-width:50px;
+			}
+
 		}
 	}
 
@@ -527,3 +512,95 @@ form#form {
 		background-color:$purple;
 	}
 }
+
+// mobile rules----------------------------
+@media only screen and (max-width:470px) {
+	body div.wrapper form#form fieldset div.expanded {
+		// Applicant
+		input#applicant-last-name,
+		input#applicant-SSN,
+		input#applicant-birthday,
+		select#applicant-gender,
+		input#applicant-address,
+		input#applicant-city,
+		input#applicant-county,
+		input#applicant-email,
+		input#applicant-main-phone,
+		input#applicant-work-phone,
+		select#applicant-marital-status,
+		input#applicant-prior-last-name,
+		input#applicant-weight,
+		input#applicant-pcp-first-name,
+		input#applicant-pcp-last-name
+		//spouse / dependent
+		input#spouse-last-name,
+		input#spouse-SSN,
+		input#spouse-birthday,
+		select#spouse-gender,
+		input#spouse-weight,
+		input#spouse-pcp-first-name,
+		input#spouse-pcp-last-name,
+		input#dependent-last-name,
+		input#dependent-SSN,
+		input#dependent-birthday,
+		select#dependent-gender,
+		input#dependent-weight,
+		input#dependent-pcp-first-name,
+		input#dependent-pcp-last-name, {
+			max-width:100%;
+		}
+		div.radio div.right {
+			float:none;
+
+			label {
+				margin:20px 5px 0 0px;
+			}
+
+			input {
+				margin:0 20px 0 0;
+			}
+		}
+	}
+	body form#form fieldset div.expanded div#num-of-dependents-block div.codeBlock {
+		input#num-of-dependents {
+			margin-top:20px;
+		}
+	}
+
+	body form#form fieldset div.expanded div.question,
+	body form#form fieldset div.expanded div#spouse-block div.codeBlock div.question,
+	body form#form fieldset div.expanded div#dependent-block div.codeBlock div.question {
+		max-width:100%;
+
+		p {
+			width:100%;
+		}
+
+		select.question {
+			float:none;
+			margin-top:20px;
+		}
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

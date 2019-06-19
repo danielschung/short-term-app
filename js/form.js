@@ -327,25 +327,25 @@ const tableSelect = () => {
 	let tableChoice = document.getElementById('coverage-table-select').value;
 	let tableRow = $('#coverage-table table tbody').children();
 	if ( tableChoice === 'A' ) {
-		tableRow.eq(3).addClass('selected');
+		tableRow.eq(1).addClass('selected');
+		tableRow.eq(2).removeClass('selected');
+		tableRow.eq(3).removeClass('selected');
 		tableRow.eq(4).removeClass('selected');
-		tableRow.eq(5).removeClass('selected');
-		tableRow.eq(6).removeClass('selected');
 	} else if ( tableChoice === 'B' ) {
-		tableRow.eq(4).addClass('selected');
+		tableRow.eq(2).addClass('selected');
+		tableRow.eq(1).removeClass('selected');
 		tableRow.eq(3).removeClass('selected');
-		tableRow.eq(5).removeClass('selected');
-		tableRow.eq(6).removeClass('selected');
+		tableRow.eq(4).removeClass('selected');
 	} else if ( tableChoice === 'C' ) {
-		tableRow.eq(5).addClass('selected');
-		tableRow.eq(3).removeClass('selected');
+		tableRow.eq(3).addClass('selected');
+		tableRow.eq(1).removeClass('selected');
+		tableRow.eq(2).removeClass('selected');
 		tableRow.eq(4).removeClass('selected');
-		tableRow.eq(6).removeClass('selected');
 	} else if ( tableChoice === 'D' ) {
-		tableRow.eq(6).addClass('selected');
+		tableRow.eq(4).addClass('selected');
+		tableRow.eq(1).removeClass('selected');
+		tableRow.eq(2).removeClass('selected');
 		tableRow.eq(3).removeClass('selected');
-		tableRow.eq(4).removeClass('selected');
-		tableRow.eq(5).removeClass('selected');
 	}
 }
 
@@ -367,29 +367,3 @@ const addPDF = () => {
 const removePDF = () => {
 	$('div#legal-block').children().remove();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
