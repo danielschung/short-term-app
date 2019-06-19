@@ -29,7 +29,6 @@ div, p, input, select {
 	visibility:hidden;
 }
 
-
 // body rules
 
 header {
@@ -168,6 +167,7 @@ form#form {
 
 			select {
 				background-image:none;
+				background-color:white;
 				border:1px solid $light-grey;
 				border-radius:5px;
 				display:inline-block;
@@ -180,10 +180,29 @@ form#form {
 				color:$light-grey;
 			}
 
+			input::placeholder {
+				line-height:18px;
+			}
+
 			input::placeholder,
 			select.purple-format {
 				color:$light-purple;
 				font-weight:300;
+			}
+
+			input[type="radio"],
+			input[type="checkbox"] {
+				background-color:white;
+				height:15px;
+				width:15px;
+			}
+
+			input[type="radio"] {
+				-moz-appearance: radio;
+			}
+
+			input[type="checkbox"] {
+				-moz-appearance: checkbox;
 			}
 
 			div.invalid,
@@ -515,6 +534,9 @@ form#form {
 
 // mobile rules----------------------------
 @media only screen and (max-width:470px) {
+	body div.wrapper.mobile {
+		padding:0;
+	}
 	body div.wrapper form#form fieldset div.expanded {
 		// Applicant
 		input#applicant-last-name,
