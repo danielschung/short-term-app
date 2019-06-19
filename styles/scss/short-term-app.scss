@@ -4,7 +4,6 @@ $light-purple:#978EBA;
 $black:#282828;
 $white:#EFEFEF;
 
-
 div.wrapper {
 	margin:0 auto 100px auto;
 	max-width:1123px;
@@ -115,6 +114,16 @@ form#form {
 				margin:20px 0 12px 0;
 				width:100%;
 			}
+
+			p.authorize {
+				margin:20px auto 0 auto;
+			}
+
+			p.bullet {
+				margin:20px auto 0 auto;
+				width:98%;
+			}
+
 
 			button.next {
 				border:1px solid $light-purple;
@@ -318,7 +327,7 @@ form#form {
     				margin-right:27px;
     			}
 
-    			input#num-of-dependents {max-width:84px;}
+    			input#num-of-dependents {max-width:97px;}
 
     		}
 
@@ -367,18 +376,7 @@ form#form {
 							height:25px;
 						}
 		    		}
-
-	    			p.authorize {
-	    				margin:20px auto 0 auto;
-	    			}
-
-	    			p.bullet {
-						margin:20px auto 0 auto;
-						width:98%;
-					}
-
 	    		}
-
 	    	}
 
 	    	div#download-block,
@@ -388,14 +386,6 @@ form#form {
 	    				margin-top:50px;
 	    			}
 	    		}
-	    	}
-
-	    	div#dependent-block {
-
-	    		input#applicant-authorization-signature {
-					margin-top:30px;
-				}
-
 	    	}
 
     		select#benefit-period-length,
@@ -477,9 +467,11 @@ form#form {
     		input#dependent-agreement-signature,
     		input#spouse-authorization-signature,
     		input#dependent-authorization-signature,
-    		input#applicant-authorization-signature {max-width:610px;}
+    		input#applicant-authorization-signature,
+    		input#applicant-full-name {max-width:610px;}
 
-    		input#applicant-authorization-signature {margin-top:30px;}
+			input#applicant-full-name,
+			input#applicant-authorization-signature {margin-top:30px;}
 
     		input#applicant-agreement-signature-date,
     		input#spouse-agreement-signature-date,
@@ -488,7 +480,8 @@ form#form {
     		input#dependent-authorization-signature-date,
     		input#applicant-authorization-signature-date {max-width:147px;}
 
-    		input#applicant-relationship {max-width:781px;}
+    		input#applicant-relationship,
+    		input#applicant-full-address {max-width:781px;}
 
     		div.agree {
     			max-width:991px;
