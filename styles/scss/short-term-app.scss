@@ -29,8 +29,34 @@ div, p, input, select {
 	visibility:hidden;
 }
 
-// body rules
+//override unwanted browser user agent stylesheet rules
+input[type="radio"] {
+	-moz-appearance: radio;
+	-webkit-appearance : radio;
+}
 
+input[type="checkbox"] {
+	-moz-appearance: checkbox;
+	-webkit-appearance : checkbox;
+}
+input::placeholder { //fixes safari placeholder text
+	line-height:1rem;
+}
+@-moz-document url-prefix() { //fixes firefox placeholder text
+    input::placeholder {
+    	line-height:50px;
+    }
+    form#form fieldset div.expanded input:focus::-moz-placeholder {
+		color:$light-grey;
+	}
+}
+select {
+	-webkit-appearance:none;  /*Removes default chrome and safari style*/
+	-moz-appearance:none; /* Removes Default Firefox style*/
+	background-image:none;
+}
+
+// body rules
 header {
 	height:100px;
 	width:100%;
@@ -160,28 +186,28 @@ form#form {
 				border:1px solid $light-grey;
 				border-radius:5px;
 				display:inline-block;
-				line-height:0;
+				line-height:0px;
 				margin:0 20px 20px 0;
-				padding:25px 19px;
+				height:50px;
+				padding:0 17px;
 			}
 
 			select {
-				background-image:none;
-				background-color:white;
+				background-color:transparent;
 				border:1px solid $light-grey;
 				border-radius:5px;
 				display:inline-block;
 				margin:0 17px 20px 0;
+				padding:0 0 0 17px;
 				height:52px;
-				padding:25px 19px;
+
+				// option:disabled {
+				//     background-color:white;
+				// }
 			}
 
 			input:focus::-webkit-input-placeholder {
 				color:$light-grey;
-			}
-
-			input::placeholder {
-				line-height:18px;
 			}
 
 			input::placeholder,
@@ -195,14 +221,6 @@ form#form {
 				background-color:white;
 				height:15px;
 				width:15px;
-			}
-
-			input[type="radio"] {
-				-moz-appearance: radio;
-			}
-
-			input[type="checkbox"] {
-				-moz-appearance: checkbox;
 			}
 
 			div.invalid,
@@ -329,6 +347,7 @@ form#form {
 				select.question {
 					float:right;
 					margin:0;
+					padding:0 7px;
 					width:107px;
 					height:25px;
 				}
@@ -374,13 +393,11 @@ form#form {
 					}
 
 					select {
-						background-image:none;
 						border:1px solid $light-grey;
 						border-radius:5px;
 						display:inline-block;
 						margin:0 17px 20px 0;
 						height:52px;
-						padding:25px 19px;
 					}
 
 					div.question {
@@ -520,11 +537,13 @@ form#form {
 
 	input#submit {
 		background-color:$light-purple;
+		border:none;
 		border-radius:5px;
 		color:white;
 		margin-top:40px;
 		padding:15px 40px;
 		@extend .hover;
+		-webkit-appearance: button;
 	}
 
 	input#submit:hover {
