@@ -104,7 +104,8 @@
 
                     <input type="email" placeholder="Email" required
                     id="applicant-email" name="applicant-email"
-                    minlength="1" maxlength="256"/>
+                    minlength="1" maxlength="256"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
 
                     <input type="text" placeholder="Work Phone" required
                     id="applicant-main-phone" name="applicant-main-phone" class="phone"
@@ -665,7 +666,7 @@
                     minlength="1" maxlength="128"/>
 
                     <input type="text" placeholder="Birthday" required
-                    id="applicant-birthday" name="applicant-birthday" class="date"
+                    id="applicant-birthday-authorize" name="applicant-birthday-authorize" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Birthday')"
                     minlength="10" maxlength="10"/>
@@ -714,7 +715,7 @@
                         <label><input type="checkbox" required id="authorization-dependent-signature-agree" name="authorization-dependent-signature-agree" value="check">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                     </div>
 
-                    <div class="radio download">
+                    <div class="radio representative">
                         <p>Are you a Legally Authorized Representative?</p>
                         <div class="right">
                             <label>Y</label>
@@ -748,9 +749,9 @@
                         <p>Would you like to add an agent?</p>
                         <div class="right">
                             <label>Y</label>
-                            <input type="radio" required name="add-agent" value="yes" onclick="addAgent();">
+                            <input type="radio" required name="add-agent" value="yes" onclick="addAgent();"/>
                             <label>N</label>
-                            <input type="radio" required name="add-agent" value="no" onclick="removeAgent();">
+                            <input type="radio" required name="add-agent" value="no" onclick="removeAgent();"/>
                         </div>
                     </div>
 
@@ -781,7 +782,8 @@
 
                             <input type="email" placeholder="Email" required
                             id="agent-email" name="agent-email"
-                            minlength="1" maxlength="256">
+                            minlength="1" maxlength="256"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
                             <input type="text" placeholder="Producer Signature" required
                             id="producer-signature" name="producer-signature"
@@ -798,6 +800,7 @@
                             </div>
                         </div> -->
                     </div>
+
                     <a href="#form"><button type="button" class="next" onclick="validate();">Next</button></a>
                 </div>
             </fieldset>

@@ -136,8 +136,25 @@ const validate = () => {
 		}
 	}
 	validatePhone();
+	//validate emails
+	const emailArray = container.find('input[type=email]').toArray();
+	if ( emailArray.length > 0 ) {
+		for (i = 0; i < emailArray.length; i++) {
+			let valid = emailArray[i].checkValidity();
+			let name = emailArray[i].name;
+			if ( valid ) {
+				$(`input#${name}`).removeClass('invalid');
+			} else {
+				$(`input#${name}`).addClass('invalid');
+			}
+		}
+	}
 	//validate radio buttons
 	const validateRadio = () => {
+		let spouseArray = container.find('input[type=radio][name=add-spouse]').toArray();
+		let dependentArray = container.find('input[type=radio][name=add-spouse]').toArray();
+		let representativeArray = container.find('input[type=radio][name=legal-representative]').toArray();
+		let agentArray = container.find('input[type=radio][name=add-agent]').toArray();
 		const checkSpouse = () => {
 			let spouseYes = container.find('input[type=radio][name=add-spouse][value=yes]');
 			let spouseNo = container.find('input[type=radio][name=add-spouse][value=no]');
@@ -149,10 +166,7 @@ const validate = () => {
 				return false;
 			}
 		}
-		let spouseArray = container.find('input[type=radio][name=add-spouse]').toArray();
-		if ( spouseArray.length < 1 ) {
-			return true;
-		} else {
+		if ( spouseArray.length > 0 ) {
 			checkSpouse();
 		}
 		const checkDependent = () => {
@@ -166,28 +180,37 @@ const validate = () => {
 				return false;
 			}
 		}
-		let dependentArray = container.find('input[type=radio][name=add-spouse]').toArray();
-		if ( dependentArray.length < 1 ) {
-			return true;
-		} else {
+		if ( dependentArray.length > 0 ) {
 			checkDependent();
+		}
+		const checkRepresentative = () => {
+			let representativeYes = container.find('input[type=radio][name=legal-representative][value=yes]');
+			let representativeNo = container.find('input[type=radio][name=legal-representative][value=no]');
+			if ( representativeYes.is(':checked') || representativeNo.is(':checked') ) {
+				$('input[name=legal-representative').removeClass('invalid');
+				return true;
+			} else if ( !representativeYes.is('checked') && !representativeNo.is('checked') ) {
+				$('input[name=legal-representative').addClass('invalid');
+				return false;
+			}
+		}
+		if ( representativeArray.length > 0 ) {
+			checkRepresentative();
 		}
 		const checkAgent = () => {
 			let agentYes = container.find('input[type=radio][name=add-agent][value=yes]');
+			console.log(agentYes);
 			let agentNo = container.find('input[type=radio][name=add-agent][value=no]');
+			console.log(agentNo);
 			if ( agentYes.is(':checked') || agentNo.is(':checked') ) {
 				$('input[name=add-agent').removeClass('invalid');
 				return true;
 			} else if ( !agentYes.is('checked') && !agentNo.is('checked') ) {
 				$('input[name=add-agent').addClass('invalid');
 				return false;
-				console.log('this');
 			}
 		}
-		let agentArray = container.find('input[type=radio][name=add-agent]').toArray();
-		if ( agentArray.length < 1 ) {
-			return true;
-		} else {
+		if ( agentArray.length > 0 ) {
 			checkAgent();
 		}
 	}
@@ -328,7 +351,7 @@ const tableSelect = () => {
 
 //agent form progress function
 const addAgent = () => {
-	let codeBlock = '<div class="codeBlock"> <p class="header">I certify that:</p><p class="bullet">• All answers provided in this application were completed by or provided by the applicant.</p><p class="bullet">• I have reviewed this enrollment form to ensure that all required items have been completed.</p><p class="bullet">• I am not aware of any information not disclosed on this enrollment form relating to the health, habits or reputation of any person listed on this enrollment form, which might have a bearing on the risk.</p><p class="header">Agent / Broker Information</p><input type="text" placeholder="Full Name" required id="agent-name" name="agent-name" minlength="2" maxlength="128"> <input type="text" placeholder="ID# / Code" required id="agent-ID" name="agent-ID" onfocus="(this.placeholder=\'00-000-0000\')" onblur="(this.placeholder=\'ID# / Code\')" minlength="2" maxlength="12"> <input type="text" placeholder="Agency" required id="agent-agency" name="agent-agency" minlength="2" maxlength="256"> <br><input type="text" placeholder="Home Phone" required id="agent-phone" name="agent-phone" class="phone" minlength="10" maxlength="14" pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"> <input type="email" placeholder="Email" required id="agent-email" name="agent-email" minlength="3" maxlength="256"> <input type="text" placeholder="Producer Signature" required id="producer-signature" name="producer-signature" minlength="2" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="producer-signature-date" name="producer-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"> <div class="agree"> <label><input type="checkbox" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label> </div></div>';
+	let codeBlock = '<div class="codeBlock"> <p class="header">I certify that:</p><p class="bullet">• All answers provided in this application were completed by or provided by the applicant.</p><p class="bullet">• I have reviewed this enrollment form to ensure that all required items have been completed.</p><p class="bullet">• I am not aware of any information not disclosed on this enrollment form relating to the health, habits or reputation of any person listed on this enrollment form, which might have a bearing on the risk.</p><p class="header">Agent / Broker Information</p><input type="text" placeholder="Full Name" required id="agent-name" name="agent-name" minlength="1" maxlength="128"/> <input type="text" placeholder="ID# / Code" required id="agent-ID" class="agent-ID" name="agent-ID" onfocus="(this.placeholder=\'000000\')" onblur="(this.placeholder=\'ID# / Code\')" minlength="1" maxlength="6"/> <input type="text" placeholder="Agency" required id="agent-agency" name="agent-agency" minlength="1" maxlength="256"/> <br><input type="text" placeholder="Home Phone" required id="agent-phone" name="agent-phone" class="phone" minlength="10" maxlength="14"/> <input type="email" placeholder="Email" required id="agent-email" name="agent-email" minlength="1" maxlength="256" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> <input type="text" placeholder="Producer Signature" required id="producer-signature" name="producer-signature" minlength="2" maxlength="128"/> <input type="text" placeholder="Date of Sign" required id="producer-signature-date" name="producer-signature-date" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"/> <div class="agree"> <label><input type="checkbox" value="check" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label> </div></div>';
 	document.getElementById('agent-block').innerHTML = codeBlock;
 }
 const removeAgent = () => {

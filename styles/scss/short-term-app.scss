@@ -210,7 +210,8 @@ form#form {
 
 			input#applicant-birthday,
 			input#spouse-birthday,
-			input#dependent-birthday {max-width:149px;}
+			input#dependent-birthday,
+			input#applicant-birthday-authorize {max-width:149px;}
 
     		div.radio {
     			display:inline-block;
@@ -309,7 +310,9 @@ form#form {
 				}
     		}
 
-    		div.radio.spouse {
+    		div.radio.spouse,
+    		div.radio.agent,
+    		div.radio.representative {
     			margin:30px 47px 20px 0;
     		}
 
