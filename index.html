@@ -107,19 +107,15 @@
                     minlength="1" maxlength="256"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
 
-                    <input type="text" placeholder="Main Phone" required
-                    id="applicant-main-phone" name="applicant-main-phone" class="phone"
+                    <input type="text" placeholder="Home Phone" required
+                    id="applicant-home-phone" name="applicant-home-phone" class="phone"
                     onfocus="(this.placeholder='(000) 000-0000')"
-                    onblur="(this.placeholder='Main Phone')"
-                    minlength="10" maxlength="14"
-                    pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"/>
+                    onblur="(this.placeholder='Main Phone')"/>
 
                     <input type="tel" placeholder="Work Phone"
                     id="applicant-work-phone" name="applicant-work-phone" class="phone optional"
                     onfocus="(this.placeholder='(000) 000-0000')"
-                    onblur="(this.placeholder='Work Phone')"
-                    minlength="10" maxlength="14"
-                    pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"/>
+                    onblur="(this.placeholder='Work Phone')"/>
 
                     <select required id="applicant-marital-status" value="" name="applicant-marital-status" class="purple-format" onchange="priorName();">
                         <option value="" disabled selected class="placeholder">Marital Status</option>
@@ -810,8 +806,7 @@
                             minlength="1" maxlength="256"/>
                             <br>
                             <input type="text" placeholder="Home Phone" required
-                            id="agent-phone" name="agent-phone" class="phone"
-                            minlength="10" maxlength="14"/>
+                            id="agent-phone" name="agent-phone" class="phone">
 
                             <input type="email" placeholder="Email" required
                             id="agent-email" name="agent-email"
@@ -842,13 +837,13 @@
                 <div class="accordian">Final Steps</div>
                 <div class="expanded last">
                     <a href="/media/Resources/cmp-nondiscnotice15.pdf" target="_blank">View Non-Discrimination Notice (pdf)</a>
-                    <p class="header">Submit payment information by <a href="/media/Resources/short-term-application-payment-form-2019.pdf">downloading the payment PDF</a> and sending it to us via options below:</p>
+                    <p class="header">Submit payment information by <a href="/media/Resources/short-term-application-payment-form-2019.pdf" target="_blank">downloading the payment PDF</a> and sending it to us via options below:</p>
                     <p class="header">Fax:<br>217-902-9784</p>
-                    <p class="header">Email:<br>Autodraw@healthalliance.org</p>
+                    <p class="header">Email:<br><a href="mailto:autodraw@healthalliance.org">Autodraw@healthalliance.org</a></p>
                     <p class="header" >Mail:<br>Health Alliance<br>3310 Fields South Drive<br>Champaign, IL 61822</p>
 
                     <div class="g-recaptcha" data-sitekey="6LcwMCwUAAAAANc4fdZewktvexbxabAVgfG8s96T"></div>
-                    <!-- DEV -->
+                    <!-- <div class="g-recaptcha" data-sitekey="6LcwMCwUAAAAANc4fdZewktvexbxabAVgfG8s96T"></div> --><!-- DEV -->
                     <!-- <div class="g-recaptcha" data-sitekey="6LcwMCwUAAAAANc4fdZewktvexbxabAVgfG8s96T"></div> --><!-- QA -->
                     <!-- <div class="g-recaptcha" data-sitekey="6LdoLiwUAAAAAHDhkieXnV382WVvtsMKrPorvdVe"></div> --><!-- UAT -->
                     <!-- <div class="g-recaptcha" data-sitekey="6LdrLCwUAAAAACbajL9h5-AwKTsKemsnjymPoa7A"></div> --><!-- PROD -->
@@ -858,7 +853,7 @@
             </fieldset>
             <div class="wrapper">
                 <input type="submit" value="Submit" id="submit" 
-                onclick="window.location.href = './confirmed.html','_blank';">
+                onclick="submitForm();">    
             </div>
         </form>
     </div>
