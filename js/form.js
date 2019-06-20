@@ -41,15 +41,12 @@ const validate = () => {
 	const validateCheckBoxes = () => {
 		let boxArray = container.find( $('input[value="check"]') ).toArray();
 		if ( boxArray.length == 0 ) {
-			return true;
+			console.log('valid');
 		} else {
 			for (let i = 0; i < boxArray.length; i++) {
 				let boxNames = boxArray[i].name;
 				if ( boxArray[i].checked ) {
 					$(`#${boxNames}`).removeClass('invalid');
-					return true;
-				} else {
-					return false;
 				}
 			}
 		}		
@@ -374,8 +371,12 @@ const submitForm = () => {
 	if ( finalValidation.length == 0 ) {
 		removeAlert();
 		window.location.href = "./confirmed.html";
+		return true;
 	} else {
 		alert();
 		console.log(finalValidation);
 	}
+	event.preventDefault();
 }
+const form = document.getElementById('form');
+form.addEventListener("submit", submitForm, true);
