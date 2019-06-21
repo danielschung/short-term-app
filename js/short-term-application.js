@@ -19,7 +19,6 @@ $(document).ready(function(){
 	$('input.num').mask('00');
 	$('input.agent-ID').mask('00000');
 	$('input.date').mask('#0-00-00##');
-	// if ( $('input.date').length < )
 });
 
 //fields missing
@@ -371,13 +370,12 @@ const submitForm = () => {
 	let finalValidation = container.find('input.invalid, select.invalid').toArray();
 	if ( finalValidation.length == 0 ) {
 		removeAlert();
-		window.location.href = "./confirmed.html";
+		window.location.href = "./short-term-application-confirm.html";
 		return true;
 	} else {
 		alert();
 		console.log(finalValidation);
 	}
-	event.preventDefault();
 }
 const form = document.getElementById('form');
 form.addEventListener("submit", submitForm, true);

@@ -9,14 +9,17 @@
     <title>Short Term Application</title>
 
     <!-- styles -->
+    <!-- when building change to ../css/ha.2019.css -->
     <link rel="stylesheet" href="./styles/css/ha.2019.css">
-    <link rel="stylesheet" type="text/css" href="./styles/css/short-term-app.css">
+    <!-- when building change to ../css/short-term-app.css -->
+    <link rel="stylesheet" href="./styles/css/short-term-app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
 
 </head>
 
 <body>
     <header>
+        <!-- when building change to ../images/logo.png -->
         <div class="logo"><img src="./assets/logo.png"></div>
     </header>
 
@@ -780,17 +783,17 @@
                     <a href="#form"><button type="button" class="next" onclick="validate();">Finish</button></a>
                 </div>
             </fieldset>
-            <div class="wrapper">
-                <input type="submit" value="Submit" id="submit" 
-                onclick="submitForm();">    
-            </div>
+            <a href="#form"><input type="submit" value="Submit" id="submit" 
+                onclick="submitForm();"/></a>
         </form>
     </div>
 
     <!-- scripts -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="./js/form.js"></script>
+    <!-- when building change to        ../js/short-term-application.js -->
+    <script type="text/javascript" src="./js/short-term-application.js"></script>
+    <!-- when building change to        ../js/short-term-mask.min.js -->
     <script type="text/javascript" src="./js/mask.min.js"></script>
 </body>
 </html>
