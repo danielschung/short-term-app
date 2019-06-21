@@ -40,7 +40,7 @@ input[type="checkbox"] {
 	-webkit-appearance : checkbox;
 }
 input::placeholder { //fixes safari placeholder text
-	line-height:1rem;
+	line-height:1.1rem;
 }
 @-moz-document url-prefix() { //fixes firefox placeholder text
     input::placeholder {
@@ -54,6 +54,10 @@ select {
 	-webkit-appearance:none;  /*Removes default chrome and safari style*/
 	-moz-appearance:none; /* Removes Default Firefox style*/
 	background-image:none;
+}
+
+input[type="date"] {
+	line-height:50px;
 }
 
 // body rules
@@ -155,7 +159,8 @@ form#form {
 			}
 
 
-			button.next {
+			button.next,
+			button.previous {
 				border:1px solid $light-purple;
 				color:$light-purple;
 				outline:none;
@@ -164,7 +169,8 @@ form#form {
 				@extend .hover;
 			}
 
-			button.next:hover {
+			button.next:hover,
+			button.previous:hover {
 				background-color:$light-purple;
 				color:white;
 			}
@@ -448,7 +454,6 @@ form#form {
 		    				}
 	    				}
 
-	    				tr.selectable:hover,
 	    				tr.selected {
 	    					background-color:$purple;
 	    					color:white;
@@ -552,6 +557,12 @@ form#form {
 }
 
 // mobile rules----------------------------
+@media only screen and (max-width:1124px) {
+	input#applicant-pcp-first-name {
+
+	}
+}
+
 @media only screen and (max-width:470px) {
 	body div.wrapper.mobile {
 		padding:0;

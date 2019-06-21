@@ -65,7 +65,7 @@
                     id="applicant-birthday" name="applicant-birthday" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Birthday')"
-                    minlength="10" maxlength="10">
+                    minlength="8" maxlength="10">
 
                     <select required id="applicant-gender" value="" class="purple-format" name="applicant-gender">
                         <option value="" disabled selected class="placeholder">Gender</option>
@@ -136,7 +136,7 @@
                     minlength="1" maxlength="6">
 
                     <input type="text" placeholder="Weight" required id="applicant-weight" name="applicant-weight" class="weight" minlength="1" maxlength="4">
-
+                    <br>
                     <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="applicant-pcp-first-name"
                     minlength="1" maxlength="128">
 
@@ -206,6 +206,7 @@
                         </select>
                         <div class="clear"></div>
                     </div>
+                    
                     <a href="#form"><button type="button" class="next" onclick="validate();">Next</button></a>
                 </div>
             </fieldset>
@@ -262,14 +263,14 @@
                             <input type="text" placeholder="Last Name" required
                             id="spouse-last-name" name="spouse-last-name" minlength="2" maxlength="128"/>
 
-                            <input type="text" placeholder="SSN" required
+                            <input type="text" placeholder="000-00-0000" required
                             id="spouse-SSN" name="spouse-SSN" class="SSN" minlength="9" maxlength="9"/>
 
                             <input type="text" placeholder="Birthday" required
                             id="spouse-birthday" name="spouse-birthday" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Birthday')"
-                            maxlength="10"/>
+                            minlength="8" maxlength="10"/>
 
                             <select required id="spouse-gender" value="" class="purple-format" name="spouse-gender">
                                 <option value="" disabled selected class="placeholder">Gender</option>
@@ -375,10 +376,10 @@
 
                             <input type="text" placeholder="SSN" required id="dependent-SSN" name="dependent-SSN" class="SSN" minlength="9" maxlength="9">
 
-                            <input type="text" placeholder="Birthday" required id="dependent-birthday" name="dependent-birthday" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                            <input type="text" placeholder="Birthday" required id="dependent-birthday" name="dependent-birthday" class="date"
                                 onfocus="(this.placeholder='MM-DD-YYYY')"
                                 onblur="(this.placeholder='Birthday')"
-                            maxlength="10">
+                            minlength="8" maxlength="10">
 
                             <select required id="spouse-gender" value="" class="purple-format" name="dependent-gender">
                                 <option value="" disabled selected class="placeholder">Gender</option>
@@ -493,78 +494,6 @@
 
                     <p class="header">Choose a Deductible and Out-of-Pocket Maximum Combination</p>
 
-                    <!-- <div class="coverage-table" id="coverage-table">
-                        <table>
-                            <tbody>
-                                <tr>     
-                                    <td rowspan="3"></td>
-                                    <th colspan="4" class="table-head">Deductible</th>
-                                    <th colspan="4" class="table-head">Out-of-Pocket Maximum</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">In-Network</td>
-                                    <td colspan="2">Out-of-Network</td>
-                                    <td colspan="2">In-Network</td>
-                                    <td colspan="2">Out-of-Network</td>
-                                </tr>
-                                <tr>
-                                    <td>Single</td>
-                                    <td>Family</td>
-                                    <td>Single</td>
-                                    <td>Family</td>
-                                    <td>Single</td>
-                                    <td>Family</td>
-                                    <td>Single</td>
-                                    <td>Family</td>
-                                </tr>
-                                <tr class="selectable">
-                                    <td rowspan="1" class="inputs">A</td>
-                                    <td>$1,000</td>
-                                    <td>$2,000</td>
-                                    <td>$1,000</td>
-                                    <td>$2,000</td>
-                                    <td>$1,000</td>
-                                    <td>$2,000</td>
-                                    <td>$1,000</td>
-                                    <td>$2,000</td>
-                                </tr>
-                                <tr class="selectable">
-                                    <td rowspan="1" class="inputs">B</td>
-                                    <td>$2,000</td>
-                                    <td>$4,000</td>
-                                    <td>$2,000</td>
-                                    <td>$4,000</td>
-                                    <td>$2,000</td>
-                                    <td>$4,000</td>
-                                    <td>$2,000</td>
-                                    <td>$4,000</td>
-                                </tr>
-                                <tr class="selectable">
-                                    <td rowspan="1" class="inputs">C</td>
-                                    <td>$5,000</td>
-                                    <td>$10,000</td>
-                                    <td>$5,000</td>
-                                    <td>$10,000</td>
-                                    <td>$5,000</td>
-                                    <td>$10,000</td>
-                                    <td>$5,000</td>
-                                    <td>$10,000</td>
-                                </tr>
-                                <tr class="selectable">
-                                    <td rowspan="1" class="inputs">D</td>
-                                    <td>$7,500</td>
-                                    <td>$15,000</td>
-                                    <td>$7,500</td>
-                                    <td>$15,000</td>
-                                    <td>$7,500</td>
-                                    <td>$15,000</td>
-                                    <td>$7,500</td>
-                                    <td>$15,000</td>
-                                </tr>                             
-                            </tbody>
-                        </table>
-                    </div> -->
-
                     <div class="coverage-table" id="coverage-table">
                         <table>
                             <tbody>
@@ -611,7 +540,7 @@
                     <input type="text" placeholder="MM-DD-YYYY" required id="coverage-effective-date" name="coverage-effective-date" class="date" 
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='MM-DD-YYYY')"
-                    min-length="10" maxlength="10">
+                    min-length="8" maxlength="10">
                     <p>Coverage not effective until Health Alliance approves your application and determines the effective date. Health Alliance will determine the effective and termination date of the policy. The maximum length of this policy must be less than 181 days.</p>
 
                     <a href="#form"><button type="button" class="next" onclick="validate();">Next</button></a>
@@ -655,15 +584,15 @@
                     id="applicant-agreement-signature-date" name="applicant-agreement-signature-date" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Date of Sign')"
-                    maxlength="10"/>
+                    minlength="8" maxlength="10"/>
 
                     <div id="spouse-signature-block">
                         <!-- <div class="codeBlock">
                             <input type="text" placeholder="Signature of Spouse or Civil Union (ONLY if to be insured)" required id="spouse-agreement-signature" name="spouse-agreement-signature" minlength="1" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="spouse-agreement-signature-date" name="spouse-agreement-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                            <input type="text" placeholder="Date of Sign" required id="spouse-agreement-signature-date" name="spouse-agreement-signature-date" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
-                            maxlength="10"/>
+                            minlength="8" maxlength="10"/>
                         </div> -->
                     </div>
 
@@ -675,7 +604,7 @@
                             id="dependent-agreement-signature-date" name="dependent-agreement-signature-date" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
-                            maxlength="10"/>
+                            minlength="8" maxlength="10"/>
                         </div> -->
                     </div>
 
@@ -698,7 +627,7 @@
                     id="applicant-birthday-authorize" name="applicant-birthday-authorize" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Birthday')"
-                    minlength="10" maxlength="10"/>
+                    minlength="8" maxlength="10"/>
 
                     <input type="text" placeholder="Applicant's Full Address" required
                     id="applicant-full-address" name="applicant-full-address"
@@ -713,10 +642,10 @@
 
                     <input type="text" placeholder="Signature of Applicant or Legally Authorized Representative" required id="applicant-authorization-signature" name="applicant-authorization-signature" minlength="2" maxlength="128">
 
-                    <input type="text" placeholder="Date of Sign" required id="applicant-authorization-signature-date" name="applicant-authorization-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                    <input type="text" placeholder="Date of Sign" required id="applicant-authorization-signature-date" name="applicant-authorization-signature-date" class="date"
                         onfocus="(this.placeholder='MM-DD-YYYY')"
                         onblur="(this.placeholder='Date of Sign')"
-                    maxlength="10">
+                    minlength="8" maxlength="10">
 
                     <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" class="optional" name="applicant-relationship" minlength="2" maxlength="128">
 
@@ -726,17 +655,17 @@
                             <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="spouse-authorization-signature-date" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
-                            maxlength="10">
+                            minlength="8" maxlength="10">
                         </div> -->
                     </div>
 
                     <div id="dependent-signature-block-2">
                         <!-- <div class="codeBlock2">
                             <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="dependent-authorization-signature" minlength="2" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="dependent-authorization-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                            <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="dependent-authorization-signature-date" class="date"
                                 onfocus="(this.placeholder='MM-DD-YYYY')"
                                 onblur="(this.placeholder='Date of Sign')"
-                            maxlength="10">
+                            minlength="8" maxlength="10">
                         </div> -->
                     </div>
 
@@ -821,7 +750,7 @@
                             id="producer-signature-date" name="producer-signature-date" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
-                            maxlength="10"/>
+                            minlength="8" maxlength="10"/>
 
                             <div class="agree">
                                 <label><input type="checkbox" value="check" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
