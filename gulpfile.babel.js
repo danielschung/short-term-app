@@ -3,27 +3,30 @@ import concat from 'gulp-concat';
 import sass from 'gulp-sass';
 import uglify from 'gulp-uglify';
 import cssmin from 'gulp-cssmin';
-
-var gulp = require('gulp');
-var babel = require('gulp-babel');
+import babel from 'gulp-babel';
+import rename from 'gulp-rename';
 
 gulp.task('scripts', function () {
     return gulp
         .src([
             './js/short-term-application.js',
-            './js/short-term-mask.min.js',
+            './js/mask.min.js',
         ])
-        .pipe(babel('short-term.min.js'))
+        .pipe(babel())
+        .pipe(concat('short-term.js'))
+        .pipe(gulp.dest('./js'))
+        .pipe(rename('short-term.min.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('./js'));
 });
 
 gulp.task('styles', function () {
     return gulp
-        .src('./_scss/short-term-app.scss')
+        .src('./styles/scss/short-term-app.scss')
         .pipe(sass())
         .pipe(concat('short-term.min.css'))
         .pipe(cssmin())
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./styles/css'));
 });
 
 gulp.task('default', gulp.parallel('scripts', 'styles'));
