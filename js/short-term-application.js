@@ -43,7 +43,7 @@ const validate = () => {
 		if ( boxArray.length == 0 ) {
 			console.log('valid');
 		} else {
-			for (let i = 0; i < boxArray.length; i++) {
+			for (var i = 0; i < boxArray.length; i++) {
 				let boxNames = boxArray[i].name;
 				if ( boxArray[i].checked ) {
 					$(`#${boxNames}`).removeClass('invalid');
@@ -51,7 +51,7 @@ const validate = () => {
 			}
 		}		
 	}
-	for (let i = 0; i < inputs.length; i++) {
+	for (var i = 0; i < inputs.length; i++) {
 		let names = inputs[i].name;
 		let values = inputs[i].value;
 		if ( values == '' || values == 'check') {
@@ -66,7 +66,7 @@ const validate = () => {
 		let thisBox = container.find('input.SSN');
 		let boxArray = thisBox.toArray();
 		const runLoop = () => {
-			for (i = 0; i < boxArray.length; i++) {
+			for (var i = 0; i < boxArray.length; i++) {
 				let names = boxArray[i].name;
 				let values = boxArray[i].value;
 				if ( values.length == 11 ) {
@@ -90,7 +90,7 @@ const validate = () => {
 		let thisBox = container.find('input.date');
 		let boxArray = thisBox.toArray();
 		const runLoop = () => {
-			for (i = 0; i < boxArray.length; i++) {
+			for (var i = 0; i < boxArray.length; i++) {
 				let names = boxArray[i].name;
 				let values = boxArray[i].value;
 				if ( values.length == 8 || values.length == 10 ) {
@@ -114,7 +114,7 @@ const validate = () => {
 		let thisBox = container.find('input.phone');
 		let boxArray = thisBox.toArray();
 		const runLoop = () => {
-			for (i = 0; i < boxArray.length; i++) {
+			for (var i = 0; i < boxArray.length; i++) {
 				let names = boxArray[i].name;
 				let values = boxArray[i].value;
 				if ( values.length > 13 ) {
@@ -136,7 +136,7 @@ const validate = () => {
 	//validate emails
 	const emailArray = container.find('input[type=email]').toArray();
 	if ( emailArray.length > 0 ) {
-		for (i = 0; i < emailArray.length; i++) {
+		for (var i = 0; i < emailArray.length; i++) {
 			let valid = emailArray[i].checkValidity();
 			let name = emailArray[i].name;
 			if ( valid ) {
@@ -273,14 +273,14 @@ const numOfDependents = () => {
 		let countDiv = $('#dependent-block').children().length;
 		if ( countDiv < amount ) {
 			let difference = amount - countDiv;
-			for (i = 0; i < difference; i++) {
+			for (var i = 0; i < difference; i++) {
 				dependentBlock.insertAdjacentHTML('beforeend',codeBlock);
 				dependentSignatureBlock.insertAdjacentHTML('beforeend',codeSignatureBlock);
 				dependentSignatureBlock2.insertAdjacentHTML('beforeend',codeSignatureBlock2);
 			}
 		} else if ( countDiv > amount ) {
 			let difference = countDiv - amount;
-			for (i = 0; i < difference; i++) {
+			for (var i = 0; i < difference; i++) {
 				dependentBlock.removeChild(dependentBlock.lastChild);
 				dependentSignatureBlock.removeChild(dependentSignatureBlock.lastChild);
 				dependentSignatureBlock2.removeChild(dependentSignatureBlock2.lastChild);	

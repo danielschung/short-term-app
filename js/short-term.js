@@ -46,19 +46,19 @@ var validate = function validate() {
     if (boxArray.length == 0) {
       console.log('valid');
     } else {
-      for (var _i = 0; _i < boxArray.length; _i++) {
-        var boxNames = boxArray[_i].name;
+      for (var i = 0; i < boxArray.length; i++) {
+        var boxNames = boxArray[i].name;
 
-        if (boxArray[_i].checked) {
+        if (boxArray[i].checked) {
           $("#".concat(boxNames)).removeClass('invalid');
         }
       }
     }
   };
 
-  for (var _i2 = 0; _i2 < inputs.length; _i2++) {
-    var names = inputs[_i2].name;
-    var values = inputs[_i2].value;
+  for (var i = 0; i < inputs.length; i++) {
+    var names = inputs[i].name;
+    var values = inputs[i].value;
 
     if (values == '' || values == 'check') {
       $("#".concat(names)).addClass('invalid');
@@ -74,7 +74,7 @@ var validate = function validate() {
     var boxArray = thisBox.toArray();
 
     var runLoop = function runLoop() {
-      for (i = 0; i < boxArray.length; i++) {
+      for (var i = 0; i < boxArray.length; i++) {
         var _names = boxArray[i].name;
         var _values = boxArray[i].value;
 
@@ -102,7 +102,7 @@ var validate = function validate() {
     var boxArray = thisBox.toArray();
 
     var runLoop = function runLoop() {
-      for (i = 0; i < boxArray.length; i++) {
+      for (var i = 0; i < boxArray.length; i++) {
         var _names2 = boxArray[i].name;
         var _values2 = boxArray[i].value;
 
@@ -130,11 +130,11 @@ var validate = function validate() {
     var boxArray = thisBox.toArray();
 
     var runLoop = function runLoop() {
-      for (i = 0; i < boxArray.length; i++) {
+      for (var i = 0; i < boxArray.length; i++) {
         var _names3 = boxArray[i].name;
         var _values3 = boxArray[i].value;
 
-        if (_values3.length > 14) {
+        if (_values3.length > 13) {
           $("#".concat(_names3)).removeClass('invalid');
           return true;
         } else {
@@ -156,7 +156,7 @@ var validate = function validate() {
   var emailArray = container.find('input[type=email]').toArray();
 
   if (emailArray.length > 0) {
-    for (i = 0; i < emailArray.length; i++) {
+    for (var i = 0; i < emailArray.length; i++) {
       var valid = emailArray[i].checkValidity();
       var name = emailArray[i].name;
 
@@ -318,7 +318,7 @@ var numOfDependents = function numOfDependents() {
     if (countDiv < amount) {
       var difference = amount - countDiv;
 
-      for (i = 0; i < difference; i++) {
+      for (var i = 0; i < difference; i++) {
         dependentBlock.insertAdjacentHTML('beforeend', codeBlock);
         dependentSignatureBlock.insertAdjacentHTML('beforeend', codeSignatureBlock);
         dependentSignatureBlock2.insertAdjacentHTML('beforeend', codeSignatureBlock2);
@@ -326,7 +326,7 @@ var numOfDependents = function numOfDependents() {
     } else if (countDiv > amount) {
       var _difference = countDiv - amount;
 
-      for (i = 0; i < _difference; i++) {
+      for (var i = 0; i < _difference; i++) {
         dependentBlock.removeChild(dependentBlock.lastChild);
         dependentSignatureBlock.removeChild(dependentSignatureBlock.lastChild);
         dependentSignatureBlock2.removeChild(dependentSignatureBlock2.lastChild);
