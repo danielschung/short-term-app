@@ -62,12 +62,14 @@
                     id="applicant-SSN" name="applicant-SSN" class="SSN"
                     onfocus="(this.placeholder='000-00-0000')"
                     onblur="(this.placeholder='SSN')"
+                    onkeyup="automask();"
                     minlength="9" maxlength="9">
 
                     <input type="text" placeholder="Birthday" required
                     id="applicant-birthday" name="applicant-birthday" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Birthday')"
+                    onkeyup="automask();"
                     minlength="8" maxlength="10">
 
                     <select required id="applicant-gender" value="" class="purple-format" name="applicant-gender">
@@ -98,6 +100,7 @@
                     id="applicant-zipcode" name="applicant-zipcode" class="zip"
                     onfocus="(this.placeholder='00000')"
                     onblur="(this.placeholder='Zipcode')"
+                    onkeyup="automask();"
                     minlength="5" maxlength="5"
                     pattern="[0-9]{5}"/>
 
@@ -113,12 +116,14 @@
                     <input type="text" placeholder="Home Phone" required
                     id="applicant-home-phone" name="applicant-home-phone" class="phone"
                     onfocus="(this.placeholder='(000) 000-0000')"
-                    onblur="(this.placeholder='Main Phone')"/>
+                    onblur="(this.placeholder='Main Phone')"
+                    onkeyup="automask();"/>
 
                     <input type="tel" placeholder="Work Phone"
                     id="applicant-work-phone" name="applicant-work-phone" class="phone optional"
                     onfocus="(this.placeholder='(000) 000-0000')"
-                    onblur="(this.placeholder='Work Phone')"/>
+                    onblur="(this.placeholder='Work Phone')"
+                    onkeyup="automask();"/>
 
                     <select required id="applicant-marital-status" value="" name="applicant-marital-status" class="purple-format" onchange="priorName();">
                         <option value="" disabled selected class="placeholder">Marital Status</option>
@@ -131,14 +136,16 @@
 
                     <p class="header">Health Information</p>
                     <input type="text" placeholder="Age" required id="applicant-age"name="applicant-age" class="age"
+                    onkeyup="automask();"
                     minlength="1" maxlength="3">
 
                     <input type="text" placeholder="Height" required id="applicant-height" name="applicant-height" class="height" 
                     onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                     onblur="(this.placeholder='Height')" 
+                    onkeyup="automask();"
                     minlength="1" maxlength="6">
 
-                    <input type="text" placeholder="Weight" required id="applicant-weight" name="applicant-weight" class="weight" minlength="1" maxlength="4">
+                    <input type="text" placeholder="Weight" required id="applicant-weight" name="applicant-weight" class="weight" onkeyup="automask();" minlength="1" maxlength="4">
                     <br>
                     <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="applicant-pcp-first-name"
                     minlength="1" maxlength="128">
@@ -264,15 +271,20 @@
                             id="spouse-MI" name="spouse-MI" maxlength="1"/>
 
                             <input type="text" placeholder="Last Name" required
-                            id="spouse-last-name" name="spouse-last-name" minlength="2" maxlength="128"/>
+                            id="spouse-last-name" name="spouse-last-name"minlength="2" maxlength="128"/>
 
-                            <input type="text" placeholder="000-00-0000" required
-                            id="spouse-SSN" name="spouse-SSN" class="SSN" minlength="9" maxlength="9"/>
+                            <input type="text" placeholder="SSN" required
+                            id="spouse-SSN" name="spouse-SSN" class="SSN"
+                            onfocus="(this.placeholder='000-00-0000')"
+                            onblur="(this.placeholder='SSN')"
+                            onkeyup="automask();"
+                            minlength="9" maxlength="9"/>
 
                             <input type="text" placeholder="Birthday" required
                             id="spouse-birthday" name="spouse-birthday" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Birthday')"
+                            onkeyup="automask();"
                             minlength="8" maxlength="10"/>
 
                             <select required id="spouse-gender" value="" class="purple-format" name="spouse-gender">
@@ -284,16 +296,20 @@
                             <p class="header">Health Information</p>
                             <input type="text" placeholder="Age" required
                             id="spouse-age" name="spouse-age" class="age"
+                            onkeyup="automask();"
                             minlength="1" maxlength="3"/>
 
                             <input type="text" placeholder="Height" required
                             id="spouse-height" name="spouse-height" class="height" 
                             onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                             onblur="(this.placeholder='Height')" 
+                            onkeyup="automask();"
                             minlength="2" maxlength="6"/>
 
                             <input type="text" placeholder="Weight" required
-                            id="spouse-weight" name="spouse-weight" class="weight" minlength="2" maxlength="4"/>
+                            id="spouse-weight" name="spouse-weight" class="weight"
+                            onkeyup="automask();"
+                            minlength="2" maxlength="4"/>
 
                             <input type="text" placeholder="Primary Care Physician (First Name)" required
                             id="spouse-pcp-first-name" name="spouse-pcp-first-name" minlength="2" maxlength="128"/>
@@ -377,11 +393,12 @@
 
                             <input type="text" placeholder="Last Name" required id="dependent-last-name" name="dependent-last-name" minlength="2" maxlength="128">
 
-                            <input type="text" placeholder="SSN" required id="dependent-SSN" name="dependent-SSN" class="SSN" minlength="9" maxlength="9">
+                            <input type="text" placeholder="SSN" required id="dependent-SSN" name="dependent-SSN" class="SSN" onkeyup="automask();" minlength="9" maxlength="9">
 
                             <input type="text" placeholder="Birthday" required id="dependent-birthday" name="dependent-birthday" class="date"
                                 onfocus="(this.placeholder='MM-DD-YYYY')"
                                 onblur="(this.placeholder='Birthday')"
+                                onkeyup="automask();"
                             minlength="8" maxlength="10">
 
                             <select required id="spouse-gender" value="" class="purple-format" name="dependent-gender">
@@ -391,14 +408,15 @@
                             </select>
 
                             <p class="header">Health Information</p>
-                            <input type="text" placeholder="Age" required id="dependent-age" name="dependent-age" class="age" minlength="1" maxlength="3">
+                            <input type="text" placeholder="Age" required id="dependent-age" name="dependent-age" class="age" onkeyup="automask();" minlength="1" maxlength="3">
 
                             <input type="text" placeholder="Height" required id="dependent-height" name="dependent-height" class="height" 
                                 onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                                 onblur="(this.placeholder='Height')" 
+                                onkeyup="automask();"
                             minlength="2" maxlength="6">
 
-                            <input type="text" placeholder="Weight" required id="dependent-weight" name="dependent-weight" class="weight" minlength="2" maxlength="4">
+                            <input type="text" placeholder="Weight" required id="dependent-weight" name="dependent-weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4">
 
                             <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name" name="dependent-pcp-first-name" minlength="2" maxlength="128">
 
@@ -490,7 +508,7 @@
                     </select>
 
                     <select required id="coverage-plan-type" name="coverage-plan-type" class="purple-format">
-                        <option value="" disabled selected class="placeholder">Pick a benefit period length:</option>
+                        <option value="" disabled selected class="placeholder">Pick a plan type:</option>
                         <option value="PPO">PPO</option>
                         <option value="POS">POS</option>
                     </select>
@@ -731,6 +749,7 @@
                             id="agent-ID" class="agent-ID" name="agent-ID"
                             onfocus="(this.placeholder='000000')"
                             onblur="(this.placeholder='ID# / Code')"
+                            onkeyup="automask();"
                             minlength="1" maxlength="6"/>
 
                             <input type="text" placeholder="Agency" required
@@ -738,7 +757,8 @@
                             minlength="1" maxlength="256"/>
                             <br>
                             <input type="text" placeholder="Home Phone" required
-                            id="agent-phone" name="agent-phone" class="phone">
+                            id="agent-phone" name="agent-phone" class="phone"
+                            onkeyup="automask();">
 
                             <input type="email" placeholder="Email" required
                             id="agent-email" name="agent-email"
@@ -753,6 +773,7 @@
                             id="producer-signature-date" name="producer-signature-date" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
+                            onkeyup="automask();"
                             minlength="8" maxlength="10"/>
 
                             <div class="agree">
