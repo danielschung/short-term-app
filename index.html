@@ -47,32 +47,32 @@
                     <p class="header">Personal Information</p>
 
                     <input type="text" placeholder="First Name" required
-                    id="applicant-first-name" name="applicant-first-name"
+                    id="applicant-first-name" name="Request.Applicant.FirstName"
                     minlength="1" maxlength="128"/>
 
                     <input type="text" placeholder="MI"
-                    id="applicant-MI" name="applicant-MI" class="optional"
+                    id="applicant-MI" name="Request.Applicant.MiddleName" class="optional"
                     minlength="1" maxlength="1"/>
 
                     <input type="text" placeholder="Last Name" required
-                    id="applicant-last-name" name="applicant-last-name"
+                    id="applicant-last-name" name="Request.Applicant.LastName"
                     minlength="1" maxlength="128"/>
 
                     <input type="text" placeholder="SSN" required
-                    id="applicant-SSN" name="applicant-SSN" class="SSN"
+                    id="applicant-SSN" name="Request.Applicant.Ssn" class="SSN"
                     onfocus="(this.placeholder='000-00-0000')"
                     onblur="(this.placeholder='SSN')"
                     onkeyup="automask();"
                     minlength="9" maxlength="9">
 
                     <input type="text" placeholder="Birthday" required
-                    id="applicant-birthday" name="applicant-birthday" class="date"
+                    id="applicant-birthday" name="Request.Applicant.Birthdate" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Birthday')"
                     onkeyup="automask();"
                     minlength="8" maxlength="10">
 
-                    <select required id="applicant-gender" value="" class="purple-format" name="applicant-gender">
+                    <select required id="applicant-gender" value="" class="purple-format" name="Request.Applicant.Sex">
                         <option value="" disabled selected class="placeholder">Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -81,14 +81,14 @@
                     <p class="header">Contact Information</p>
 
                     <input type="text" placeholder="Street Address" required
-                    id="applicant-address" name="applicant-address"
+                    id="applicant-address" name="Request.Applicant.Address1"
                     minlength="1" maxlength="256"/>
 
                     <input type="text" placeholder="City" required
-                    id="applicant-city" name="applicant-city"
+                    id="applicant-city" name="Request.Applicant.City"
                     minlength="1" maxlength="128"/>
 
-                    <select required id="applicant-state" value="" class="purple-format" name="applicant-state">
+                    <select required id="applicant-state" value="" class="purple-format" name="Request.Applicant.State">
                         <option value="" disabled selected class="placeholder">State</option>
                         <option value="IL">Illinois</option>
                         <option value="IN">Indiana</option>
@@ -97,7 +97,7 @@
                     </select>
 
                     <input type="text" placeholder="Zipcode" required
-                    id="applicant-zipcode" name="applicant-zipcode" class="zip"
+                    id="applicant-zipcode" name="Request.Applicant.Zip" class="zip"
                     onfocus="(this.placeholder='00000')"
                     onblur="(this.placeholder='Zipcode')"
                     onkeyup="automask();"
@@ -105,57 +105,57 @@
                     pattern="[0-9]{5}"/>
 
                     <input type="text" placeholder="County" required
-                    id="applicant-county" name="applicant-county"
+                    id="applicant-county" name="Request.Applicant.County"
                     minlength="1" maxlength="128"/>
 
                     <input type="email" placeholder="Email" required
-                    id="applicant-email" name="applicant-email"
+                    id="applicant-email" name="Request.Applicant.Email"
                     minlength="1" maxlength="256"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
 
                     <input type="text" placeholder="Home Phone" required
-                    id="applicant-home-phone" name="applicant-home-phone" class="phone"
+                    id="applicant-home-phone" name="Request.Applicant.HomePhone" class="phone"
                     onfocus="(this.placeholder='(000) 000-0000')"
                     onblur="(this.placeholder='Main Phone')"
                     onkeyup="automask();"/>
 
                     <input type="tel" placeholder="Work Phone"
-                    id="applicant-work-phone" name="applicant-work-phone" class="phone optional"
+                    id="applicant-work-phone" name="Request.Applicant.WorkPhone" class="phone optional"
                     onfocus="(this.placeholder='(000) 000-0000')"
                     onblur="(this.placeholder='Work Phone')"
                     onkeyup="automask();"/>
 
-                    <select required id="applicant-marital-status" value="" name="applicant-marital-status" class="purple-format" onchange="priorName();">
+                    <select required id="applicant-marital-status" value="" name="Request.Applicant.Marital" class="purple-format" onchange="priorName();">
                         <option value="" disabled selected class="placeholder">Marital Status</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                         <option value="divorced">Divorced</option>
                     </select>
 
-                    <input placeholder="Prior Last Name" id="applicant-prior-last-name" name="applicant-prior-last-name"minlength="1" maxlength="32" type="text" class="hide optional">
+                    <input placeholder="Prior Last Name" id="applicant-prior-last-name" name="Request.Applicant.PriorLastName"minlength="1" maxlength="32" type="text" class="hide optional">
 
                     <p class="header">Health Information</p>
-                    <input type="text" placeholder="Age" required id="applicant-age"name="applicant-age" class="age"
+                    <input type="text" placeholder="Age" required id="applicant-age"name="Request.Applicant.Age" class="age"
                     onkeyup="automask();"
                     minlength="1" maxlength="3">
 
-                    <input type="text" placeholder="Height" required id="applicant-height" name="applicant-height" class="height" 
+                    <input type="text" placeholder="Height" required id="applicant-height" name="Request.Applicant.Height" class="height"
                     onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                     onblur="(this.placeholder='Height')" 
                     onkeyup="automask();"
                     minlength="1" maxlength="6">
 
-                    <input type="text" placeholder="Weight" required id="applicant-weight" name="applicant-weight" class="weight" onkeyup="automask();" minlength="1" maxlength="4">
+                    <input type="text" placeholder="Weight" required id="applicant-weight" name="Request.Applicant.Weight" class="weight" onkeyup="automask();" minlength="1" maxlength="4">
                     <br>
-                    <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="applicant-pcp-first-name"
+                    <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="Request.Applicant.PcpFirstName"
                     minlength="1" maxlength="128">
 
-                    <input type="text" placeholder="Primary Care Physician (Last Name)" required id="applicant-pcp-last-name" name="applicant-pcp-last-name"
+                    <input type="text" placeholder="Primary Care Physician (Last Name)" required id="applicant-pcp-last-name" name="Request.Applicant.PcpLastName"
                     minlength="1" maxlength="128">
 
                     <div class="question">
                         <p>Are you an established patient?</p>
-                        <select required id="applicant-question-1" value="" class="purple-format question" name="applicant-question-1">
+                        <select required id="applicant-question-1" value="" class="purple-format question" name="Request.Applicant.IsEstablishedPatient">
                             <option value="" disabled selected class="placeholder">Choose</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -164,7 +164,7 @@
                     </div>
                     <div class="question">
                         <p>Have you been declined for insurance due to health reasons within the past 18 months?</p>
-                        <select required id="applicant-question-2" value="" class="purple-format question" name="applicant-question-2">
+                        <select required id="applicant-question-2" value="" class="purple-format question" name="Request.Applicant.HasBeenDeclined">
                             <option value="" disabled selected class="placeholder">Choose</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -173,7 +173,7 @@
                     </div>
                     <div class="question">
                         <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p>
-                        <select required id="applicant-question-3" value="" class="purple-format question" name="applicant-question-3">
+                        <select required id="applicant-question-3" value="" class="purple-format question" name="Request.Applicant.HasInsuranceOverlap">
                             <option value="" disabled selected class="placeholder">Choose</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="question">
                         <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p>
-                        <select required id="applicant-question-4" value="" class="purple-format question" name="applicant-question-4">
+                        <select required id="applicant-question-4" value="" class="purple-format question" name="Request.Applicant.IsExpectantParent">
                             <option value="" disabled selected class="placeholder">Choose</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -191,7 +191,7 @@
                     </div>
                     <div class="question">
                         <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p>
-                        <select required id="applicant-question-5" value="" class="purple-format question" name="applicant-question-5">
+                        <select required id="applicant-question-5" value="" class="purple-format question" name="Request.Applicant.IsOverweight">
                             <option value="" disabled selected class="placeholder">Choose</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -200,7 +200,7 @@
                     </div>
                     <div class="question">
                         <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p>
-                        <select required id="applicant-question-6" value="" class="purple-format question" name="applicant-question-6">
+                        <select required id="applicant-question-6" value="" class="purple-format question" name="Request.Applicant.HasSeriousHealthCondition">
                             <option value="" disabled selected class="placeholder">Choose</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -209,7 +209,7 @@
                     </div>
                     <div class="question">
                         <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p>
-                        <select required id="applicant-question-7" value="" class="purple-format question" name="applicant-question-7">
+                        <select required id="applicant-question-7" value="" class="purple-format question" name="Request.Applicant.HasImmuneDisorder">
                             <option value="" disabled selected class="placeholder">Choose</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -265,29 +265,29 @@
                             <p class="header">Spouse Personal Information</p>
 
                             <input type="text" placeholder="First Name" required
-                            id="spouse-first-name" name="spouse-first-name" minlength="2" maxlength="128"/>
+                            id="spouse-first-name" name="Request.Spouse.FirstName" minlength="2" maxlength="128"/>
 
                             <input type="text" placeholder="MI" class="optional"
-                            id="spouse-MI" name="spouse-MI" maxlength="1"/>
+                            id="spouse-MI" name="Request.Spouse.MiddleName" maxlength="1"/>
 
                             <input type="text" placeholder="Last Name" required
-                            id="spouse-last-name" name="spouse-last-name"minlength="2" maxlength="128"/>
+                            id="spouse-last-name" name="Request.Spouse.LastName"minlength="2" maxlength="128"/>
 
                             <input type="text" placeholder="SSN" required
-                            id="spouse-SSN" name="spouse-SSN" class="SSN"
+                            id="spouse-SSN" name="Request.Spouse.Ssn" class="SSN"
                             onfocus="(this.placeholder='000-00-0000')"
                             onblur="(this.placeholder='SSN')"
                             onkeyup="automask();"
                             minlength="9" maxlength="9"/>
 
                             <input type="text" placeholder="Birthday" required
-                            id="spouse-birthday" name="spouse-birthday" class="date"
+                            id="spouse-birthday" name="Request.Spouse.Birthdate" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Birthday')"
                             onkeyup="automask();"
                             minlength="8" maxlength="10"/>
 
-                            <select required id="spouse-gender" value="" class="purple-format" name="spouse-gender">
+                            <select required id="spouse-gender" value="" class="purple-format" name="Request.Spouse.Sex">
                                 <option value="" disabled selected class="placeholder">Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -295,31 +295,31 @@
 
                             <p class="header">Health Information</p>
                             <input type="text" placeholder="Age" required
-                            id="spouse-age" name="spouse-age" class="age"
+                            id="spouse-age" name="Request.Spouse.Age" class="age"
                             onkeyup="automask();"
                             minlength="1" maxlength="3"/>
 
                             <input type="text" placeholder="Height" required
-                            id="spouse-height" name="spouse-height" class="height" 
+                            id="spouse-height" name="Request.Spouse.Height" class="height" 
                             onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                             onblur="(this.placeholder='Height')" 
                             onkeyup="automask();"
                             minlength="2" maxlength="6"/>
 
                             <input type="text" placeholder="Weight" required
-                            id="spouse-weight" name="spouse-weight" class="weight"
+                            id="spouse-weight" name="Request.Spouse.Weight" class="weight"
                             onkeyup="automask();"
                             minlength="2" maxlength="4"/>
 
                             <input type="text" placeholder="Primary Care Physician (First Name)" required
-                            id="spouse-pcp-first-name" name="spouse-pcp-first-name" minlength="2" maxlength="128"/>
+                            id="spouse-pcp-first-name" name="Request.Spouse.PcpFirstName" minlength="2" maxlength="128"/>
 
                             <input type="text" placeholder="Primary Care Physician (Last Name)" required
-                            id="spouse-pcp-last-name" name="spouse-pcp-last-name" minlength="2" maxlength="128"/>
+                            id="spouse-pcp-last-name" name="Request.Spouse.PcpLastName" minlength="2" maxlength="128"/>
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
-                                <select required id="spouse-question-1" value="" class="purple-format question" name="spouse-question-1">
+                                <select required id="spouse-question-1" value="" class="purple-format question" name="Request.Spouse.IsEstablishedPatient">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -328,7 +328,7 @@
                             </div>
                             <div class="question">
                                 <p>Have you been declined for insurance due to health reasons within the past 18 months?</p>
-                                <select required id="spouse-question-2" value="" class="purple-format question" name="spouse-question-2">
+                                <select required id="spouse-question-2" value="" class="purple-format question" name="Request.Spouse.HasBeenDeclined">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -337,7 +337,7 @@
                             </div>
                             <div class="question">
                                 <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p>
-                                <select required id="spouse-question-3" value="" class="purple-format question" name="spouse-question-3">
+                                <select required id="spouse-question-3" value="" class="purple-format question" name="Request.Spouse.HasInsuranceOverlap">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -346,7 +346,7 @@
                             </div>
                             <div class="question">
                                 <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p>
-                                <select required id="spouse-question-4" value="" class="purple-format question" name="spouse-question-4">
+                                <select required id="spouse-question-4" value="" class="purple-format question" name="Request.Spouse.IsExpectantParent">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -355,7 +355,7 @@
                             </div>
                             <div class="question">
                                 <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p>
-                                <select required id="spouse-question-5" value="" class="purple-format question" name="spouse-question-5">
+                                <select required id="spouse-question-5" value="" class="purple-format question" name="Request.Spouse.IsOverweight">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -364,7 +364,7 @@
                             </div>
                             <div class="question">
                                 <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p>
-                                <select required id="spouse-question-6" value="" class="purple-format question" name="spouse-question-6">
+                                <select required id="spouse-question-6" value="" class="purple-format question" name="Request.Spouse.HasSeriousHealthCondition">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -373,7 +373,7 @@
                             </div>
                             <div class="question">
                                 <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p>
-                                <select required id="spouse-question-7" value="" class="purple-format question" name="spouse-question-7">
+                                <select required id="spouse-question-7" value="" class="purple-format question" name="Request.Spouse.HasImmuneDisorder">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -387,44 +387,44 @@
                         <!-- <div class="codeBlock">
                             <p class="header">Dependent Personal Information</p>
 
-                            <input type="text" placeholder="First Name" required id="dependent-first-name" name="dependent-first-name" minlength="2" maxlength="128">
+                            <input type="text" placeholder="First Name" required id="dependent-first-name" name="Request.Dependents.FirstName" minlength="2" maxlength="128">
 
-                            <input type="text" placeholder="MI" class="optional" id="dependent-MI" name="dependent-MI" maxlength="1">
+                            <input type="text" placeholder="MI" class="optional" id="dependent-MI" name="Request.Dependents.MiddleName" maxlength="1">
 
-                            <input type="text" placeholder="Last Name" required id="dependent-last-name" name="dependent-last-name" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Last Name" required id="dependent-last-name" name="Request.Dependents.LastName" minlength="2" maxlength="128">
 
-                            <input type="text" placeholder="SSN" required id="dependent-SSN" name="dependent-SSN" class="SSN" onkeyup="automask();" minlength="9" maxlength="9">
+                            <input type="text" placeholder="SSN" required id="dependent-SSN" name="Request.Dependents.Ssn" class="SSN" onkeyup="automask();" minlength="9" maxlength="9">
 
-                            <input type="text" placeholder="Birthday" required id="dependent-birthday" name="dependent-birthday" class="date"
+                            <input type="text" placeholder="Birthday" required id="dependent-birthday" name="Request.Dependents.Birthdate" class="date"
                                 onfocus="(this.placeholder='MM-DD-YYYY')"
                                 onblur="(this.placeholder='Birthday')"
                                 onkeyup="automask();"
                             minlength="8" maxlength="10">
 
-                            <select required id="spouse-gender" value="" class="purple-format" name="dependent-gender">
+                            <select required id="dependent-gender" value="" class="purple-format" name="Request.Dependents.Sex">
                                 <option value="" disabled selected class="placeholder">Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
 
                             <p class="header">Health Information</p>
-                            <input type="text" placeholder="Age" required id="dependent-age" name="dependent-age" class="age" onkeyup="automask();" minlength="1" maxlength="3">
+                            <input type="text" placeholder="Age" required id="dependent-age" name="Request.Dependents.Age" class="age" onkeyup="automask();" minlength="1" maxlength="3">
 
-                            <input type="text" placeholder="Height" required id="dependent-height" name="dependent-height" class="height" 
+                            <input type="text" placeholder="Height" required id="dependent-height" name="Request.Dependents.Height" class="height" 
                                 onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                                 onblur="(this.placeholder='Height')" 
                                 onkeyup="automask();"
                             minlength="2" maxlength="6">
 
-                            <input type="text" placeholder="Weight" required id="dependent-weight" name="dependent-weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4">
+                            <input type="text" placeholder="Weight" required id="dependent-weight" name="Request.Dependents.Weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4">
 
-                            <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name" name="dependent-pcp-first-name" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name" name="Request.Dependents.PcpFirstName" minlength="2" maxlength="128">
 
-                            <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent-pcp-last-name" name="dependent-pcp-last-name" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent-pcp-last-name" name="Request.Dependents.PcpLastName" minlength="2" maxlength="128">
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
-                                <select required id="dependent-question-1" value="" class="purple-format question" name="dependent-question-1">
+                                <select required id="dependent-question-1" value="" class="purple-format question" name="Request.Dependents.IsEstablishedPatient">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -433,7 +433,7 @@
                             </div>
                             <div class="question">
                                 <p>Have you been declined for insurance due to health reasons within the past 18 months?</p>
-                                <select required id="dependent-question-2" value="" class="purple-format question" name="dependent-question-2">
+                                <select required id="dependent-question-2" value="" class="purple-format question" name="Request.Dependents.HasBeenDeclined">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -442,7 +442,7 @@
                             </div>
                             <div class="question">
                                 <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p>
-                                <select required id="dependent-question-3" value="" class="purple-format question" name="dependent-question-3">
+                                <select required id="dependent-question-3" value="" class="purple-format question" name="Request.Dependents.HasInsuranceOverlap">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -451,7 +451,7 @@
                             </div>
                             <div class="question">
                                 <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p>
-                                <select required id="dependent-question-4" value="" class="purple-format question" name="dependent-question-4">
+                                <select required id="dependent-question-4" value="" class="purple-format question" name="Request.Dependents.IsExpectantParent">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -460,7 +460,7 @@
                             </div>
                             <div class="question">
                                 <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p>
-                                <select required id="dependent-question-5" value="" class="purple-format question" name="dependent-question-5">
+                                <select required id="dependent-question-5" value="" class="purple-format question" name="Request.Dependents.IsOverweight">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -469,7 +469,7 @@
                             </div>
                             <div class="question">
                                 <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p>
-                                <select required id="dependent-question-6" value="" class="purple-format question" name="dependent-question-6">
+                                <select required id="dependent-question-6" value="" class="purple-format question" name="Request.Dependents.HasSeriousHealthCondition">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -478,7 +478,7 @@
                             </div>
                             <div class="question">
                                 <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p>
-                                <select required id="dependent-question-7" value="" class="purple-format question" name="dependent-question-7">
+                                <select required id="dependent-question-7" value="" class="purple-format question" name="Request.Dependents.HasImmuneDisorder">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -497,7 +497,7 @@
                 <div class="expanded">
                     <p class="header">Coverage Applied For</p>
 
-                    <select required id="benefit-period-length" name="benefit-period-length" value="" class="purple-format">
+                    <select required id="benefit-period-length" name="Request.Coverage.BenefitPeriodLength" value="" class="purple-format">
                         <option value="" disabled selected class="placeholder">Pick a benefit period length:</option>
                         <option value="1-month">1 month</option>
                         <option value="2-months">2 months</option>
@@ -507,7 +507,7 @@
                         <option value="6-months">6 months</option>
                     </select>
 
-                    <select required id="coverage-plan-type" name="coverage-plan-type" class="purple-format">
+                    <select required id="coverage-plan-type" name="Request.Coverage.PlanType" class="purple-format">
                         <option value="" disabled selected class="placeholder">Pick a plan type:</option>
                         <option value="PPO">PPO</option>
                         <option value="POS">POS</option>
@@ -548,7 +548,7 @@
                     </div>
                     <p class="note">Note: Cost of In-Network and Out-of-Network are the same.</p>
 
-                    <select required id="coverage-table-select" name="coverage-table-select" value="" class="purple-format" onchange="tableSelect();">
+                    <select required id="coverage-table-select" name="Request.Coverage.InNetworkDeductible" value="" class="purple-format" onchange="tableSelect();">
                         <option value="" disabled selected class="placeholder">Choose a Combination</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
@@ -558,9 +558,10 @@
 
                     <p class="header">Requested Effective Date</p>
 
-                    <input type="text" placeholder="MM-DD-YYYY" required id="coverage-effective-date" name="coverage-effective-date" class="date" 
+                    <input type="text" placeholder="MM-DD-YYYY" required id="coverage-effective-date" name="Request.Coverage.EffectiveDate" class="date" 
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='MM-DD-YYYY')"
+                    onkeyup="automask();"
                     min-length="8" maxlength="10">
                     <p>Coverage not effective until Health Alliance approves your application and determines the effective date. Health Alliance will determine the effective and termination date of the policy. The maximum length of this policy must be less than 181 days.</p>
 
@@ -598,19 +599,21 @@
                     </div>
 
                     <input type="text" placeholder="Signature of Primary Applicant or Legally Authorized Representative" required
-                    id="applicant-agreement-signature" name="applicant-agreement-signature"
+                    id="applicant-agreement-signature" name="Request.Applicant.AgreementSignature"
                     minlength="2" maxlength="128"/>
 
                     <input type="text" placeholder="Date of Sign" required
-                    id="applicant-agreement-signature-date" name="applicant-agreement-signature-date" class="date"
+                    id="applicant-agreement-signature-date" name="Request.Applicant.AgreementSignatureDate" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Date of Sign')"
+                    onkeyup="automask();"
                     minlength="8" maxlength="10"/>
 
                     <div id="spouse-signature-block">
                         <!-- <div class="codeBlock">
-                            <input type="text" placeholder="Signature of Spouse or Civil Union (ONLY if to be insured)" required id="spouse-agreement-signature" name="spouse-agreement-signature" minlength="1" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="spouse-agreement-signature-date" name="spouse-agreement-signature-date" class="date"
+                            <input type="text" placeholder="Signature of Spouse or Civil Union (ONLY if to be insured)" required id="spouse-agreement-signature" name="Request.Spouse.AgreementSignature" minlength="1" maxlength="128">
+
+                            <input type="text" placeholder="Date of Sign" required id="spouse-agreement-signature-date" name="Request.Spouse.AgreementSignatureDate" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
                             minlength="8" maxlength="10"/>
@@ -620,9 +623,9 @@
                     <div id="dependent-signature-block">
                         <!-- <div class="codeBlock">
                             <input type="text" placeholder="Signature of Dependent (ONLY if to be insured and 18 years or older)" required
-                            id="dependent-agreement-signature" name="dependent-agreement-signature" minlenght="2" maxlength="128"/>
+                            id="dependent-agreement-signature" name="Request.Dependents.AgreementSignature" minlenght="2" maxlength="128"/>
                             <input type="text" placeholder="Date of Sign" required
-                            id="dependent-agreement-signature-date" name="dependent-agreement-signature-date" class="date"
+                            id="dependent-agreement-signature-date" name="Request.Dependents.AgreementSignatureDate" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
                             minlength="8" maxlength="10"/>
@@ -648,6 +651,7 @@
                     id="applicant-birthday-authorize" name="applicant-birthday-authorize" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Birthday')"
+                    onkeyup="automask();"
                     minlength="8" maxlength="10"/>
 
                     <input type="text" placeholder="Applicant's Full Address" required
@@ -661,18 +665,19 @@
                     <p class="bullet">• I further understand that eligibility of enrollment in this plan will be conditioned on receiving authorization to obtain protected health information, including medical records, with the exception of psychotherapy notes.</p>
                     <p class="authorize">A copy of this authorization and release shall be valid as the original and will remain in effect for two and one-half (2 ½) years from the latest signature date below or until revoked by me in writing.</p>
 
-                    <input type="text" placeholder="Signature of Applicant or Legally Authorized Representative" required id="applicant-authorization-signature" name="applicant-authorization-signature" minlength="2" maxlength="128">
+                    <input type="text" placeholder="Signature of Applicant or Legally Authorized Representative" required id="applicant-authorization-signature" name="Request.Applicant.AuthorizationSignature" minlength="2" maxlength="128">
 
-                    <input type="text" placeholder="Date of Sign" required id="applicant-authorization-signature-date" name="applicant-authorization-signature-date" class="date"
+                    <input type="text" placeholder="Date of Sign" required id="applicant-authorization-signature-date" name="Request.Applicant.AuthorizationSignatureDate" class="date"
                         onfocus="(this.placeholder='MM-DD-YYYY')"
                         onblur="(this.placeholder='Date of Sign')"
+                        onkeyup="automask();"
                     minlength="8" maxlength="10">
 
                     <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" class="optional" name="applicant-relationship" minlength="2" maxlength="128">
 
                     <div id="spouse-signature-block-2">
                         <!-- <div class="codeBlock2">
-                            <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="spouse-authorization-signature" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="Request.Spouse.AuthorizationSignature" minlength="2" maxlength="128">
                             <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="spouse-authorization-signature-date" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
@@ -682,8 +687,8 @@
 
                     <div id="dependent-signature-block-2">
                         <!-- <div class="codeBlock2">
-                            <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="dependent-authorization-signature" minlength="2" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="dependent-authorization-signature-date" class="date"
+                            <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="Request.Dependents.AuthorizationSignature" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="Request.Dependents.AuthorizationSignatureDate" class="date"
                                 onfocus="(this.placeholder='MM-DD-YYYY')"
                                 onblur="(this.placeholder='Date of Sign')"
                             minlength="8" maxlength="10">
@@ -698,9 +703,9 @@
                         <p>Are you a Legally Authorized Representative?</p>
                         <div class="right">
                             <label>Y</label>
-                            <input type="radio" required name="legal-representative" value="yes" onclick="addPDF();">
+                            <input type="radio" required name="Request.Applicant.IsLegallyAuthorized" value="yes" onclick="addPDF();">
                             <label>N</label>
-                            <input type="radio" required name="legal-representative" value="no" onclick="removePDF();">
+                            <input type="radio" required name="Request.Applicant.IsLegallyAuthorized" value="no" onclick="removePDF();">
                         </div>
                     </div>
                     
@@ -735,7 +740,7 @@
                     </div>
 
                     <div id="agent-block">
-                        <!-- <div class="codeBlock">
+                        <div class="codeBlock">
                             <p class="header">I certify that:</p>
                             <p class="bullet">• All answers provided in this application were completed by or provided by the applicant.</p>
                             <p class="bullet">• I have reviewed this enrollment form to ensure that all required items have been completed.</p>
@@ -743,34 +748,34 @@
 
                             <p class="header">Agent / Broker Information</p>
 
-                            <input type="text" placeholder="Full Name" required id="agent-name" name="agent-name" minlength="1" maxlength="128"/>
+                            <input type="text" placeholder="Full Name" required id="agent-name" name="Request.Agent.Name" minlength="1" maxlength="128"/>
 
                             <input type="text" placeholder="ID# / Code" required 
-                            id="agent-ID" class="agent-ID" name="agent-ID"
+                            id="agent-ID" class="agent-ID" name="Request.Agent.Code"
                             onfocus="(this.placeholder='000000')"
                             onblur="(this.placeholder='ID# / Code')"
                             onkeyup="automask();"
                             minlength="1" maxlength="6"/>
 
                             <input type="text" placeholder="Agency" required
-                            id="agent-agency" name="agent-agency"
+                            id="agent-agency" name="Request.Agent.Agency"
                             minlength="1" maxlength="256"/>
                             <br>
                             <input type="text" placeholder="Home Phone" required
-                            id="agent-phone" name="agent-phone" class="phone"
+                            id="agent-phone" name="Request.Agent.Phone" class="phone"
                             onkeyup="automask();">
 
                             <input type="email" placeholder="Email" required
-                            id="agent-email" name="agent-email"
+                            id="agent-email" name="Request.Agent.Email"
                             minlength="1" maxlength="256"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
                             <input type="text" placeholder="Producer Signature" required
-                            id="producer-signature" name="producer-signature"
+                            id="producer-signature" name="Request.Agent.Signature"
                             minlength="2" maxlength="128"/>
 
                             <input type="text" placeholder="Date of Sign" required
-                            id="producer-signature-date" name="producer-signature-date" class="date"
+                            id="producer-signature-date" name="Request.Agent.SignatureDate" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
                             onkeyup="automask();"
@@ -779,7 +784,7 @@
                             <div class="agree">
                                 <label><input type="checkbox" value="check" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
 
                     <a href="#form"><button type="button" class="next" onclick="validate();">Next</button></a>

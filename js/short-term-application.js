@@ -22,7 +22,6 @@ const automask = () => {
 	$('input.num').mask('00');
 	$('input.agent-ID').mask('00000');
 	$('input.date').mask('#0-00-00##');
-
 }
 
 //fields missing
@@ -48,21 +47,30 @@ const validate = () => {
 			console.log('valid');
 		} else {
 			for (let i = 0; i < boxArray.length; i++) {
-				let boxNames = boxArray[i].name;
+				let boxIds = boxArray[i].id;
 				if ( boxArray[i].checked ) {
-					$(`#${boxNames}`).removeClass('invalid');
+					$(`#${boxIds}`).removeClass('invalid');
 				}
 			}
 		}		
 	}
 	for (let i = 0; i < inputs.length; i++) {
+		let ids = inputs[i].id;
 		let names = inputs[i].name;
 		let values = inputs[i].value;
-		if ( values == '' || values == 'check') {
-			$(`#${names}`).addClass('invalid');
-			validateCheckBoxes();
+		if ( inputs[i].type == 'radio' ) {
+			if ( values == '' ) {
+				$(`#${names}`).addClass('invalid');
+			} else {
+				$(`#${names}`).removeClass('invalid');
+			}
 		} else {
-			$(`#${names}`).removeClass('invalid');
+			if ( values == '' || values == 'check' ) {
+				$(`#${ids}`).addClass('invalid');
+				validateCheckBoxes();
+			} else {
+				$(`#${ids}`).removeClass('invalid');
+			}
 		}
 	}
 	//validate ssn
@@ -71,13 +79,13 @@ const validate = () => {
 		let boxArray = thisBox.toArray();
 		const runLoop = () => {
 			for (let i = 0; i < boxArray.length; i++) {
-				let names = boxArray[i].name;
+				let ids = boxArray[i].id;
 				let values = boxArray[i].value;
 				if ( values.length == 11 ) {
-					$(`#${names}`).removeClass('invalid');
+					$(`#${ids}`).removeClass('invalid');
 					return true;
 				} else {
-					$(`#${names}`).addClass('invalid');
+					$(`#${ids}`).addClass('invalid');
 					return false;
 				}
 			}
@@ -95,13 +103,13 @@ const validate = () => {
 		let boxArray = thisBox.toArray();
 		const runLoop = () => {
 			for (let i = 0; i < boxArray.length; i++) {
-				let names = boxArray[i].name;
+				let ids = boxArray[i].id;
 				let values = boxArray[i].value;
 				if ( values.length == 8 || values.length == 10 ) {
-					$(`#${names}`).removeClass('invalid');
+					$(`#${ids}`).removeClass('invalid');
 					return true;
 				} else {
-					$(`#${names}`).addClass('invalid');
+					$(`#${ids}`).addClass('invalid');
 					return false;
 				}
 			}
@@ -119,13 +127,13 @@ const validate = () => {
 		let boxArray = thisBox.toArray();
 		const runLoop = () => {
 			for (let i = 0; i < boxArray.length; i++) {
-				let names = boxArray[i].name;
+				let ids = boxArray[i].id;
 				let values = boxArray[i].value;
 				if ( values.length > 13 ) {
-					$(`#${names}`).removeClass('invalid');
+					$(`#${ids}`).removeClass('invalid');
 					return true;
 				} else {
-					$(`#${names}`).addClass('invalid');
+					$(`#${ids}`).addClass('invalid');
 					return false;
 				}
 			}
@@ -142,11 +150,11 @@ const validate = () => {
 	if ( emailArray.length > 0 ) {
 		for (let i = 0; i < emailArray.length; i++) {
 			let valid = emailArray[i].checkValidity();
-			let name = emailArray[i].name;
+			let ids = emailArray[i].id;
 			if ( valid ) {
-				$(`input#${name}`).removeClass('invalid');
+				$(`input#${ids}`).removeClass('invalid');
 			} else {
-				$(`input#${name}`).addClass('invalid');
+				$(`input#${ids}`).addClass('invalid');
 			}
 		}
 	}
@@ -154,16 +162,16 @@ const validate = () => {
 	const validateRadio = () => {
 		let spouseArray = container.find('input[type=radio][name=add-spouse]').toArray();
 		let dependentArray = container.find('input[type=radio][name=add-spouse]').toArray();
-		let representativeArray = container.find('input[type=radio][name=legal-representative]').toArray();
+		let representativeArray = container.find('input[type=radio][name="Request.Applicant.IsLegallyAuthorized"]').toArray();
 		let agentArray = container.find('input[type=radio][name=add-agent]').toArray();
 		const checkSpouse = () => {
 			let spouseYes = container.find('input[type=radio][name=add-spouse][value=yes]');
 			let spouseNo = container.find('input[type=radio][name=add-spouse][value=no]');
 			if ( spouseYes.is(':checked') || spouseNo.is(':checked') ) {
-				$('input[name=add-spouse').removeClass('invalid');
+				$('input[name=add-spouse]').removeClass('invalid');
 				return true;
 			} else if ( !spouseYes.is('checked') && !spouseNo.is('checked') ) {
-				$('input[name=add-spouse').addClass('invalid');
+				$('input[name=add-spouse]').addClass('invalid');
 				return false;
 			}
 		}
@@ -185,8 +193,8 @@ const validate = () => {
 			checkDependent();
 		}
 		const checkRepresentative = () => {
-			let representativeYes = container.find('input[type=radio][name=legal-representative][value=yes]');
-			let representativeNo = container.find('input[type=radio][name=legal-representative][value=no]');
+			let representativeYes = container.find('input[type=radio][name="Request.Applicant.IsLegallyAuthorized"][value=yes]');
+			let representativeNo = container.find('input[type=radio][name="Request.Applicant.IsLegallyAuthorized"][value=no]');
 			if ( representativeYes.is(':checked') || representativeNo.is(':checked') ) {
 				$('input[name=legal-representative').removeClass('invalid');
 				return true;
@@ -244,13 +252,13 @@ const spouseProgress = () => {
 	}
 }
 const addSpouse = () => {
-	let codeBlock = '<div class="codeBlock"> <p class="header">Spouse Personal Information<\/p><input type="text" placeholder="First Name" required id="spouse-first-name" name="spouse-first-name" minlength="2" maxlength="128"/> <input type="text" placeholder="MI" class="optional" id="spouse-MI" name="spouse-MI" maxlength="1"/> <input type="text" placeholder="Last Name" required id="spouse-last-name" name="spouse-last-name"minlength="2" maxlength="128"/> <input type="text" placeholder="SSN" required id="spouse-SSN" name="spouse-SSN" class="SSN" onfocus="(this.placeholder=\'000-00-0000\')" onblur="(this.placeholder=\'SSN\')" onkeyup="automask();" minlength="9" maxlength="9"/> <input type="text" placeholder="Birthday" required id="spouse-birthday" name="spouse-birthday" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Birthday\')" onkeyup="automask();" minlength="8" maxlength="10"/> <select required id="spouse-gender" value="" class="purple-format" name="spouse-gender"> <option value="" disabled selected class="placeholder">Gender</option> <option value="male">Male</option> <option value="female">Female</option> </select> <p class="header">Health Information<\/p><input type="text" placeholder="Age" required id="spouse-age" name="spouse-age" class="age" onkeyup="automask();" minlength="1" maxlength="3"/> <input type="text" placeholder="Height" required id="spouse-height" name="spouse-height" class="height" onfocus="(this.placeholder=\'0&lsquo; 00&ldquo;\')" onblur="(this.placeholder=\'Height\')" onkeyup="automask();" minlength="2" maxlength="6"/> <input type="text" placeholder="Weight" required id="spouse-weight" name="spouse-weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4"/> <input type="text" placeholder="Primary Care Physician (First Name)" required id="spouse-pcp-first-name" name="spouse-pcp-first-name" minlength="2" maxlength="128"/> <input type="text" placeholder="Primary Care Physician (Last Name)" required id="spouse-pcp-last-name" name="spouse-pcp-last-name" minlength="2" maxlength="128"/> <div class="question"> <p>Are you an established patient?<\/p><select required id="spouse-question-1" value="" class="purple-format question" name="spouse-question-1"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Have you been declined for insurance due to health reasons within the past 18 months?<\/p><select required id="spouse-question-2" value="" class="purple-format question" name="spouse-question-2"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?<\/p><select required id="spouse-question-3" value="" class="purple-format question" name="spouse-question-3"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?<\/p><select required id="spouse-question-4" value="" class="purple-format question" name="spouse-question-4"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?<\/p><select required id="spouse-question-5" value="" class="purple-format question" name="spouse-question-5"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?<\/p><select required id="spouse-question-6" value="" class="purple-format question" name="spouse-question-6"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?<\/p><select required id="spouse-question-7" value="" class="purple-format question" name="spouse-question-7"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div></div>';
+	let codeBlock = '<div class="codeBlock"> <p class="header">Spouse Personal Information</p><input type="text" placeholder="First Name" required id="spouse-first-name" name="Request.Spouse.FirstName" minlength="2" maxlength="128"/> <input type="text" placeholder="MI" class="optional" id="spouse-MI" name="Request.Spouse.MiddleName" maxlength="1"/> <input type="text" placeholder="Last Name" required id="spouse-last-name" name="Request.Spouse.LastName"minlength="2" maxlength="128"/> <input type="text" placeholder="SSN" required id="spouse-SSN" name="Request.Spouse.Ssn" class="SSN" onfocus="(this.placeholder=\'000-00-0000\')" onblur="(this.placeholder=\'SSN\')" onkeyup="automask();" minlength="9" maxlength="9"/> <input type="text" placeholder="Birthday" required id="spouse-birthday" name="Request.Spouse.Birthdate" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Birthday\')" onkeyup="automask();" minlength="8" maxlength="10"/> <select required id="spouse-gender" value="" class="purple-format" name="Request.Spouse.Sex"> <option value="" disabled selected class="placeholder">Gender</option> <option value="male">Male</option> <option value="female">Female</option> </select> <p class="header">Health Information</p><input type="text" placeholder="Age" required id="spouse-age" name="Request.Spouse.Age" class="age" onkeyup="automask();" minlength="1" maxlength="3"/> <input type="text" placeholder="Height" required id="spouse-height" name="Request.Spouse.Height" class="height" onfocus="(this.placeholder=\'0&lsquo; 00&ldquo;\')" onblur="(this.placeholder=\'Height\')" onkeyup="automask();" minlength="2" maxlength="6"/> <input type="text" placeholder="Weight" required id="spouse-weight" name="Request.Spouse.Weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4"/> <input type="text" placeholder="Primary Care Physician (First Name)" required id="spouse-pcp-first-name" name="Request.Spouse.PcpFirstName" minlength="2" maxlength="128"/> <input type="text" placeholder="Primary Care Physician (Last Name)" required id="spouse-pcp-last-name" name="Request.Spouse.PcpLastName" minlength="2" maxlength="128"/> <div class="question"> <p>Are you an established patient?</p><select required id="spouse-question-1" value="" class="purple-format question" name="Request.Spouse.IsEstablishedPatient"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id="spouse-question-2" value="" class="purple-format question" name="Request.Spouse.HasBeenDeclined"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id="spouse-question-3" value="" class="purple-format question" name="Request.Spouse.HasInsuranceOverlap"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id="spouse-question-4" value="" class="purple-format question" name="Request.Spouse.IsExpectantParent"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id="spouse-question-5" value="" class="purple-format question" name="Request.Spouse.IsOverweight"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p><select required id="spouse-question-6" value="" class="purple-format question" name="Request.Spouse.HasSeriousHealthCondition"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id="spouse-question-7" value="" class="purple-format question" name="Request.Spouse.HasImmuneDisorder"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div></div>';
 	document.getElementById('spouse-block').innerHTML = codeBlock;
 }
 const addSpouseSignature = () => {
-	let codeBlock = '<div class="codeBlock"> <input type="text" placeholder="Signature of Spouse or Civil Union (ONLY if to be insured)" required id="spouse-agreement-signature" name="spouse-agreement-signature" minlength="1" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="spouse-agreement-signature-date" name="spouse-agreement-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"/></div>';
+	let codeBlock = '<div class="codeBlock"> <input type="text" placeholder="Signature of Spouse or Civil Union (ONLY if to be insured)" required id="spouse-agreement-signature" name="Request.Spouse.AgreementSignature" minlength="1" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="spouse-agreement-signature-date" name="Request.Spouse.AgreementSignatureDate" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" minlength="8" maxlength="10"/> </div>';
 	document.getElementById('spouse-signature-block').innerHTML = codeBlock;
-	let codeBlock2 = '<div class="codeBlock2"> <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="spouse-authorization-signature" minlength="2" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="spouse-authorization-signature-date" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"> </div>';
+	let codeBlock2 = '<div class="codeBlock2"> <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="Request.Spouse.AuthorizationSignature" minlength="2" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="spouse-authorization-signature-date" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" minlength="8" maxlength="10"> </div>';
 	document.getElementById('spouse-signature-block-2').innerHTML = codeBlock2;
 }
 const removeSpouse = () => {
@@ -270,9 +278,9 @@ const numOfDependents = () => {
 	const dependentBlock = document.getElementById('dependent-block');
 	const dependentSignatureBlock = document.getElementById('dependent-signature-block');
 	const dependentSignatureBlock2 = document.getElementById('dependent-signature-block-2');
- 	let codeBlock = '<div class="codeBlock"> <p class="header">Dependent Personal Information<\/p><input type="text" placeholder="First Name" required id="dependent-first-name" name="dependent-first-name" minlength="2" maxlength="128"> <input type="text" placeholder="MI" class="optional" id="dependent-MI" name="dependent-MI" maxlength="1"> <input type="text" placeholder="Last Name" required id="dependent-last-name" name="dependent-last-name" minlength="2" maxlength="128"> <input type="text" placeholder="SSN" required id="dependent-SSN" name="dependent-SSN" class="SSN" onkeyup="automask();" minlength="9" maxlength="9"> <input type="text" placeholder="Birthday" required id="dependent-birthday" name="dependent-birthday" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Birthday\')" onkeyup="automask();" minlength="8" maxlength="10"> <select required id="spouse-gender" value="" class="purple-format" name="dependent-gender"> <option value="" disabled selected class="placeholder">Gender</option> <option value="male">Male</option> <option value="female">Female</option> </select> <p class="header">Health Information<\/p><input type="text" placeholder="Age" required id="dependent-age" name="dependent-age" class="age" onkeyup="automask();" minlength="1" maxlength="3"> <input type="text" placeholder="Height" required id="dependent-height" name="dependent-height" class="height" onfocus="(this.placeholder=\'0&lsquo; 00&ldquo;\')" onblur="(this.placeholder=\'Height\')" onkeyup="automask();" minlength="2" maxlength="6"> <input type="text" placeholder="Weight" required id="dependent-weight" name="dependent-weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4"> <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name" name="dependent-pcp-first-name" minlength="2" maxlength="128"> <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent-pcp-last-name" name="dependent-pcp-last-name" minlength="2" maxlength="128"> <div class="question"> <p>Are you an established patient?<\/p><select required id="dependent-question-1" value="" class="purple-format question" name="dependent-question-1"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Have you been declined for insurance due to health reasons within the past 18 months?<\/p><select required id="dependent-question-2" value="" class="purple-format question" name="dependent-question-2"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?<\/p><select required id="dependent-question-3" value="" class="purple-format question" name="dependent-question-3"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?<\/p><select required id="dependent-question-4" value="" class="purple-format question" name="dependent-question-4"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?<\/p><select required id="dependent-question-5" value="" class="purple-format question" name="dependent-question-5"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?<\/p><select required id="dependent-question-6" value="" class="purple-format question" name="dependent-question-6"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div><div class="question"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?<\/p><select required id="dependent-question-7" value="" class="purple-format question" name="dependent-question-7"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"><\/div><\/div></div>';
-	let codeSignatureBlock = '<div class="codeBlock"> <input type="text" placeholder="Signature of Dependent (ONLY if to be insured and 18 years or older)" required id="dependent-agreement-signature" name="dependent-agreement-signature" minlenght="2" maxlength="128"/> <input type="text" placeholder="Date of Sign" required id="dependent-agreement-signature-date" name="dependent-agreement-signature-date" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"/> </div>';
-	let codeSignatureBlock2 = '<div class="codeBlock2"> <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="dependent-authorization-signature" minlength="2" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="dependent-authorization-signature-date" class="date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" maxlength="10"> </div>';
+ 	let codeBlock = '<div class="codeBlock"> <p class="header">Dependent Personal Information</p><input type="text" placeholder="First Name" required id="dependent-first-name" name="Request.Dependents.FirstName" minlength="2" maxlength="128"> <input type="text" placeholder="MI" class="optional" id="dependent-MI" name="Request.Dependents.MiddleName" maxlength="1"> <input type="text" placeholder="Last Name" required id="dependent-last-name" name="Request.Dependents.LastName" minlength="2" maxlength="128"> <input type="text" placeholder="SSN" required id="dependent-SSN" name="Request.Dependents.Ssn" class="SSN" onkeyup="automask();" minlength="9" maxlength="9"> <input type="text" placeholder="Birthday" required id="dependent-birthday" name="Request.Dependents.Birthdate" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Birthday\')" onkeyup="automask();" minlength="8" maxlength="10"> <select required id="dependent-gender" value="" class="purple-format" name="Request.Dependents.Sex"> <option value="" disabled selected class="placeholder">Gender</option> <option value="male">Male</option> <option value="female">Female</option> </select> <p class="header">Health Information</p><input type="text" placeholder="Age" required id="dependent-age" name="Request.Dependents.Age" class="age" onkeyup="automask();" minlength="1" maxlength="3"> <input type="text" placeholder="Height" required id="dependent-height" name="Request.Dependents.Height" class="height" onfocus="(this.placeholder=\'0&lsquo; 00&ldquo;\')" onblur="(this.placeholder=\'Height\')" onkeyup="automask();" minlength="2" maxlength="6"> <input type="text" placeholder="Weight" required id="dependent-weight" name="Request.Dependents.Weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4"> <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name" name="Request.Dependents.PcpFirstName" minlength="2" maxlength="128"> <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent-pcp-last-name" name="Request.Dependents.PcpLastName" minlength="2" maxlength="128"> <div class="question"> <p>Are you an established patient?</p><select required id="dependent-question-1" value="" class="purple-format question" name="Request.Dependents.IsEstablishedPatient"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id="dependent-question-2" value="" class="purple-format question" name="Request.Dependents.HasBeenDeclined"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id="dependent-question-3" value="" class="purple-format question" name="Request.Dependents.HasInsuranceOverlap"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id="dependent-question-4" value="" class="purple-format question" name="Request.Dependents.IsExpectantParent"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id="dependent-question-5" value="" class="purple-format question" name="Request.Dependents.IsOverweight"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p><select required id="dependent-question-6" value="" class="purple-format question" name="Request.Dependents.HasSeriousHealthCondition"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div><div class="question"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id="dependent-question-7" value="" class="purple-format question" name="Request.Dependents.HasImmuneDisorder"> <option value="" disabled selected class="placeholder">Choose</option> <option value="yes">Yes</option> <option value="no">No</option> </select> <div class="clear"></div></div></div>';
+	let codeSignatureBlock = '<div class="codeBlock"> <input type="text" placeholder="Signature of Dependent (ONLY if to be insured and 18 years or older)" required id="dependent-agreement-signature" name="Request.Dependents.AgreementSignature" minlenght="2" maxlength="128"/> <input type="text" placeholder="Date of Sign" required id="dependent-agreement-signature-date" name="Request.Dependents.AgreementSignatureDate" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" minlength="8" maxlength="10"/> </div>';
+	let codeSignatureBlock2 = '<div class="codeBlock2"> <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="Request.Dependents.AuthorizationSignature" minlength="2" maxlength="128"> <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="Request.Dependents.AuthorizationSignatureDate" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" minlength="8" maxlength="10"> </div>';
 	const validateOutput = () => {
 		let countDiv = $('#dependent-block').children().length;
 		if ( countDiv < amount ) {
