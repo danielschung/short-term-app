@@ -10,7 +10,6 @@ gulp.task('scripts', function () {
     return gulp
         .src([
             './js/short-term-application.js',
-            './js/mask.min.js',
         ])
         .pipe(babel())
         .pipe(concat('short-term.js'))

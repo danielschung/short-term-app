@@ -117,7 +117,7 @@ const validate = () => {
 			for (i = 0; i < boxArray.length; i++) {
 				let names = boxArray[i].name;
 				let values = boxArray[i].value;
-				if ( values.length > 14 ) {
+				if ( values.length > 13 ) {
 					$(`#${names}`).removeClass('invalid');
 					return true;
 				} else {
