@@ -387,44 +387,64 @@
                         <!-- <div class="codeBlock">
                             <p class="header">Dependent Personal Information</p>
 
-                            <input type="text" placeholder="First Name" required id="dependent-first-name" name="Request.Dependents.FirstName" minlength="2" maxlength="128">
+                            <input type="text" placeholder="First Name" required id="dependent-first-name"
+                            name="Request.Dependents${depNum}.FirstName"
+                            minlength="2" maxlength="128">
 
-                            <input type="text" placeholder="MI" class="optional" id="dependent-MI" name="Request.Dependents.MiddleName" maxlength="1">
+                            <input type="text" placeholder="MI" class="optional" id="dependent-MI"
+                            name="Request.Dependents${depNum}.MiddleName"
+                            maxlength="1">
 
-                            <input type="text" placeholder="Last Name" required id="dependent-last-name" name="Request.Dependents.LastName" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Last Name" required id="dependent-last-name"
+                            name="Request.Dependents${depNum}.LastName"
+                            minlength="2" maxlength="128">
 
-                            <input type="text" placeholder="SSN" required id="dependent-SSN" name="Request.Dependents.Ssn" class="SSN" onkeyup="automask();" minlength="9" maxlength="9">
+                            <input type="text" placeholder="SSN" required id="dependent-SSN" class="SSN" 
+                            name="Request.Dependents${depNum}.Ssn"
+                            onkeyup="automask();" minlength="9" maxlength="9">
 
-                            <input type="text" placeholder="Birthday" required id="dependent-birthday" name="Request.Dependents.Birthdate" class="date"
-                                onfocus="(this.placeholder='MM-DD-YYYY')"
-                                onblur="(this.placeholder='Birthday')"
-                                onkeyup="automask();"
+                            <input type="text" placeholder="Birthday" required id="dependent-birthday" class="date"
+                            name="Request.Dependents${depNum}.Birthdate"
+                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onblur="(this.placeholder='Birthday')"
+                            onkeyup="automask();"
                             minlength="8" maxlength="10">
 
-                            <select required id="dependent-gender" value="" class="purple-format" name="Request.Dependents.Sex">
+                            <select required id="dependent-gender" value="" class="purple-format"
+                            name="Request.Dependents${depNum}.Sex">
                                 <option value="" disabled selected class="placeholder">Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
 
                             <p class="header">Health Information</p>
-                            <input type="text" placeholder="Age" required id="dependent-age" name="Request.Dependents.Age" class="age" onkeyup="automask();" minlength="1" maxlength="3">
+                            <input type="text" placeholder="Age" required id="dependent-age" class="age"
+                            name="Request.Dependents${depNum}.Age"
+                            onkeyup="automask();" minlength="1" maxlength="3">
 
-                            <input type="text" placeholder="Height" required id="dependent-height" name="Request.Dependents.Height" class="height" 
-                                onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
-                                onblur="(this.placeholder='Height')" 
-                                onkeyup="automask();"
+                            <input type="text" placeholder="Height" required id="dependent-height" class="height"
+                            name="Request.Dependents${depNum}.Height" 
+                            onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
+                            onblur="(this.placeholder='Height')" 
+                            onkeyup="automask();"
                             minlength="2" maxlength="6">
 
-                            <input type="text" placeholder="Weight" required id="dependent-weight" name="Request.Dependents.Weight" class="weight" onkeyup="automask();" minlength="2" maxlength="4">
+                            <input type="text" placeholder="Weight" required id="dependent-weight" class="weight"
+                            name="Request.Dependents${depNum}.Weight"
+                            onkeyup="automask();" minlength="2" maxlength="4">
 
-                            <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name" name="Request.Dependents.PcpFirstName" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent-pcp-first-name"
+                            name="Request.Dependents${depNum}.PcpFirstName"
+                            minlength="2" maxlength="128">
 
-                            <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent-pcp-last-name" name="Request.Dependents.PcpLastName" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent-pcp-last-name"
+                            name="Request.Dependents${depNum}.PcpLastName"
+                            minlength="2" maxlength="128">
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
-                                <select required id="dependent-question-1" value="" class="purple-format question" name="Request.Dependents.IsEstablishedPatient">
+                                <select required id="dependent-question-1" value="" class="purple-format question"
+                                name="Request.Dependents${depNum}.IsEstablishedPatient">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -433,7 +453,8 @@
                             </div>
                             <div class="question">
                                 <p>Have you been declined for insurance due to health reasons within the past 18 months?</p>
-                                <select required id="dependent-question-2" value="" class="purple-format question" name="Request.Dependents.HasBeenDeclined">
+                                <select required id="dependent-question-2" value="" class="purple-format question"
+                                name="Request.Dependents${depNum}.HasBeenDeclined">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -442,7 +463,8 @@
                             </div>
                             <div class="question">
                                 <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p>
-                                <select required id="dependent-question-3" value="" class="purple-format question" name="Request.Dependents.HasInsuranceOverlap">
+                                <select required id="dependent-question-3" value="" class="purple-format question"
+                                name="Request.Dependents${depNum}.HasInsuranceOverlap">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -451,7 +473,8 @@
                             </div>
                             <div class="question">
                                 <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p>
-                                <select required id="dependent-question-4" value="" class="purple-format question" name="Request.Dependents.IsExpectantParent">
+                                <select required id="dependent-question-4" value="" class="purple-format question"
+                                name="Request.Dependents${depNum}.IsExpectantParent">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -460,7 +483,8 @@
                             </div>
                             <div class="question">
                                 <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p>
-                                <select required id="dependent-question-5" value="" class="purple-format question" name="Request.Dependents.IsOverweight">
+                                <select required id="dependent-question-5" value="" class="purple-format question"
+                                name="Request.Dependents${depNum}.IsOverweight">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -469,7 +493,8 @@
                             </div>
                             <div class="question">
                                 <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn’s disease, ulcerative colitis or hepatitis?</p>
-                                <select required id="dependent-question-6" value="" class="purple-format question" name="Request.Dependents.HasSeriousHealthCondition">
+                                <select required id="dependent-question-6" value="" class="purple-format question"
+                                name="Request.Dependents${depNum}.HasSeriousHealthCondition">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -478,7 +503,8 @@
                             </div>
                             <div class="question">
                                 <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p>
-                                <select required id="dependent-question-7" value="" class="purple-format question" name="Request.Dependents.HasImmuneDisorder">
+                                <select required id="dependent-question-7" value="" class="purple-format question"
+                                name="Request.Dependents${depNum}.HasImmuneDisorder">
                                     <option value="" disabled selected class="placeholder">Choose</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -623,9 +649,11 @@
                     <div id="dependent-signature-block">
                         <!-- <div class="codeBlock">
                             <input type="text" placeholder="Signature of Dependent (ONLY if to be insured and 18 years or older)" required
-                            id="dependent-agreement-signature" name="Request.Dependents.AgreementSignature" minlenght="2" maxlength="128"/>
+                            id="dependent-agreement-signature"
+                            name="Request.Dependents${depNum}.AgreementSignature" minlenght="2" maxlength="128"/>
                             <input type="text" placeholder="Date of Sign" required
-                            id="dependent-agreement-signature-date" name="Request.Dependents.AgreementSignatureDate" class="date"
+                            id="dependent-agreement-signature-date"
+                            name="Request.Dependents${depNum}.AgreementSignatureDate" class="date"
                             onfocus="(this.placeholder='MM-DD-YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
                             minlength="8" maxlength="10"/>
@@ -644,18 +672,18 @@
                 <div class="accordian">Authorization</div>
                 <div class="expanded">
                     <input type="text" placeholder="Applicant's Full Name" required
-                    id="applicant-full-name" name="applicant-full-name"
+                    id="applicant-full-name" name="Request.Applicant.AuthorizationFullName"
                     minlength="1" maxlength="128"/>
 
                     <input type="text" placeholder="Birthday" required
-                    id="applicant-birthday-authorize" name="applicant-birthday-authorize" class="date"
+                    id="applicant-birthday-authorize" name="Request.Applicant.AuthorizationBirthdate" class="date"
                     onfocus="(this.placeholder='MM-DD-YYYY')"
                     onblur="(this.placeholder='Birthday')"
                     onkeyup="automask();"
                     minlength="8" maxlength="10"/>
 
                     <input type="text" placeholder="Applicant's Full Address" required
-                    id="applicant-full-address" name="applicant-full-address"
+                    id="applicant-full-address" name="Request.Applicant.AuthorizationAddress"
                     minlength="1" maxlength="256"/>
 
                     <p class="authorize">I hereby authorize and direct Health Alliance to obtain all protected health information, including medical records from any healthcare provider who either advised, treated, attended or rendered service to me or my dependents or who has in his or her possession any information or records with respect to advice, treatment or services. This authorization is limited only to protected health information, including medical records, obtained for underwriting purposes as are necessary for Health Alliance to determine the acceptability of this application.</p>
@@ -673,7 +701,7 @@
                         onkeyup="automask();"
                     minlength="8" maxlength="10">
 
-                    <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" class="optional" name="applicant-relationship" minlength="2" maxlength="128">
+                    <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" class="optional" name="Request.Applicant.AuthorizationRelationship" minlength="2" maxlength="128">
 
                     <div id="spouse-signature-block-2">
                         <!-- <div class="codeBlock2">
@@ -687,8 +715,10 @@
 
                     <div id="dependent-signature-block-2">
                         <!-- <div class="codeBlock2">
-                            <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature" name="Request.Dependents.AuthorizationSignature" minlength="2" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date" name="Request.Dependents.AuthorizationSignatureDate" class="date"
+                            <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature"
+                            name="Request.Dependents${depNum}.AuthorizationSignature" minlength="2" maxlength="128">
+                            <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date"
+                            name="Request.Dependents${depNum}.AuthorizationSignatureDate" class="date"
                                 onfocus="(this.placeholder='MM-DD-YYYY')"
                                 onblur="(this.placeholder='Date of Sign')"
                             minlength="8" maxlength="10">
