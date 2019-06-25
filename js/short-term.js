@@ -50,22 +50,22 @@ var validate = function validate() {
     if (boxArray.length == 0) {
       console.log('valid');
     } else {
-      for (var _i = 0; _i < boxArray.length; _i++) {
-        var boxIds = boxArray[_i].id;
+      for (var i = 0; i < boxArray.length; i++) {
+        var boxIds = boxArray[i].id;
 
-        if (boxArray[_i].checked) {
+        if (boxArray[i].checked) {
           $("#".concat(boxIds)).removeClass('invalid');
         }
       }
     }
   };
 
-  for (var _i2 = 0; _i2 < inputs.length; _i2++) {
-    var ids = inputs[_i2].id;
-    var names = inputs[_i2].name;
-    var values = inputs[_i2].value;
+  for (var i = 0; i < inputs.length; i++) {
+    var ids = inputs[i].id;
+    var names = inputs[i].name;
+    var values = inputs[i].value;
 
-    if (inputs[_i2].type == 'radio') {
+    if (inputs[i].type == 'radio') {
       if (values == '') {
         $("#".concat(names)).addClass('invalid');
       } else {
@@ -87,9 +87,9 @@ var validate = function validate() {
     var boxArray = thisBox.toArray();
 
     var runLoop = function runLoop() {
-      for (var _i3 = 0; _i3 < boxArray.length; _i3++) {
-        var _ids = boxArray[_i3].id;
-        var _values = boxArray[_i3].value;
+      for (var _i = 0; _i < boxArray.length; _i++) {
+        var _ids = boxArray[_i].id;
+        var _values = boxArray[_i].value;
 
         if (_values.length == 11) {
           $("#".concat(_ids)).removeClass('invalid');
@@ -115,9 +115,9 @@ var validate = function validate() {
     var boxArray = thisBox.toArray();
 
     var runLoop = function runLoop() {
-      for (var _i4 = 0; _i4 < boxArray.length; _i4++) {
-        var _ids2 = boxArray[_i4].id;
-        var _values2 = boxArray[_i4].value;
+      for (var _i2 = 0; _i2 < boxArray.length; _i2++) {
+        var _ids2 = boxArray[_i2].id;
+        var _values2 = boxArray[_i2].value;
 
         if (_values2.length == 8 || _values2.length == 10) {
           $("#".concat(_ids2)).removeClass('invalid');
@@ -143,9 +143,9 @@ var validate = function validate() {
     var boxArray = thisBox.toArray();
 
     var runLoop = function runLoop() {
-      for (var _i5 = 0; _i5 < boxArray.length; _i5++) {
-        var _ids3 = boxArray[_i5].id;
-        var _values3 = boxArray[_i5].value;
+      for (var _i3 = 0; _i3 < boxArray.length; _i3++) {
+        var _ids3 = boxArray[_i3].id;
+        var _values3 = boxArray[_i3].value;
 
         if (_values3.length > 13) {
           $("#".concat(_ids3)).removeClass('invalid');
@@ -169,10 +169,10 @@ var validate = function validate() {
   var emailArray = container.find('input[type=email]').toArray();
 
   if (emailArray.length > 0) {
-    for (var _i6 = 0; _i6 < emailArray.length; _i6++) {
-      var valid = emailArray[_i6].checkValidity();
+    for (var _i4 = 0; _i4 < emailArray.length; _i4++) {
+      var valid = emailArray[_i4].checkValidity();
 
-      var _ids4 = emailArray[_i6].id;
+      var _ids4 = emailArray[_i4].id;
 
       if (valid) {
         $("input#".concat(_ids4)).removeClass('invalid');
@@ -330,7 +330,7 @@ var numOfDependents = function numOfDependents() {
     $('div#dependent-signature-block').children().remove();
     $('div#dependent-signature-block-2').children().remove();
 
-    for (i = 0; i < amount; i++) {
+    for (var i = 0; i < amount; i++) {
       amountArray.push(i);
       var depNum = "[".concat(amountArray[i], "]");
       var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">Dependent Personal Information</p><input type=\"text\" placeholder=\"First Name\" required id=\"dependent-first-name\" name=\"Request.Dependents".concat(depNum, ".FirstName\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"MI\" class=\"optional\" id=\"dependent-MI\" name=\"Request.Dependents").concat(depNum, ".MiddleName\" maxlength=\"1\"> <input type=\"text\" placeholder=\"Last Name\" required id=\"dependent-last-name\" name=\"Request.Dependents").concat(depNum, ".LastName\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"SSN\" required id=\"dependent-SSN\" class=\"SSN\" name=\"Request.Dependents").concat(depNum, ".Ssn\" onkeyup=\"automask();\" minlength=\"9\" maxlength=\"9\"> <input type=\"text\" placeholder=\"Birthday\" required id=\"dependent-birthday\" class=\"date\" name=\"Request.Dependents").concat(depNum, ".Birthdate\" onfocus=\"(this.placeholder='MM-DD-YYYY')\" onblur=\"(this.placeholder='Birthday')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"> <select required id=\"dependent-gender\" value=\"\" class=\"purple-format\" name=\"Request.Dependents").concat(depNum, ".Sex\"> <option value=\"\" disabled selected class=\"placeholder\">Gender</option> <option value=\"male\">Male</option> <option value=\"female\">Female</option> </select> <p class=\"header\">Health Information</p><input type=\"text\" placeholder=\"Age\" required id=\"dependent-age\" class=\"age\" name=\"Request.Dependents").concat(depNum, ".Age\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"3\"> <input type=\"text\" placeholder=\"Height\" required id=\"dependent-height\" class=\"height\" name=\"Request.Dependents").concat(depNum, ".Height\" onfocus=\"(this.placeholder='0&lsquo; 00&ldquo;')\" onblur=\"(this.placeholder='Height')\" onkeyup=\"automask();\" minlength=\"2\" maxlength=\"6\"> <input type=\"text\" placeholder=\"Weight\" required id=\"dependent-weight\" class=\"weight\" name=\"Request.Dependents").concat(depNum, ".Weight\" onkeyup=\"automask();\" minlength=\"2\" maxlength=\"4\"> <input type=\"text\" placeholder=\"Primary Care Physician (First Name)\" required id=\"dependent-pcp-first-name\" name=\"Request.Dependents").concat(depNum, ".PcpFirstName\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Primary Care Physician (Last Name)\" required id=\"dependent-pcp-last-name\" name=\"Request.Dependents").concat(depNum, ".PcpLastName\" minlength=\"2\" maxlength=\"128\"> <div class=\"question\"> <p>Are you an established patient?</p><select required id=\"dependent-question-1\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsEstablishedPatient\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"yes\">Yes</option> <option value=\"no\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id=\"dependent-question-2\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasBeenDeclined\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"yes\">Yes</option> <option value=\"no\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id=\"dependent-question-3\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasInsuranceOverlap\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"yes\">Yes</option> <option value=\"no\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id=\"dependent-question-4\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsExpectantParent\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"yes\">Yes</option> <option value=\"no\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id=\"dependent-question-5\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsOverweight\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"yes\">Yes</option> <option value=\"no\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn\u2019s disease, ulcerative colitis or hepatitis?</p><select required id=\"dependent-question-6\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasSeriousHealthCondition\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"yes\">Yes</option> <option value=\"no\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id=\"dependent-question-7\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasImmuneDisorder\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"yes\">Yes</option> <option value=\"no\">No</option> </select> <div class=\"clear\"></div></div></div>");
