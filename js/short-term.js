@@ -308,6 +308,34 @@ var removeSpouse = function removeSpouse() {
   $('div#spouse-block').children().remove();
   $('div#spouse-signature-block').children().remove();
   $('div#spouse-signature-block-2').children().remove();
+}; // add either single or family table
+
+
+var tableAdd = function tableAdd() {
+  var spouse = document.getElementsByName('add-spouse')[1];
+  var dependents = document.getElementsByName('add-dependent')[1];
+  var coverageTable = document.getElementById('coverage-table');
+  var singleNote = $('p.note.single');
+  var familyNote = $('p.note.family');
+  var disclaimer = $('p.note.disclaimer');
+  var singleTable = "<table class=\"coverage-table single\"> <tbody> <tr> <th></th> <th colspan=\"2\">Deductible</th> <th colspan=\"2\">OOP-Max</th> </tr><tr class=\"selectable\"> <td>A</td><td colspan=\"2\">In-Network: $1,000<br>Out-of-Network: $2,000</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td></tr><tr class=\"selectable\"> <td>B</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class=\"selectable\"> <td>C</td><td colspan=\"2\">In-Network: $5,000<br>Out-of-Network: $10,000</td><td colspan=\"2\">In-Network: $10,000<br>Out-of-Network: $20,000</td></tr><tr class=\"selectable\"> <td>D</td><td colspan=\"2\">In-Network: $7,500<br>Out-of-Network: $15,000</td><td colspan=\"2\">In-Network: $15,000<br>Out-of-Network: $30,000</td></tr></tbody> </table>";
+  var familyTable = "<table class=\"coverage-table family\"> <tbody> <tr> <th></th> <th colspan=\"2\">Deductible</th> <th colspan=\"2\">OOP-Max</th> </tr><tr class=\"selectable\"> <td>A</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class=\"selectable\"> <td>B</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td><td colspan=\"2\">In-Network: $8,000<br>Out-of-Network: $16,000</td></tr><tr class=\"selectable\"> <td>C</td><td colspan=\"2\">In-Network: $10,000<br>Out-of-Network: $20,000</td><td colspan=\"2\">In-Network: $20,000<br>Out-of-Network: $40,000</td></tr><tr class=\"selectable\"> <td>D</td><td colspan=\"2\">In-Network: $15,000<br>Out-of-Network: $30,000</td><td colspan=\"2\">In-Network: $30,000<br>Out-of-Network: $60,000</td></tr></tbody> </table>";
+
+  while (coverageTable.firstChild) {
+    coverageTable.removeChild(coverageTable.firstChild);
+  }
+
+  if (spouse.checked && dependents.checked) {
+    coverageTable.innerHTML = singleTable;
+    disclaimer.hide();
+    familyNote.hide();
+    singleNote.show();
+  } else {
+    coverageTable.innerHTML = familyTable;
+    disclaimer.hide();
+    singleNote.hide();
+    familyNote.show();
+  }
 }; //dependents form progress
 
 
@@ -423,6 +451,61 @@ var tableSelect = function tableSelect() {
     tableRow.eq(1).removeClass('selected');
     tableRow.eq(2).removeClass('selected');
     tableRow.eq(3).removeClass('selected');
+  }
+};
+
+var sendCoverage = function sendCoverage() {
+  var networkDeductible = document.getElementById('network-deductible');
+  var outNetworkDeductible = document.getElementById('out-network-deductible');
+  var networkOOP = document.getElementById('network-OOP');
+  var outNetworkOOP = document.getElementById('out-network-OOP');
+  var coverageTable = document.getElementById('coverage-table').firstChild;
+  var tableChoice = document.getElementById('coverage-table-select').value;
+
+  if (coverageTable.classList.contains('single')) {
+    if (tableChoice === 'A') {
+      networkDeductible.value = 1000;
+      outNetworkDeductible.value = 2000;
+      networkOOP.value = 2000;
+      outNetworkOOP.value = 4000;
+    } else if (tableChoice === 'B') {
+      networkDeductible.value = 2000;
+      outNetworkDeductible.value = 4000;
+      networkOOP.value = 4000;
+      outNetworkOOP.value = 8000;
+    } else if (tableChoice === 'C') {
+      networkDeductible.value = 5000;
+      outNetworkDeductible.value = 10000;
+      networkOOP.value = 10000;
+      outNetworkOOP.value = 20000;
+    } else if (tableChoice === 'D') {
+      networkDeductible.value = 7500;
+      outNetworkDeductible.value = 15000;
+      networkOOP.value = 15000;
+      outNetworkOOP.value = 30000;
+    }
+  } else if (coverageTable.classList.contains('family')) {
+    if (tableChoice === 'A') {
+      networkDeductible.value = 2000;
+      outNetworkDeductible.value = 4000;
+      networkOOP.value = 4000;
+      outNetworkOOP.value = 8000;
+    } else if (tableChoice === 'B') {
+      networkDeductible.value = 4000;
+      outNetworkDeductible.value = 8000;
+      networkOOP.value = 8000;
+      outNetworkOOP.value = 16000;
+    } else if (tableChoice === 'C') {
+      networkDeductible.value = 10000;
+      outNetworkDeductible.value = 20000;
+      networkOOP.value = 20000;
+      outNetworkOOP.value = 40000;
+    } else if (tableChoice === 'D') {
+      networkDeductible.value = 1500;
+      outNetworkDeductible.value = 30000;
+      networkOOP.value = 30000;
+      outNetworkOOP.value = 60000;
+    }
   }
 }; //agent form progress function
 
