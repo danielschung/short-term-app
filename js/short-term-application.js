@@ -267,6 +267,18 @@ const removeSpouse = () => {
 	$('div#spouse-signature-block-2').children().remove();
 }
 
+// notice for 6 month option
+const dropNotice = () => {
+	const sixMonth = $('select#benefit-period-length').val();
+	const notice = $()
+	console.log(sixMonth);
+	if ( sixMonth === '6-months' ) {
+		$('p#six-month-notice').show();
+	} else {
+		$('p#six-month-notice').hide();
+	}
+}
+
 // add either single or family table
 const tableAdd = () => {
 	const spouse = document.getElementsByName('add-spouse')[1];

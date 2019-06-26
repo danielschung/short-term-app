@@ -523,7 +523,7 @@
                 <div class="expanded">
                     <p class="header">Coverage Applied For</p>
 
-                    <select required id="benefit-period-length" name="Request.Coverage.BenefitPeriodLength" value="" class="purple-format">
+                    <select required id="benefit-period-length" name="Request.Coverage.BenefitPeriodLength" value="" class="purple-format" onchange="dropNotice();">
                         <option value="" disabled selected class="placeholder">Pick a benefit period length:</option>
                         <option value="1-month">1 month</option>
                         <option value="2-months">2 months</option>
@@ -538,6 +538,8 @@
                         <option value="PPO">PPO</option>
                         <option value="POS">POS</option>
                     </select>
+
+                    <p id="six-month-notice" class="notice">Note: The 6-month benefit period length cannot exceed 180 days.</p>
 
                     <p class="header">Choose a Deductible and Out-of-Pocket Maximum Combination</p>
 

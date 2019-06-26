@@ -308,6 +308,19 @@ var removeSpouse = function removeSpouse() {
   $('div#spouse-block').children().remove();
   $('div#spouse-signature-block').children().remove();
   $('div#spouse-signature-block-2').children().remove();
+}; // notice for 6 month option
+
+
+var dropNotice = function dropNotice() {
+  var sixMonth = $('select#benefit-period-length').val();
+  var notice = $();
+  console.log(sixMonth);
+
+  if (sixMonth === '6-months') {
+    $('p#six-month-notice').show();
+  } else {
+    $('p#six-month-notice').hide();
+  }
 }; // add either single or family table
 
 

@@ -164,6 +164,12 @@ form#form {
 				color:red;
 			}
 
+			p.notice {
+				display:none;
+				font-size:0.8rem;
+				margin-bottom:4rem;
+			}
+
 			button.next,
 			button.previous {
 				border:1px solid $light-purple;
