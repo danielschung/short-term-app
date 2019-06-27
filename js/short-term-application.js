@@ -479,11 +479,22 @@ const removeAgent = () => {
 //download form function
 const addPDF = () => {
 	$('div#legal-block').children().remove();
-	let codeBlock = '<div class="codeBlock"> <p class="header">Please upload your Legally Authorized Representative Documents.</p><input type="file" name="files" id="files" multiple="multiple" accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-val="true" data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx"/> </div>';
+	let codeBlock = `<div class="codeBlock"> <p class="header">Please upload your Legally Authorized Representative Documents.</p><input type="file" name="files" id="files" onchange="fileSize();" multiple="multiple" accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-val="true" data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx"/> </div>`;
 	document.getElementById('legal-block').innerHTML = codeBlock;
 }
 const removePDF = () => {
 	$('div#legal-block').children().remove();
+}
+const fileSize = () => {
+	let file = document.getElementById('files');
+	let filejq = $('input#files');
+	if ( file.files[0].size > 4 * 1024 * 1024 ) {
+		filejq.addClass('invalid');
+		$('p#too-large').show();
+	} else {
+		filejq.removeClass('invalid');
+		$('p#too-large').hide();
+	}
 }
 
 //submit function

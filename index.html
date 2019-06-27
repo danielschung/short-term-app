@@ -787,13 +787,16 @@
                             <p class="header">Please upload your Legally Authorized Representative Documents.</p>
                             <input type="file"
                                name="files" 
-                               id="files" 
+                               id="files"
+                               onchange="fileSize();" 
                                multiple="multiple"
                                accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                data-val="true" 
                                data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx" />
                         </div> -->
                     </div>
+
+                    <p id="too-large" class="notice">This filesize is too large. Please upload a smaller file.</p>
 
                     <a href="#form"><button type="button" value="next" class="next" onclick="validate();">Next</button></a>
                 </div>
@@ -894,7 +897,7 @@
     <!-- when building ../js/jquery.min.js -->
     <script src="./js/jquery.min.js"></script>
     <!-- when building change to        ../js/short-term.min.js -->
-    <script type="text/javascript" src="./js/short-term.min.js"></script>
+    <script type="text/javascript" src="./js/short-term-application.js"></script>
     <script type="text/javascript" src="./js/mask.min.js"></script>
 </body>
 </html>
