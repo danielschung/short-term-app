@@ -505,7 +505,7 @@ const submitForm = () => {
 const confirmation = () => {
 	let urlPart = window.location.pathname;
 	for (let i = 0; i < urlPart.length; i++) {
-		if ( urlPart[i] === '.' ) {
+		if ( urlPart[i] === '=' ) {
 			let number = urlPart.slice(i+1);
 			let numberBlock = document.getElementById('numberBlock');
 			let codeBlock = `${number}`;

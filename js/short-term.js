@@ -564,7 +564,7 @@ var confirmation = function confirmation() {
   var urlPart = window.location.pathname;
 
   for (var i = 0; i < urlPart.length; i++) {
-    if (urlPart[i] === '.') {
+    if (urlPart[i] === '=') {
       var number = urlPart.slice(i + 1);
       var numberBlock = document.getElementById('numberBlock');
       var codeBlock = "".concat(number);
