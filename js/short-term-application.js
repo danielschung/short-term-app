@@ -500,5 +500,42 @@ const submitForm = () => {
 		console.log(finalValidation);
 	}
 }
+
+//confirmation functions
+const confirmation = () => {
+	let urlPart = window.location.pathname;
+	for (let i = 0; i < urlPart.length; i++) {
+		if ( urlPart[i] === '.' ) {
+			let number = urlPart.slice(i+1);
+			let numberBlock = document.getElementById('numberBlock');
+			let codeBlock = `${number}`;
+			numberBlock.insertAdjacentHTML('beforeend',codeBlock);
+			console.log(number);
+		}
+	}
+}
+if ( window.location.pathname === 'individual/short-term-application-confirm' ) {
+	confirmation();
+}
+
 const form = document.getElementById('form');
 form.addEventListener("submit", submitForm, true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

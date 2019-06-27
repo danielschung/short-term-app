@@ -557,7 +557,26 @@ var submitForm = function submitForm() {
     alert();
     console.log(finalValidation);
   }
+}; //confirmation functions
+
+
+var confirmation = function confirmation() {
+  var urlPart = window.location.pathname;
+
+  for (var i = 0; i < urlPart.length; i++) {
+    if (urlPart[i] === '.') {
+      var number = urlPart.slice(i + 1);
+      var numberBlock = document.getElementById('numberBlock');
+      var codeBlock = "".concat(number);
+      numberBlock.insertAdjacentHTML('beforeend', codeBlock);
+      console.log(number);
+    }
+  }
 };
+
+if (window.location.pathname === 'individual/short-term-application-confirm') {
+  confirmation();
+}
 
 var form = document.getElementById('form');
 form.addEventListener("submit", submitForm, true);
