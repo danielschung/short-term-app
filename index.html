@@ -67,7 +67,7 @@
 
                     <input type="text" placeholder="Birthday" required
                     id="applicant-birthday" name="Request.Applicant.Birthdate" class="date"
-                    onfocus="(this.placeholder='MM-DD-YYYY')"
+                    onfocus="(this.placeholder='MM/DD/YYYY')"
                     onblur="(this.placeholder='Birthday')"
                     onkeyup="automask();"
                     minlength="8" maxlength="10">
@@ -282,7 +282,7 @@
 
                             <input type="text" placeholder="Birthday" required
                             id="spouse-birthday" name="Request.Spouse.Birthdate" class="date"
-                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Birthday')"
                             onkeyup="automask();"
                             minlength="8" maxlength="10"/>
@@ -405,7 +405,7 @@
 
                             <input type="text" placeholder="Birthday" required id="dependent-birthday" class="date"
                             name="Request.Dependents${depNum}.Birthdate"
-                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Birthday')"
                             onkeyup="automask();"
                             minlength="8" maxlength="10">
@@ -628,8 +628,8 @@
                     <p class="header">Requested Effective Date</p>
 
                     <input type="text" placeholder="MM-DD-YYYY" required id="coverage-effective-date" name="Request.Coverage.EffectiveDate" class="date" 
-                    onfocus="(this.placeholder='MM-DD-YYYY')"
-                    onblur="(this.placeholder='MM-DD-YYYY')"
+                    onfocus="(this.placeholder='MM/DD/YYYY')"
+                    onblur="(this.placeholder='MM/DD/YYYY')"
                     onkeyup="automask();"
                     min-length="8" maxlength="10">
                     <p>Coverage not effective until Health Alliance approves your application and determines the effective date. Health Alliance will determine the effective and termination date of the policy. The maximum length of this policy must be less than 181 days.</p>
@@ -673,7 +673,7 @@
 
                     <input type="text" placeholder="Date of Sign" required
                     id="applicant-agreement-signature-date" name="Request.Applicant.AgreementSignatureDate" class="date"
-                    onfocus="(this.placeholder='MM-DD-YYYY')"
+                    onfocus="(this.placeholder='MM/DD/YYYY')"
                     onblur="(this.placeholder='Date of Sign')"
                     onkeyup="automask();"
                     minlength="8" maxlength="10"/>
@@ -683,8 +683,9 @@
                             <input type="text" placeholder="Signature of Spouse or Civil Union (ONLY if to be insured)" required id="spouse-agreement-signature" name="Request.Spouse.AgreementSignature" minlength="1" maxlength="128">
 
                             <input type="text" placeholder="Date of Sign" required id="spouse-agreement-signature-date" name="Request.Spouse.AgreementSignatureDate" class="date"
-                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
+                            onkeyup="automask();"
                             minlength="8" maxlength="10"/>
                         </div> -->
                     </div>
@@ -697,8 +698,9 @@
                             <input type="text" placeholder="Date of Sign" required
                             id="dependent-agreement-signature-date"
                             name="Request.Dependents${depNum}.AgreementSignatureDate" class="date"
-                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
+                            onkeyup="automask();"
                             minlength="8" maxlength="10"/>
                         </div> -->
                     </div>
@@ -720,7 +722,7 @@
 
                     <input type="text" placeholder="Birthday" required
                     id="applicant-birthday-authorize" name="Request.Applicant.AuthorizationBirthdate" class="date"
-                    onfocus="(this.placeholder='MM-DD-YYYY')"
+                    onfocus="(this.placeholder='MM/DD/YYYY')"
                     onblur="(this.placeholder='Birthday')"
                     onkeyup="automask();"
                     minlength="8" maxlength="10"/>
@@ -739,7 +741,7 @@
                     <input type="text" placeholder="Signature of Applicant or Legally Authorized Representative" required id="applicant-authorization-signature" name="Request.Applicant.AuthorizationSignature" minlength="2" maxlength="128">
 
                     <input type="text" placeholder="Date of Sign" required id="applicant-authorization-signature-date" name="Request.Applicant.AuthorizationSignatureDate" class="date"
-                        onfocus="(this.placeholder='MM-DD-YYYY')"
+                        onfocus="(this.placeholder='MM/DD/YYYY')"
                         onblur="(this.placeholder='Date of Sign')"
                         onkeyup="automask();"
                     minlength="8" maxlength="10">
@@ -750,8 +752,9 @@
                         <!-- <div class="codeBlock2">
                             <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="Request.Spouse.AuthorizationSignature" minlength="2" maxlength="128">
                             <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="spouse-authorization-signature-date" class="date"
-                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
+                            onkeyup="automask();"
                             minlength="8" maxlength="10">
                         </div> -->
                     </div>
@@ -762,8 +765,9 @@
                             name="Request.Dependents${depNum}.AuthorizationSignature" minlength="2" maxlength="128">
                             <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date"
                             name="Request.Dependents${depNum}.AuthorizationSignatureDate" class="date"
-                                onfocus="(this.placeholder='MM-DD-YYYY')"
+                                onfocus="(this.placeholder='MM/DD/YYYY')"
                                 onblur="(this.placeholder='Date of Sign')"
+                                onkeyup="automask();"
                             minlength="8" maxlength="10">
                         </div> -->
                     </div>
@@ -852,7 +856,7 @@
 
                             <input type="text" placeholder="Date of Sign" required
                             id="producer-signature-date" name="Request.Agent.SignatureDate" class="date"
-                            onfocus="(this.placeholder='MM-DD-YYYY')"
+                            onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
                             onkeyup="automask();"
                             minlength="8" maxlength="10"/>
@@ -897,7 +901,7 @@
     <!-- when building ../js/jquery.min.js -->
     <script src="./js/jquery.min.js"></script>
     <!-- when building change to        ../js/short-term.min.js -->
-    <script type="text/javascript" src="./js/short-term-application.js"></script>
+    <script type="text/javascript" src="./js/short-term.min.js"></script>
     <script type="text/javascript" src="./js/mask.min.js"></script>
 </body>
 </html>
