@@ -582,18 +582,17 @@ var fileSize = function fileSize() {
 
 
 var confirmation = function confirmation() {
-  // let urlPart = window.location.pathname;
-  // for (let i = 0; i < urlPart.length; i++) {
-  // 	if ( urlPart[i] === '.' ) {
-  // 		let number = urlPart.slice(i+1);
-  // 		let numberBlock = document.getElementById('numberBlock');
-  // 		let codeBlock = `${number}`;
-  // 		numberBlock.insertAdjacentHTML('beforeend',codeBlock);
-  // 		console.log(number);
-  // 	}
-  // }
-  var url = window.location.href;
-  console.log(url);
+  var urlPart = window.location.href;
+
+  for (var i = 0; i < urlPart.length; i++) {
+    if (urlPart[i] === '=') {
+      var number = urlPart.slice(i + 1);
+      var numberBlock = document.getElementById('numberBlock');
+      var codeBlock = "".concat(number);
+      numberBlock.insertAdjacentHTML('beforeend', codeBlock);
+      console.log(number);
+    }
+  }
 };
 
 document.onload = confirmation(); //submit function
