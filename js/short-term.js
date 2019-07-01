@@ -586,15 +586,14 @@ var confirmation = function confirmation() {
 
   for (var i = 0; i < urlPart.length; i++) {
     if (urlPart[i] === '=') {
-      var number = urlPart.slice(i + 1);
+      // let number = urlPart.slice(i+1);
+      var number = url.searchParams.get('confirmationNumber');
       var numberBlock = document.getElementById('numberBlock');
       var codeBlock = "".concat(number);
       numberBlock.insertAdjacentHTML('beforeend', codeBlock);
       console.log(number);
     }
   }
-
-  console.log('this should be working');
 };
 
 if (window.location.pathname === 'individual/short-term-application-confirm') {
