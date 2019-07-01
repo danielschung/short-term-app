@@ -26,6 +26,7 @@ var automask = function automask() {
 
 
 var dateClass = document.getElementsByClassName('date');
+var dateArray = Array.from(dateClass);
 
 var dateNumbers = function dateNumbers() {
   var value = dateClass[0].value;
@@ -37,15 +38,16 @@ var dateNumbers = function dateNumbers() {
   parseInt(year);
 
   if (month <= 12 && day <= 31 && year <= 2050) {
-    console.log('true');
     return true;
   } else {
-    console.log('false');
     return false;
   }
 };
 
-dateClass[0].addEventListener('keyup', dateNumbers); //fields missing
+if (!dateArray.length === 0) {
+  dateClass[0].addEventListener('keyup', dateNumbers);
+} //fields missing
+
 
 var alert = function alert() {
   var codeBlock = '<div class="codeBlock"><p class="alert">You have missing fields. See below.</p></div>';
@@ -576,22 +578,6 @@ var fileSize = function fileSize() {
     filejq.removeClass('invalid');
     $('p#too-large').hide();
   }
-}; //submit function
-
-
-var submitForm = function submitForm() {
-  validate();
-  var container = $(event.target).parent().parent();
-  var finalValidation = container.find('input.invalid, select.invalid').toArray();
-
-  if (finalValidation.length == 0) {
-    removeAlert();
-    window.location.href = "./short-term-application-confirm";
-    return true;
-  } else {
-    alert();
-    console.log(finalValidation);
-  }
 }; //confirmation functions
 
 
@@ -607,11 +593,31 @@ var confirmation = function confirmation() {
       console.log(number);
     }
   }
+
+  console.log('this should be working');
 };
 
 if (window.location.pathname === 'individual/short-term-application-confirm') {
   confirmation();
-}
+} //submit function
+
+
+var submitForm = function submitForm() {
+  validate();
+  var container = $(event.target).parent().parent();
+  var finalValidation = container.find('input.invalid, select.invalid').toArray();
+
+  if (finalValidation.length === 0) {
+    removeAlert();
+    window.location.href = "./short-term-application-confirm";
+  } else {
+    alert();
+    console.log(finalValidation);
+  }
+};
 
 var form = document.getElementById('form');
-form.addEventListener("submit", submitForm, true);
+
+if (form) {
+  form.addEventListener("submit", submitForm, true);
+}
