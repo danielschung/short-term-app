@@ -8,7 +8,6 @@ $(document).ready(function(){
 		$(this).next().slideToggle();
 		$(this).toggleClass('closed');
 	});
-
 });
 
 const automask = () => {
@@ -26,6 +25,7 @@ const automask = () => {
 
 //date numbers
 const dateClass = document.getElementsByClassName('date');
+const dateArray = Array.from(dateClass);
 const dateNumbers = () => {
 	let value = dateClass[0].value;
 	let month = value.slice(0,2);
@@ -35,14 +35,14 @@ const dateNumbers = () => {
 	parseInt(day);
 	parseInt(year);
 	if ( month <= 12 && day <= 31 && year <= 2050 ) {
-		console.log('true');
 		return true;
 	} else {
-		console.log('false');
 		return false;
 	}
 }
-dateClass[0].addEventListener('keyup', dateNumbers);
+if ( !dateArray.length === 0 ) {
+	dateClass[0].addEventListener('keyup', dateNumbers);
+}
 
 //fields missing
 const alert = () => {
@@ -517,21 +517,6 @@ const fileSize = () => {
 	}
 }
 
-//submit function
-const submitForm = () => {
-	validate();
-	const container = $(event.target).parent().parent();
-	let finalValidation = container.find('input.invalid, select.invalid').toArray();
-	if ( finalValidation.length == 0 ) {
-		removeAlert();
-		window.location.href = "./short-term-application-confirm";
-		return true;
-	} else {
-		alert();
-		console.log(finalValidation);
-	}
-}
-
 //confirmation functions
 const confirmation = () => {
 	let urlPart = window.location.pathname;
@@ -544,13 +529,30 @@ const confirmation = () => {
 			console.log(number);
 		}
 	}
+	console.log('this should be working');
 }
 if ( window.location.pathname === 'individual/short-term-application-confirm' ) {
 	confirmation();
 }
 
+//submit function
+const submitForm = () => {
+	validate();
+	const container = $(event.target).parent().parent();
+	let finalValidation = container.find('input.invalid, select.invalid').toArray();
+	if ( finalValidation.length === 0 ) {
+		removeAlert();
+		window.location.href = "./short-term-application-confirm";
+	} else {
+		alert();
+		console.log(finalValidation);
+	}
+}
+
 const form = document.getElementById('form');
-form.addEventListener("submit", submitForm, true);
+if ( form ) {
+	form.addEventListener("submit", submitForm, true);
+}
 
 
 
