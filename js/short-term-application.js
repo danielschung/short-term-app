@@ -519,11 +519,10 @@ const fileSize = () => {
 
 //confirmation functions
 const confirmation = () => {
-	let urlPart = window.location.pathname;
+	let urlPart = window.location.href;
 	for (let i = 0; i < urlPart.length; i++) {
 		if ( urlPart[i] === '=' ) {
-			// let number = urlPart.slice(i+1);
-			let number = url.searchParams.get('confirmationNumber');
+			let number = urlPart.slice(i+1);
 			let numberBlock = document.getElementById('numberBlock');
 			let codeBlock = `${number}`;
 			numberBlock.insertAdjacentHTML('beforeend',codeBlock);
@@ -531,9 +530,8 @@ const confirmation = () => {
 		}
 	}
 }
-if ( window.location.pathname === 'individual/short-term-application-confirm' ) {
-	confirmation();
-}
+
+document.onload = confirmation();
 
 //submit function
 const submitForm = () => {

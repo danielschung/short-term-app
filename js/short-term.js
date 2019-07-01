@@ -582,24 +582,21 @@ var fileSize = function fileSize() {
 
 
 var confirmation = function confirmation() {
-  var urlPart = window.location.pathname;
-
-  for (var i = 0; i < urlPart.length; i++) {
-    if (urlPart[i] === '=') {
-      // let number = urlPart.slice(i+1);
-      var number = url.searchParams.get('confirmationNumber');
-      var numberBlock = document.getElementById('numberBlock');
-      var codeBlock = "".concat(number);
-      numberBlock.insertAdjacentHTML('beforeend', codeBlock);
-      console.log(number);
-    }
-  }
+  // let urlPart = window.location.pathname;
+  // for (let i = 0; i < urlPart.length; i++) {
+  // 	if ( urlPart[i] === '.' ) {
+  // 		let number = urlPart.slice(i+1);
+  // 		let numberBlock = document.getElementById('numberBlock');
+  // 		let codeBlock = `${number}`;
+  // 		numberBlock.insertAdjacentHTML('beforeend',codeBlock);
+  // 		console.log(number);
+  // 	}
+  // }
+  var url = window.location.href;
+  console.log(url);
 };
 
-if (window.location.pathname === 'individual/short-term-application-confirm') {
-  confirmation();
-} //submit function
-
+document.onload = confirmation(); //submit function
 
 var submitForm = function submitForm() {
   validate();
