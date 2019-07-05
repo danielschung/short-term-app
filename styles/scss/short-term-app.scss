@@ -252,24 +252,23 @@ form#form {
 
 			//input specific styling (widths)
 
+			input.dependent-names,
 			input#applicant-first-name,
 			input#applicant-last-name,
 			input#spouse-first-name,
-			input#spouse-last-name,
-			input#dependent-first-name,
-			input#dependent-last-name {max-width:170px;}
+			input#spouse-last-name {max-width:170px;}
 
+			input.dependent-MI,
 			input#applicant-MI,
-			input#spouse-MI,
-			input#dependent-MI, {max-width:67px;}
+			input#spouse-MI {max-width:67px;}
 
+			input.dependent-SSN,
 			input#applicant-SSN,
-			input#spouse-SSN,
-			input#dependent-SSN {max-width:145px;}
+			input#spouse-SSN {max-width:145px;}
 
+			input.dependent-birthday,
 			input#applicant-birthday,
 			input#spouse-birthday,
-			input#dependent-birthday,
 			input#applicant-birthday-authorize {max-width:149px;}
 
     		div.radio {
@@ -299,7 +298,7 @@ form#form {
 
     		select#applicant-gender,
     		select#spouse-gender,
-    		select#dependent-gender {width:177px;}
+    		select.dependent-gender {width:177px;}
 
     		input#applicant-address {max-width:370px;}
 
@@ -322,21 +321,21 @@ form#form {
 
     		input#applicant-age,
     		input#spouse-age,
-    		input#dependent-age {max-width:102px;}
+    		input.dependent-age {max-width:102px;}
 
     		input#applicant-height,
     		input#applicant-weight,
     		input#spouse-height,
     		input#spouse-weight,
-    		input#dependent-height,
-    		input#dependent-weight {max-width:106px;}
+    		input.dependent-height,
+    		input.dependent-weight {max-width:106px;}
 
     		input#applicant-pcp-first-name,
     		input#applicant-pcp-last-name,
     		input#spouse-pcp-first-name,
     		input#spouse-pcp-last-name,
-    		input#dependent-pcp-first-name,
-    		input#dependent-pcp-last-name, {max-width:300px;}
+    		input.dependent-pcp-first-name,
+    		input.dependent-pcp-last-name, {max-width:300px;}
 
     		input#agent-name,
     		input#agent-email {max-width:379px;}
