@@ -69,7 +69,7 @@
                     id="applicant-birthday" name="Request.Applicant.Birthdate" class="date"
                     onfocus="(this.placeholder='MM/DD/YYYY')"
                     onblur="(this.placeholder='Birthday')"
-                    onkeyup="automask();"
+                    onkeyup="automask();calculateAge();"
                     minlength="8" maxlength="10">
 
                     <select required id="applicant-gender" value="" class="purple-format" name="Request.Applicant.Sex">
@@ -135,7 +135,7 @@
                     <input placeholder="Prior Last Name" id="applicant-prior-last-name" name="Request.Applicant.PriorLastName"minlength="1" maxlength="32" type="text" class="hide optional">
 
                     <p class="header">Health Information</p>
-                    <input type="text" placeholder="Age" required id="applicant-age"name="Request.Applicant.Age" class="age"
+                    <input type="hidden" placeholder="Age" required id="applicant-age" name="Request.Applicant.Age" class="age"
                     onkeyup="automask();"
                     minlength="1" maxlength="3">
 
@@ -284,7 +284,7 @@
                             id="spouse-birthday" name="Request.Spouse.Birthdate" class="date"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Birthday')"
-                            onkeyup="automask();"
+                            onkeyup="automask();calculateAge();"
                             minlength="8" maxlength="10"/>
 
                             <select required id="spouse-gender" value="" class="purple-format" name="Request.Spouse.Sex">
@@ -294,7 +294,7 @@
                             </select>
 
                             <p class="header">Health Information</p>
-                            <input type="text" placeholder="Age" required
+                            <input type="hidden" placeholder="Age" required
                             id="spouse-age" name="Request.Spouse.Age" class="age"
                             onkeyup="automask();"
                             minlength="1" maxlength="3"/>
@@ -385,7 +385,7 @@
 
                     <div id="dependent-block">
                         <!-- <div class="codeBlock">
-                            <p class="header">Dependent Personal Information</p>
+                            <p class="header">Dependent ${depNumUI}  Personal Information</p>
 
                             <input type="text" placeholder="First Name" required id="dependent-first-name"
                             name="Request.Dependents${depNum}.FirstName"
@@ -407,7 +407,7 @@
                             name="Request.Dependents${depNum}.Birthdate"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Birthday')"
-                            onkeyup="automask();"
+                            onkeyup="automask();calculateAge();checkAgeSignature();"
                             minlength="8" maxlength="10">
 
                             <select required id="dependent-gender" value="" class="purple-format"
@@ -418,7 +418,7 @@
                             </select>
 
                             <p class="header">Health Information</p>
-                            <input type="text" placeholder="Age" required id="dependent-age" class="age"
+                            <input type="hidden" placeholder="Age" required id="dependent-age" class="age"
                             name="Request.Dependents${depNum}.Age"
                             onkeyup="automask();" minlength="1" maxlength="3">
 
@@ -692,9 +692,9 @@
 
                     <div id="dependent-signature-block">
                         <!-- <div class="codeBlock">
-                            <input type="text" placeholder="Signature of Dependent (ONLY if to be insured and 18 years or older)" required
-                            id="dependent-agreement-signature"
-                            name="Request.Dependents${depNum}.AgreementSignature" minlenght="2" maxlength="128"/>
+                            <input type="text" placeholder="Signature of Dependent ${depNumUI} (ONLY if to be insured and 18 years or older)" required
+                            id="dependent-agreement-signature" class="signature"
+                            name="Request.Dependents${depNum}.AgreementSignature" minlength="2" maxlength="128"/>
                             <input type="text" placeholder="Date of Sign" required
                             id="dependent-agreement-signature-date"
                             name="Request.Dependents${depNum}.AgreementSignatureDate" class="date"
@@ -751,7 +751,7 @@
                     <div id="spouse-signature-block-2">
                         <!-- <div class="codeBlock2">
                             <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="Request.Spouse.AuthorizationSignature" minlength="2" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="spouse-authorization-signature-date" class="date"
+                            <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="Request.Spouse.AuthorizationSignatureDate" class="date"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
                             onkeyup="automask();"
@@ -761,7 +761,7 @@
 
                     <div id="dependent-signature-block-2">
                         <!-- <div class="codeBlock2">
-                            <input type="text" placeholder="Signature of Dependent" required id="dependent-authorization-signature"
+                            <input type="text" placeholder="Signature of Dependent ${depNumUI}" required id="dependent-authorization-signature"
                             name="Request.Dependents${depNum}.AuthorizationSignature" minlength="2" maxlength="128">
                             <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date"
                             name="Request.Dependents${depNum}.AuthorizationSignatureDate" class="date"
@@ -850,7 +850,7 @@
                             minlength="1" maxlength="256"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
-                            <input type="text" placeholder="Producer Signature" required
+                            <input type="text" placeholder="Agent Signature" required
                             id="producer-signature" name="Request.Agent.Signature"
                             minlength="2" maxlength="128"/>
 
@@ -901,7 +901,7 @@
     <!-- when building ../js/jquery.min.js -->
     <script src="./js/jquery.min.js"></script>
     <!-- when building change to        ../js/short-term.min.js -->
-    <script type="text/javascript" src="./js/short-term-application.js"></script>
+    <script type="text/javascript" src="./js/short-term.min.js"></script>
     <script type="text/javascript" src="./js/mask.min.js"></script>
 </body>
 </html>
