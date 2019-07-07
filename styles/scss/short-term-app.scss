@@ -304,7 +304,7 @@ form#form {
 
     		input#applicant-city {max-width:205px;}
 
-    		select#applicant-state {max-width:86px;}
+    		select#applicant-state {max-width:120px;}
 
     		input#applicant-zipcode {max-width:108px;}
 
@@ -496,7 +496,7 @@ form#form {
 
     		input#applicant-agreement-signature,
     		input#spouse-agreement-signature,
-    		input#dependent-agreement-signature,
+    		input.dependent-signature,
     		input#spouse-authorization-signature,
     		input#dependent-authorization-signature,
     		input#applicant-authorization-signature,
@@ -507,7 +507,7 @@ form#form {
 
     		input#applicant-agreement-signature-date,
     		input#spouse-agreement-signature-date,
-    		input#dependent-agreement-signature-date,
+    		input.dependent-signature-date,
     		input#spouse-authorization-signature-date,
     		input#dependent-authorization-signature-date,
     		input#applicant-authorization-signature-date {max-width:147px;}

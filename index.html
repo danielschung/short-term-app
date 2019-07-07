@@ -693,11 +693,11 @@
                     <div id="dependent-signature-block">
                         <!-- <div class="codeBlock">
                             <input type="text" placeholder="Signature of Dependent ${depNumUI} (ONLY if to be insured and 18 years or older)"
-                            id="dependent-agreement-signature" class="signature"
+                            id="dependent${depID}-signature" class="signature dependent-signature"
                             name="Request.Dependents${depNum}.AgreementSignature" minlength="2" maxlength="128" required />
                             <input type="text" placeholder="Date of Sign"
-                            id="dependent-agreement-signature-date"
-                            name="Request.Dependents${depNum}.AgreementSignatureDate" class="date"
+                            id="dependent${depID}-signature-date"
+                            name="Request.Dependents${depNum}.AgreementSignatureDate" class="date dependent-signature-date"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
                             onkeyup="automask();"
