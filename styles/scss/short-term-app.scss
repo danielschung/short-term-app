@@ -474,7 +474,8 @@ form#form {
 
     		input#coverage-effective-date {max-width:203px;}
 
-    		div.disclaimer-text {
+    		div.disclaimer-text,
+    		div.non-discrimination-text {
     			border:1px solid $light-grey;
     			height:310px;
     			margin-bottom:30px;
@@ -483,15 +484,25 @@ form#form {
     			p {
     				color:$black;
     				font-size:12px;
-    				margin:20px auto 0 auto;
+    				margin:5px auto 0 auto;
 					width:98%;
     			}
 
     			p.bullet {
-					margin:20px auto 0 auto;
+					margin:5px auto 0 auto;
 					width:95%;
 				}
 
+				ul {
+
+					li {
+						color:$black;
+	    				font-size:12px;
+	    				margin:0px 0;
+						width:98%;
+						list-style-type:none;
+					}
+				}
     		}
 
     		input#applicant-agreement-signature,
