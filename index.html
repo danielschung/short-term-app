@@ -761,9 +761,9 @@
 
                     <div id="dependent-signature-block-2">
                         <!-- <div class="codeBlock2">
-                            <input type="text" placeholder="Signature of Dependent ${depNumUI}" required id="dependent-authorization-signature"
+                            <input type="text" placeholder="Signature of Dependent ${depNumUI}" required id="dependent${depID}-authorization-signature"
                             name="Request.Dependents${depNum}.AuthorizationSignature" minlength="2" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="dependent-authorization-signature-date"
+                            <input type="text" placeholder="Date of Sign" required id="dependent${depID}-authorization-signature-date"
                             name="Request.Dependents${depNum}.AuthorizationSignatureDate" class="date"
                                 onfocus="(this.placeholder='MM/DD/YYYY')"
                                 onblur="(this.placeholder='Date of Sign')"
@@ -935,7 +935,7 @@
     <!-- when building ../js/jquery.min.js -->
     <script src="./js/jquery.min.js"></script>
     <!-- when building change to        ../js/short-term.min.js -->
-    <script type="text/javascript" src="./js/short-term-application.js"></script>
+    <script type="text/javascript" src="./js/short-term.min.js"></script>
     <script type="text/javascript" src="./js/mask.min.js"></script>
 </body>
 </html>
