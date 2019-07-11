@@ -191,14 +191,14 @@ const checkAgeSignature = () => {
 	let signature2Array = signatures2.toArray();
 	for (let i = 0; i < dependentBlocks.length; i++) {
 		if ( dependentBlocks[i].value <= 18 ) {
-			$(signatureArray[i]).children('input').addClass('optional');
+			$(signatureArray[i]).children('input').addClass('optional hidden');
 			$(signatureArray[i]).children('input').prop('required',false);
-			$(signature2Array[i]).children('input').addClass('optional');
+			$(signature2Array[i]).children('input').addClass('optional hidden');
 			$(signature2Array[i]).children('input').prop('required',false);
 		} else {
-			$(signatureArray[i]).children('input').removeClass('optional');
+			$(signatureArray[i]).children('input').removeClass('optional hidden');
 			$(signatureArray[i]).children('input').prop('required',true);
-			$(signature2Array[i]).children('input').removeClass('optional');
+			$(signature2Array[i]).children('input').removeClass('optional hidden');
 			$(signature2Array[i]).children('input').prop('required',true);
 		}
 	}
@@ -407,25 +407,27 @@ const validate = () => {
 		}
 	}
 	validateRadio();
-	//validate dependent signatures
-	const emptySignature = () => {
-		let signature = $('#dependent-signature-block').children().find('input.optional').toArray();
-		let signature2 = $('#dependent-signature-block-2').children().find('input.optional').toArray();
-		for (let i = 0; i < signature.length; i++) {
-			let value = signature[i].value;
-			if ( value == '' ) {
-				signature[i].value = '[input intenionally blank due to < 18 yrs old]';
-			}
-		}
-		for (let i = 0; i < signature2.length; i++) {
-			let value = signature2[i].value;
-			if ( value == '' ) {
-				signature2[i].value = '[input intenionally blank due to < 18 yrs old]';
-			}
-		}
-	}
-	emptySignature();
+
+	// //validate dependent signatures
+	// const emptySignature = () => {
+	// 	let signature = $('#dependent-signature-block').children().find('input.optional').toArray();
+	// 	let signature2 = $('#dependent-signature-block-2').children().find('input.optional').toArray();
+	// 	for (let i = 0; i < signature.length; i++) {
+	// 		let value = signature[i].value;
+	// 		if ( value == '' ) {
+	// 			signature[i].value = '[input intenionally blank due to < 18 yrs old]';
+	// 		}
+	// 	}
+	// 	for (let i = 0; i < signature2.length; i++) {
+	// 		let value = signature2[i].value;
+	// 		if ( value == '' ) {
+	// 			signature2[i].value = '[input intenionally blank due to < 18 yrs old]';
+	// 		}
+	// 	}
+	// }
+	// emptySignature();
 	// final section check
+	
 	let empty = container.find('input.invalid, select.invalid').toArray();
 	if ( empty.length == 0 ) {
 		removeAlert();

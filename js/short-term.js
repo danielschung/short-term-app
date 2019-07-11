@@ -210,14 +210,14 @@ var checkAgeSignature = function checkAgeSignature() {
 
   for (var i = 0; i < dependentBlocks.length; i++) {
     if (dependentBlocks[i].value <= 18) {
-      $(signatureArray[i]).children('input').addClass('optional');
+      $(signatureArray[i]).children('input').addClass('optional hidden');
       $(signatureArray[i]).children('input').prop('required', false);
-      $(signature2Array[i]).children('input').addClass('optional');
+      $(signature2Array[i]).children('input').addClass('optional hidden');
       $(signature2Array[i]).children('input').prop('required', false);
     } else {
-      $(signatureArray[i]).children('input').removeClass('optional');
+      $(signatureArray[i]).children('input').removeClass('optional hidden');
       $(signatureArray[i]).children('input').prop('required', true);
-      $(signature2Array[i]).children('input').removeClass('optional');
+      $(signature2Array[i]).children('input').removeClass('optional hidden');
       $(signature2Array[i]).children('input').prop('required', true);
     }
   }
@@ -463,30 +463,25 @@ var validate = function validate() {
     }
   };
 
-  validateRadio(); //validate dependent signatures
-
-  var emptySignature = function emptySignature() {
-    var signature = $('#dependent-signature-block').children().find('input.optional').toArray();
-    var signature2 = $('#dependent-signature-block-2').children().find('input.optional').toArray();
-
-    for (var _i5 = 0; _i5 < signature.length; _i5++) {
-      var value = signature[_i5].value;
-
-      if (value == '') {
-        signature[_i5].value = '[input intenionally blank due to < 18 yrs old]';
-      }
-    }
-
-    for (var _i6 = 0; _i6 < signature2.length; _i6++) {
-      var _value = signature2[_i6].value;
-
-      if (_value == '') {
-        signature2[_i6].value = '[input intenionally blank due to < 18 yrs old]';
-      }
-    }
-  };
-
-  emptySignature(); // final section check
+  validateRadio(); // //validate dependent signatures
+  // const emptySignature = () => {
+  // 	let signature = $('#dependent-signature-block').children().find('input.optional').toArray();
+  // 	let signature2 = $('#dependent-signature-block-2').children().find('input.optional').toArray();
+  // 	for (let i = 0; i < signature.length; i++) {
+  // 		let value = signature[i].value;
+  // 		if ( value == '' ) {
+  // 			signature[i].value = '[input intenionally blank due to < 18 yrs old]';
+  // 		}
+  // 	}
+  // 	for (let i = 0; i < signature2.length; i++) {
+  // 		let value = signature2[i].value;
+  // 		if ( value == '' ) {
+  // 			signature2[i].value = '[input intenionally blank due to < 18 yrs old]';
+  // 		}
+  // 	}
+  // }
+  // emptySignature();
+  // final section check
 
   var empty = container.find('input.invalid, select.invalid').toArray();
 
