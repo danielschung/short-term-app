@@ -49,6 +49,11 @@ input::placeholder { //fixes safari placeholder text
     form#form fieldset div.expanded input:focus::-moz-placeholder {
 		color:$light-grey;
 	}
+	input#files {
+		padding:0;
+		line-height:1rem;
+		margin:30px 0;
+	}
 }
 select {
 	-webkit-appearance:none;  /*Removes default chrome and safari style*/
@@ -349,7 +354,9 @@ form#form {
     		input#producer-signature {max-width:631px;}
     		input#producer-signature-date {max-width:147px;}
 
-    		input#files {max-width:730px;}
+    		input#files {
+    			max-width:730px;
+    		}
 
     		div.question {
     			border:1px solid $light-grey;
@@ -409,7 +416,7 @@ form#form {
 						border-radius:5px;
 						display:inline-block;
 						line-height:0;
-						padding:25px 19px;
+						// padding:25px 19px;
 					}
 
 					select {
@@ -562,11 +569,6 @@ form#form {
 		}
 	}
 
-	input#files {
-		line-height:1rem;
-		margin-top:30px;
-		padding-top:14px;
-	}
 	select#final-download {max-width:500px;}
 
 	input#submit {
