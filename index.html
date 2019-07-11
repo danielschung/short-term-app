@@ -12,7 +12,7 @@
     <!-- when building change to ../css/ha.2019.css -->
     <link rel="stylesheet" href="./styles/css/ha.2019.css">
     <!-- when building change to ../css/short-term.min.css -->
-    <link rel="stylesheet" href="./styles/css/short-term.min.css">
+    <link rel="stylesheet" href="./styles/css/short-term-app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
 
 </head>
@@ -762,9 +762,10 @@
                     <div id="dependent-signature-block-2">
                         <!-- <div class="codeBlock2">
                             <input type="text" placeholder="Signature of Dependent ${depNumUI}" required id="dependent${depID}-authorization-signature"
+                            class="dependent-signature"
                             name="Request.Dependents${depNum}.AuthorizationSignature" minlength="2" maxlength="128">
-                            <input type="text" placeholder="Date of Sign" required id="dependent${depID}-authorization-signature-date"
-                            name="Request.Dependents${depNum}.AuthorizationSignatureDate" class="date"
+                            <input type="text" placeholder="Date of Sign" required id="dependent${depID}-authorization-signature-date" 
+                            name="Request.Dependents${depNum}.AuthorizationSignatureDate" class="date dependent-signature-date"
                                 onfocus="(this.placeholder='MM/DD/YYYY')"
                                 onblur="(this.placeholder='Date of Sign')"
                                 onkeyup="automask();"
@@ -935,7 +936,7 @@
     <!-- when building ../js/jquery.min.js -->
     <script src="./js/jquery.min.js"></script>
     <!-- when building change to        ../js/short-term.min.js -->
-    <script type="text/javascript" src="./js/short-term.min.js"></script>
+    <script type="text/javascript" src="./js/short-term-application.js"></script>
     <script type="text/javascript" src="./js/mask.min.js"></script>
 </body>
 </html>
