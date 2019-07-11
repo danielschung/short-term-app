@@ -210,14 +210,14 @@ var checkAgeSignature = function checkAgeSignature() {
 
   for (var i = 0; i < dependentBlocks.length; i++) {
     if (dependentBlocks[i].value <= 18) {
-      $(signatureArray[i]).children('input').addClass('hidden');
+      $(signatureArray[i]).children('input').addClass('optional');
       $(signatureArray[i]).children('input').prop('required', false);
-      $(signature2Array[i]).children('input').addClass('hidden');
+      $(signature2Array[i]).children('input').addClass('optional');
       $(signature2Array[i]).children('input').prop('required', false);
     } else {
-      $(signatureArray[i]).children('input').removeClass('hidden');
+      $(signatureArray[i]).children('input').removeClass('optional');
       $(signatureArray[i]).children('input').prop('required', true);
-      $(signature2Array[i]).children('input').removeClass('hidden');
+      $(signature2Array[i]).children('input').removeClass('optional');
       $(signature2Array[i]).children('input').prop('required', true);
     }
   }
@@ -463,31 +463,39 @@ var validate = function validate() {
     }
   };
 
-  validateRadio(); // //validate dependent signatures
-  // const emptySignature = () => {
-  // 	let signatureBoxes = $('div#dependent-signature-block').children();
-  // 	let signatureBoxes2 = $('div#dependent-signature-block-2').children();
-  // 	let signatureBoxesArray = signatureBoxes.toArray();
-  // 	let signatureBoxesArray2 = signatureBoxes2.toArray();
-  // 	for (let i = 0; i < signatureBoxesArray.length; i++) {
-  // 		let signature = signatureBoxesArray[i];
-  // 		let value = $(signature).find($('input')).val();
-  // 		if ( value == '' ) {
-  // 			value = 'input intenionally blank due to < 18 yrs old.';
-  // 		} 
-  // 		console.log(value);
-  // 	}
-  // 	for (let i = 0; i < signatureBoxesArray2.length; i++) {
-  // 		let signature = signatureBoxesArray2[i];
-  // 		let value = $(signature).find($('input')).val();
-  // 		if ( value == '' ) {
-  // 			value = 'input intenionally blank due to < 18 yrs old.';
-  // 		} 
-  // 		console.log(value);
-  // 	}
-  // }
-  // emptySignature();
-  //final section check
+  validateRadio(); //validate dependent signatures
+
+  var emptySignature = function emptySignature() {
+    var signatureBoxes = $('div#dependent-signature-block').children();
+    var signatureBoxes2 = $('div#dependent-signature-block-2').children();
+    var signatureBoxesArray = signatureBoxes.toArray();
+    var signatureBoxesArray2 = signatureBoxes2.toArray();
+
+    for (var _i5 = 0; _i5 < signatureBoxesArray.length; _i5++) {
+      var signature = signatureBoxesArray[_i5];
+      var value = $(signature).find($('input')).val();
+
+      if (value == '' && signature.classList.contains('optional')) {
+        value = 'input intenionally blank due to < 18 yrs old.';
+      }
+
+      console.log(value);
+    }
+
+    for (var _i6 = 0; _i6 < signatureBoxesArray2.length; _i6++) {
+      var _signature = signatureBoxesArray2[_i6];
+
+      var _value = $(_signature).find($('input')).val();
+
+      if (_value == '') {
+        _value = 'input intenionally blank due to < 18 yrs old.';
+      }
+
+      console.log(_value);
+    }
+  };
+
+  emptySignature(); // final section check
 
   var empty = container.find('input.invalid, select.invalid').toArray();
 
