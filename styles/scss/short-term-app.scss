@@ -562,7 +562,11 @@ form#form {
 		}
 	}
 
-	input#files {margin-top:30px;}
+	input#files {
+		line-height:1rem;
+		margin-top:30px;
+		padding-top:14px;
+	}
 	select#final-download {max-width:500px;}
 
 	input#submit {
