@@ -210,14 +210,14 @@ var checkAgeSignature = function checkAgeSignature() {
 
   for (var i = 0; i < dependentBlocks.length; i++) {
     if (dependentBlocks[i].value <= 18) {
-      $(signatureArray[i]).children('input').addClass('optional');
+      $(signatureArray[i]).children('input').addClass('hidden');
       $(signatureArray[i]).children('input').prop('required', false);
-      $(signature2Array[i]).children('input').addClass('optional');
+      $(signature2Array[i]).children('input').addClass('hidden');
       $(signature2Array[i]).children('input').prop('required', false);
     } else {
-      $(signatureArray[i]).children('input').removeClass('optional');
+      $(signatureArray[i]).children('input').removeClass('hidden');
       $(signatureArray[i]).children('input').prop('required', true);
-      $(signature2Array[i]).children('input').removeClass('optional');
+      $(signature2Array[i]).children('input').removeClass('hidden');
       $(signature2Array[i]).children('input').prop('required', true);
     }
   }
@@ -247,8 +247,7 @@ var colorize = function colorize() {
 var validate = function validate() {
   //declare constant variables
   var container = $(event.target).parent().parent();
-  var inputs = container.find('input:required, select:required').toArray();
-  console.log(inputs); //validate checkboxes and text inputs (else)
+  var inputs = container.find('input:required, select:required').toArray(); //validate checkboxes and text inputs (else)
 
   var validateCheckBoxes = function validateCheckBoxes() {
     var boxArray = container.find($('input[value="check"]')).toArray();
@@ -464,7 +463,31 @@ var validate = function validate() {
     }
   };
 
-  validateRadio(); //final section check
+  validateRadio(); // //validate dependent signatures
+  // const emptySignature = () => {
+  // 	let signatureBoxes = $('div#dependent-signature-block').children();
+  // 	let signatureBoxes2 = $('div#dependent-signature-block-2').children();
+  // 	let signatureBoxesArray = signatureBoxes.toArray();
+  // 	let signatureBoxesArray2 = signatureBoxes2.toArray();
+  // 	for (let i = 0; i < signatureBoxesArray.length; i++) {
+  // 		let signature = signatureBoxesArray[i];
+  // 		let value = $(signature).find($('input')).val();
+  // 		if ( value == '' ) {
+  // 			value = 'input intenionally blank due to < 18 yrs old.';
+  // 		} 
+  // 		console.log(value);
+  // 	}
+  // 	for (let i = 0; i < signatureBoxesArray2.length; i++) {
+  // 		let signature = signatureBoxesArray2[i];
+  // 		let value = $(signature).find($('input')).val();
+  // 		if ( value == '' ) {
+  // 			value = 'input intenionally blank due to < 18 yrs old.';
+  // 		} 
+  // 		console.log(value);
+  // 	}
+  // }
+  // emptySignature();
+  //final section check
 
   var empty = container.find('input.invalid, select.invalid').toArray();
 

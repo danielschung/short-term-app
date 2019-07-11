@@ -250,6 +250,10 @@ form#form {
 				color:$light-grey;
 			}
 
+			input.hidden {
+				display:none;
+			}
+
 			//input specific styling (widths)
 
 			input.dependent-names,
