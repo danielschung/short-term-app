@@ -560,7 +560,7 @@ const confirmation = () => {
 	}
 }
 
-document.onload = confirmation();
+window.onload = confirmation();
 
 //submit function
 const submitForm = () => {

@@ -630,7 +630,7 @@ var confirmation = function confirmation() {
   }
 };
 
-document.onload = confirmation(); //submit function
+window.onload = confirmation(); //submit function
 
 var submitForm = function submitForm() {
   validate();
