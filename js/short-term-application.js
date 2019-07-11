@@ -409,25 +409,19 @@ const validate = () => {
 	validateRadio();
 	//validate dependent signatures
 	const emptySignature = () => {
-		let signatureBoxes = $('div#dependent-signature-block').children();
-		let signatureBoxes2 = $('div#dependent-signature-block-2').children();
-		let signatureBoxesArray = signatureBoxes.toArray();
-		let signatureBoxesArray2 = signatureBoxes2.toArray();
-		for (let i = 0; i < signatureBoxesArray.length; i++) {
-			let signature = signatureBoxesArray[i];
-			let value = $(signature).find($('input')).val();
-			if ( value == '' && signature.classList.contains('optional') ) {
-				value = 'input intenionally blank due to < 18 yrs old.';
-			} 
-			console.log(value);
-		}
-		for (let i = 0; i < signatureBoxesArray2.length; i++) {
-			let signature = signatureBoxesArray2[i];
-			let value = $(signature).find($('input')).val();
+		let signature = $('#dependent-signature-block').children().find('input.optional').toArray();
+		let signature2 = $('#dependent-signature-block-2').children().find('input.optional').toArray();
+		for (let i = 0; i < signature.length; i++) {
+			let value = signature[i].value;
 			if ( value == '' ) {
-				value = 'input intenionally blank due to < 18 yrs old.';
-			} 
-			console.log(value);
+				signature[i].value = '[input intenionally blank due to < 18 yrs old]';
+			}
+		}
+		for (let i = 0; i < signature2.length; i++) {
+			let value = signature2[i].value;
+			if ( value == '' ) {
+				signature2[i].value = '[input intenionally blank due to < 18 yrs old]';
+			}
 		}
 	}
 	emptySignature();
