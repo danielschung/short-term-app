@@ -209,12 +209,16 @@ var checkAgeSignature = function checkAgeSignature() {
   var signature2Array = signatures2.toArray();
 
   for (var i = 0; i < dependentBlocks.length; i++) {
-    if (dependentBlocks[i].value <= 18) {
+    console.log(dependentBlocks[i].value);
+
+    if (dependentBlocks[i].value < 18) {
       // let remove = $(`div#dependent-signature-block div.codeBlock:eq(${i})`);
       // $(remove).remove();
       $(signatureArray[i]).children('input').addClass('optional');
+      $(signatureArray[i]).children('input').removeClass('invalid');
       $(signatureArray[i]).children('input').prop('required', false);
       $(signature2Array[i]).children('input').addClass('optional');
+      $(signature2Array[i]).children('input').removeClass('invalid');
       $(signature2Array[i]).children('input').prop('required', false);
     } else {
       $(signatureArray[i]).children('input').removeClass('optional');
@@ -222,6 +226,8 @@ var checkAgeSignature = function checkAgeSignature() {
       $(signature2Array[i]).children('input').removeClass('optional');
       $(signature2Array[i]).children('input').prop('required', true);
     }
+
+    var blankInput = document.getElementById('dependent-signature-block').firstElementChild.firstElementChild;
   }
 };
 
@@ -470,30 +476,54 @@ var validate = function validate() {
   validateRadio(); //validate dependent signatures
 
   var emptySignature = function emptySignature() {
-    var signature = $('#dependent-signature-block').children().find('input.optional.dependent-signature').toArray();
-    var date = $('#dependent-signature-block').children().find('input.optional.dependent-signature-date').toArray();
-    var signature2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature').toArray();
-    var date2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature-date').toArray();
+    var signature = $('#dependent-signature-block').children().find('input.dependent-signature').toArray();
+    var date = $('#dependent-signature-block').children().find('input.dependent-signature-date').toArray();
+    var signature2 = $('#dependent-signature-block-2').children().find('input.dependent-signature').toArray();
+    var date2 = $('#dependent-signature-block-2').children().find('input.dependent-signature-date').toArray();
+    var dependentBlocks = $('#dependent-block').find('input[type=hidden]').toArray();
+
+    var today = function today() {
+      var getToday = today.getDate();
+      console.log(getToday);
+    };
 
     for (var _i5 = 0; _i5 < signature.length; _i5++) {
       var value = signature[_i5].value;
 
-      if (value == '') {
-        signature[_i5].value = 'signature intenionally blank due to less than 18yrs old';
+      if (value == '' && dependentBlocks[_i5].value < 18) {
+        signature[_i5].value = 'signature intentionally blank due to less than 18yrs old';
         date[_i5].value = '00/00/0000';
         signature[_i5].style.color = '#E3E3E3';
         date[_i5].style.color = '#E3E3E3';
+      } else if (dependentBlocks[_i5].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old') {
+        signature[_i5].value = '';
+        date[_i5].value = '';
+        signature[_i5].style.color = '#5844A7';
+        date[_i5].style.color = '#5844A7';
+
+        signature[_i5].classList.add('invalid');
+
+        date[_i5].classList.add('invalid');
       }
     }
 
     for (var _i6 = 0; _i6 < signature2.length; _i6++) {
       var _value = signature2[_i6].value;
 
-      if (_value == '') {
-        signature2[_i6].value = 'signature intenionally blank due to less than 18yrs old';
+      if (_value == '' && dependentBlocks[_i6].value < 18) {
+        signature2[_i6].value = 'signature intentionally blank due to less than 18yrs old';
         date2[_i6].value = '00/00/0000';
         signature2[_i6].style.color = '#E3E3E3';
         date2[_i6].style.color = '#E3E3E3';
+      } else if (dependentBlocks[_i6].value >= 18 && _value == 'signature intentionally blank due to less than 18yrs old') {
+        signature2[_i6].value = '';
+        date2[_i6].value = '';
+        signature2[_i6].style.color = '#5844A7';
+        date2[_i6].style.color = '#5844A7';
+
+        signature2[_i6].classList.add('invalid');
+
+        date2[_i6].classList.add('invalid');
       }
     }
   };

@@ -189,12 +189,15 @@ const checkAgeSignature = () => {
 	let signatureArray = signatures.toArray();
 	let signature2Array = signatures2.toArray();
 	for (let i = 0; i < dependentBlocks.length; i++) {
-		if ( dependentBlocks[i].value <= 18 ) {
+		console.log(dependentBlocks[i].value);
+		if ( dependentBlocks[i].value < 18 ) {
 			// let remove = $(`div#dependent-signature-block div.codeBlock:eq(${i})`);
 			// $(remove).remove();
 			$(signatureArray[i]).children('input').addClass('optional');
+			$(signatureArray[i]).children('input').removeClass('invalid');
 			$(signatureArray[i]).children('input').prop('required',false);
 			$(signature2Array[i]).children('input').addClass('optional');
+			$(signature2Array[i]).children('input').removeClass('invalid');
 			$(signature2Array[i]).children('input').prop('required',false);
 		} else {
 			$(signatureArray[i]).children('input').removeClass('optional');
@@ -202,6 +205,7 @@ const checkAgeSignature = () => {
 			$(signature2Array[i]).children('input').removeClass('optional');
 			$(signature2Array[i]).children('input').prop('required',true);
 		}
+		let blankInput = document.getElementById('dependent-signature-block').firstElementChild.firstElementChild;
 	}
 }
 
@@ -414,27 +418,48 @@ const validate = () => {
 
 	//validate dependent signatures
 	const emptySignature = () => {
-		let signature = $('#dependent-signature-block').children().find('input.optional.dependent-signature').toArray();
-		let date = $('#dependent-signature-block').children().find('input.optional.dependent-signature-date').toArray();
-		let signature2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature').toArray();
-		let date2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature-date').toArray();
+		let signature = $('#dependent-signature-block').children().find('input.dependent-signature').toArray();
+		let date = $('#dependent-signature-block').children().find('input.dependent-signature-date').toArray();
+		let signature2 = $('#dependent-signature-block-2').children().find('input.dependent-signature').toArray();
+		let date2 = $('#dependent-signature-block-2').children().find('input.dependent-signature-date').toArray();
+		let dependentBlocks = $('#dependent-block').find('input[type=hidden]').toArray();
+		const today = () => {
+			let getToday = today.getDate();
+			console.log(getToday);
+		}
 		for (let i = 0; i < signature.length; i++) {
 			let value = signature[i].value;
-			if ( value == '' ) {
-				signature[i].value = 'signature intenionally blank due to less than 18yrs old';
+			if ( value == '' && dependentBlocks[i].value < 18 ) {
+				signature[i].value = 'signature intentionally blank due to less than 18yrs old';
 				date[i].value = '00/00/0000';
 				signature[i].style.color = '#E3E3E3';
 				date[i].style.color = '#E3E3E3';
+			} else if ( dependentBlocks[i].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old' ) {
+				signature[i].value = '';
+				date[i].value = '';
+				signature[i].style.color = '#5844A7';
+				date[i].style.color = '#5844A7';
+				signature[i].classList.add('invalid');
+				date[i].classList.add('invalid');
 			}
+			
 		}
 		for (let i = 0; i < signature2.length; i++) {
 			let value = signature2[i].value;
-			if ( value == '' ) {
-				signature2[i].value = 'signature intenionally blank due to less than 18yrs old';
+			if ( value == '' && dependentBlocks[i].value < 18 ) {
+				signature2[i].value = 'signature intentionally blank due to less than 18yrs old';
 				date2[i].value = '00/00/0000';
 				signature2[i].style.color = '#E3E3E3';
 				date2[i].style.color = '#E3E3E3';
+			} else if ( dependentBlocks[i].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old' ) {
+				signature2[i].value = '';
+				date2[i].value = '';
+				signature2[i].style.color = '#5844A7';
+				date2[i].style.color = '#5844A7';
+				signature2[i].classList.add('invalid');
+				date2[i].classList.add('invalid');
 			}
+			
 		}
 	}
 	emptySignature();
@@ -594,22 +619,3 @@ const form = document.getElementById('form');
 if ( form ) {
 	form.addEventListener("submit", submitForm, true);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
