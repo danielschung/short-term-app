@@ -406,8 +406,8 @@
                             <input type="text" placeholder="Birthday" required id="dependent${depID}-birthday" class="date dependent-birthday"
                             name="Request.Dependents${depNum}.Birthdate"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
-                            onblur="(this.placeholder='Birthday')"
-                            onkeyup="automask();calculateAge();checkAgeSignature();"
+                            onblur="(this.placeholder='Birthday');checkAgeSignature();"
+                            onkeyup="automask();calculateAge();"
                             minlength="8" maxlength="10">
 
                             <select required id="dependent${depID}-gender" value="" class="purple-format dependent-gender"
