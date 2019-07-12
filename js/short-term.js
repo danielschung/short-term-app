@@ -482,9 +482,22 @@ var validate = function validate() {
     var date2 = $('#dependent-signature-block-2').children().find('input.dependent-signature-date').toArray();
     var dependentBlocks = $('#dependent-block').find('input[type=hidden]').toArray();
 
-    var today = function today() {
-      var getToday = today.getDate();
-      console.log(getToday);
+    var dateOfToday = function dateOfToday() {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      today = mm + '/' + dd + '/' + yyyy;
+      return today;
     };
 
     for (var _i5 = 0; _i5 < signature.length; _i5++) {
@@ -492,7 +505,7 @@ var validate = function validate() {
 
       if (value == '' && dependentBlocks[_i5].value < 18) {
         signature[_i5].value = 'signature intentionally blank due to less than 18yrs old';
-        date[_i5].value = '00/00/0000';
+        date[_i5].value = dateOfToday();
         signature[_i5].style.color = '#E3E3E3';
         date[_i5].style.color = '#E3E3E3';
       } else if (dependentBlocks[_i5].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old') {

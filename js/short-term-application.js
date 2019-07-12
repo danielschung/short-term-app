@@ -423,15 +423,25 @@ const validate = () => {
 		let signature2 = $('#dependent-signature-block-2').children().find('input.dependent-signature').toArray();
 		let date2 = $('#dependent-signature-block-2').children().find('input.dependent-signature-date').toArray();
 		let dependentBlocks = $('#dependent-block').find('input[type=hidden]').toArray();
-		const today = () => {
-			let getToday = today.getDate();
-			console.log(getToday);
+		const dateOfToday = () => {
+			let today = new Date();
+			let dd = today.getDate();
+			let mm = today.getMonth()+1;
+			let yyyy = today.getFullYear();
+			if ( dd < 10 ) {
+				dd = '0'+dd;
+			}
+			if ( mm < 10 ) {
+				mm = '0'+mm;
+			}
+			today = mm+'/'+dd+'/'+yyyy;
+			return today;
 		}
 		for (let i = 0; i < signature.length; i++) {
 			let value = signature[i].value;
 			if ( value == '' && dependentBlocks[i].value < 18 ) {
 				signature[i].value = 'signature intentionally blank due to less than 18yrs old';
-				date[i].value = '00/00/0000';
+				date[i].value = dateOfToday();
 				signature[i].style.color = '#E3E3E3';
 				date[i].style.color = '#E3E3E3';
 			} else if ( dependentBlocks[i].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old' ) {
