@@ -470,15 +470,19 @@ var validate = function validate() {
   validateRadio(); //validate dependent signatures
 
   var emptySignature = function emptySignature() {
-    var signature = $('#dependent-signature-block').children().find('input.optional').toArray();
-    var signature2 = $('#dependent-signature-block-2').children().find('input.optional').toArray();
+    var signature = $('#dependent-signature-block').children().find('input.optional.dependent-signature').toArray();
+    var date = $('#dependent-signature-block').children().find('input.optional.dependent-signature-date').toArray();
+    var signature2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature').toArray();
+    var date2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature-date').toArray();
 
     for (var _i5 = 0; _i5 < signature.length; _i5++) {
       var value = signature[_i5].value;
 
       if (value == '') {
         signature[_i5].value = 'signature intenionally blank due to less than 18yrs old';
+        date[_i5].value = '00/00/0000';
         signature[_i5].style.color = '#E3E3E3';
+        date[_i5].style.color = '#E3E3E3';
       }
     }
 
@@ -487,7 +491,9 @@ var validate = function validate() {
 
       if (_value == '') {
         signature2[_i6].value = 'signature intenionally blank due to less than 18yrs old';
+        date2[_i6].value = '00/00/0000';
         signature2[_i6].style.color = '#E3E3E3';
+        date2[_i6].style.color = '#E3E3E3';
       }
     }
   };

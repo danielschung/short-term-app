@@ -414,20 +414,26 @@ const validate = () => {
 
 	//validate dependent signatures
 	const emptySignature = () => {
-		let signature = $('#dependent-signature-block').children().find('input.optional').toArray();
-		let signature2 = $('#dependent-signature-block-2').children().find('input.optional').toArray();
+		let signature = $('#dependent-signature-block').children().find('input.optional.dependent-signature').toArray();
+		let date = $('#dependent-signature-block').children().find('input.optional.dependent-signature-date').toArray();
+		let signature2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature').toArray();
+		let date2 = $('#dependent-signature-block-2').children().find('input.optional.dependent-signature-date').toArray();
 		for (let i = 0; i < signature.length; i++) {
 			let value = signature[i].value;
 			if ( value == '' ) {
 				signature[i].value = 'signature intenionally blank due to less than 18yrs old';
+				date[i].value = '00/00/0000';
 				signature[i].style.color = '#E3E3E3';
+				date[i].style.color = '#E3E3E3';
 			}
 		}
 		for (let i = 0; i < signature2.length; i++) {
 			let value = signature2[i].value;
 			if ( value == '' ) {
 				signature2[i].value = 'signature intenionally blank due to less than 18yrs old';
+				date2[i].value = '00/00/0000';
 				signature2[i].style.color = '#E3E3E3';
+				date2[i].style.color = '#E3E3E3';
 			}
 		}
 	}
