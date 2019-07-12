@@ -458,7 +458,7 @@ const validate = () => {
 			let value = signature2[i].value;
 			if ( value == '' && dependentBlocks[i].value < 18 ) {
 				signature2[i].value = 'signature intentionally blank due to less than 18yrs old';
-				date2[i].value = '00/00/0000';
+				date2[i].value = dateOfToday();
 				signature2[i].style.color = '#E3E3E3';
 				date2[i].style.color = '#E3E3E3';
 			} else if ( dependentBlocks[i].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old' ) {

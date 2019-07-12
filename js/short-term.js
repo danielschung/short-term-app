@@ -525,7 +525,7 @@ var validate = function validate() {
 
       if (_value == '' && dependentBlocks[_i6].value < 18) {
         signature2[_i6].value = 'signature intentionally blank due to less than 18yrs old';
-        date2[_i6].value = '00/00/0000';
+        date2[_i6].value = dateOfToday();
         signature2[_i6].style.color = '#E3E3E3';
         date2[_i6].style.color = '#E3E3E3';
       } else if (dependentBlocks[_i6].value >= 18 && _value == 'signature intentionally blank due to less than 18yrs old') {
