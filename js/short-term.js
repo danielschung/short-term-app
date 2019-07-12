@@ -22,31 +22,7 @@ var automask = function automask() {
   $('input.num').mask('00');
   $('input.agent-ID').mask('00000');
   $('input.date').mask('00/00/0000');
-}; //date numbers
-
-
-var dateClass = document.getElementsByClassName('date');
-var dateArray = Array.from(dateClass);
-
-var dateNumbers = function dateNumbers() {
-  var value = dateClass[0].value;
-  var month = value.slice(0, 2);
-  var day = value.slice(3, 5);
-  var year = value.slice(6, 10);
-  parseInt(month);
-  parseInt(day);
-  parseInt(year);
-
-  if (month <= 12 && day <= 31 && year <= 2050) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-if (!dateArray.length === 0) {
-  dateClass[0].addEventListener('keyup', dateNumbers);
-} //calculate age
+}; //calculate age
 
 
 var calculateAge = function calculateAge() {
@@ -322,6 +298,24 @@ var validate = function validate() {
   };
 
   validateSSN(); //validate dates
+
+  var dateNumbers = function dateNumbers() {
+    var findDateInput = container.find('input.date');
+    var dateArray = findDateInput.toArray();
+    var value = dateArray[0].value;
+    var month = value.slice(0, 2);
+    var day = value.slice(3, 5);
+    var year = value.slice(6, 10);
+    parseInt(month);
+    parseInt(day);
+    parseInt(year);
+
+    if (month <= 12 && day <= 31 && year <= 2050) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   var validateDates = function validateDates() {
     var thisBox = container.find('input.date');

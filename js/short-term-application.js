@@ -23,27 +23,6 @@ const automask = () => {
 	$('input.date').mask('00/00/0000');
 }
 
-//date numbers
-const dateClass = document.getElementsByClassName('date');
-const dateArray = Array.from(dateClass);
-const dateNumbers = () => {
-	let value = dateClass[0].value;
-	let month = value.slice(0,2);
-	let day = value.slice(3,5);
-	let year = value.slice(6,10);
-	parseInt(month);
-	parseInt(day);
-	parseInt(year);
-	if ( month <= 12 && day <= 31 && year <= 2050 ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-if ( !dateArray.length === 0 ) {
-	dateClass[0].addEventListener('keyup', dateNumbers);
-}
-
 //calculate age
 const calculateAge = () => {
 	let input = document.activeElement.value;
@@ -289,6 +268,22 @@ const validate = () => {
 	}
 	validateSSN();
 	//validate dates
+	const dateNumbers = () => {	
+		let findDateInput = container.find('input.date');
+		let dateArray = findDateInput.toArray();
+		let value = dateArray[0].value;
+		let month = value.slice(0,2);
+		let day = value.slice(3,5);
+		let year = value.slice(6,10);
+		parseInt(month);
+		parseInt(day);
+		parseInt(year);
+		if ( month <= 12 && day <= 31 && year <= 2050 ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	const validateDates = () => {
 		let thisBox = container.find('input.date');
 		let boxArray = thisBox.toArray();
