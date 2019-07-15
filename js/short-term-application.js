@@ -271,7 +271,6 @@ const validate = () => {
 	const validateDates = () => {
 		let thisBox = container.find('input.date');
 		let boxArray = thisBox.toArray();
-		console.log(boxArray);
 		const runLoop = () => {
 			for (let i = 0; i < boxArray.length; i++) {
 				let ids = boxArray[i].id;
@@ -335,6 +334,21 @@ const validate = () => {
 			}
 		}
 	}
+	//validate height
+	const validateHeight = () => {
+		const heightInput = container.find('input.height');
+		let height = heightInput.val();
+		let feet = height.slice(0,1);
+		let inches = height.slice(3,5);
+		parseInt(feet);
+		parseInt(inches);
+		if ( inches > 11 ) {
+			heightInput.addClass('invalid');
+		} else {
+			heightInput.removeClass('invalid');
+		}	
+	}
+	validateHeight();
 	//validate radio buttons
 	const validateRadio = () => {
 		let spouseArray = container.find('input[type=radio][name=add-spouse]').toArray();

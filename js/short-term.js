@@ -302,7 +302,6 @@ var validate = function validate() {
   var validateDates = function validateDates() {
     var thisBox = container.find('input.date');
     var boxArray = thisBox.toArray();
-    console.log(boxArray);
 
     var runLoop = function runLoop() {
       for (var _i2 = 0; _i2 < boxArray.length; _i2++) {
@@ -380,8 +379,25 @@ var validate = function validate() {
         $("input#".concat(_ids4)).addClass('invalid');
       }
     }
-  } //validate radio buttons
+  } //validate height
 
+
+  var validateHeight = function validateHeight() {
+    var heightInput = container.find('input.height');
+    var height = heightInput.val();
+    var feet = height.slice(0, 1);
+    var inches = height.slice(3, 5);
+    parseInt(feet);
+    parseInt(inches);
+
+    if (inches > 11) {
+      heightInput.addClass('invalid');
+    } else {
+      heightInput.removeClass('invalid');
+    }
+  };
+
+  validateHeight(); //validate radio buttons
 
   var validateRadio = function validateRadio() {
     var spouseArray = container.find('input[type=radio][name=add-spouse]').toArray();
