@@ -83,7 +83,7 @@ var addSpouse = function addSpouse() {
 var addSpouseSignature = function addSpouseSignature() {
   var codeBlock = "<div class=\"codeBlock\"> <input type=\"text\" placeholder=\"Signature of Spouse or Civil Union (ONLY if to be insured)\" required id=\"spouse-agreement-signature\" name=\"Request.Spouse.AgreementSignature\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Date of Sign\" required id=\"spouse-agreement-signature-date\" name=\"Request.Spouse.AgreementSignatureDate\" class=\"date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"/> </div>";
   document.getElementById('spouse-signature-block').innerHTML = codeBlock;
-  var codeBlock2 = "<div class=\"codeBlock2\"> <input type=\"text\" placeholder=\"Signature of Spouse or Civil Union\" required id=\"spouse-authorization-signature\" name=\"Request.Spouse.AuthorizationSignature\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Date of Sign\" required id=\"spouse-authorization-signature-date\" name=\"Request.Spouse.AuthorizationSignatureDate\" class=\"date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"> </div>";
+  var codeBlock2 = " <div class=\"codeBlock2\"> <input type=\"text\" placeholder=\"Signature of Spouse or Civil Union\" required id=\"spouse-authorization-signature\" name=\"Request.Spouse.AuthorizationSignature\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Date of Sign\" required id=\"spouse-authorization-signature-date\" name=\"Request.Spouse.AuthorizationSignatureDate\" class=\"date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"> </div>";
   document.getElementById('spouse-signature-block-2').innerHTML = codeBlock2;
 };
 
@@ -160,8 +160,8 @@ var numOfDependents = function numOfDependents() {
       var depNumUI = "".concat(amountArray[i] + 1, " ");
       var depID = "".concat(amountArray[i]);
       var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">Dependent ".concat(depNumUI, "Personal Information</p><input type=\"text\" placeholder=\"First Name\" required id=\"dependent").concat(depID, "-first-name\" class=\"dependent-names\" name=\"Request.Dependents").concat(depNum, ".FirstName\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"MI\" class=\" optional dependent-MI\" id=\"dependent").concat(depID, "-MI\" name=\"Request.Dependents").concat(depNum, ".MiddleName\" maxlength=\"1\"> <input type=\"text\" placeholder=\"Last Name\" required id=\"dependent").concat(depID, "-last-name\" class=\"dependent-names\" name=\"Request.Dependents").concat(depNum, ".LastName\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"SSN\" required id=\"dependent").concat(depID, "-SSN\" class=\"SSN dependent-SSN\" name=\"Request.Dependents").concat(depNum, ".Ssn\" onkeyup=\"automask();\" minlength=\"9\" maxlength=\"9\"> <input type=\"text\" placeholder=\"Birthday\" required id=\"dependent").concat(depID, "-birthday\" class=\"date dependent-birthday\" name=\"Request.Dependents").concat(depNum, ".Birthdate\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Birthday');checkAgeSignature();\" onkeyup=\"automask();calculateAge();\" minlength=\"8\" maxlength=\"10\"> <select required id=\"dependent").concat(depID, "-gender\" value=\"\" class=\"purple-format dependent-gender\" name=\"Request.Dependents").concat(depNum, ".Sex\"> <option value=\"\" disabled selected class=\"placeholder\">Gender</option> <option value=\"male\">Male</option> <option value=\"female\">Female</option> </select> <p class=\"header\">Health Information</p><input type=\"hidden\" placeholder=\"Age\" required id=\"dependent").concat(depID, "-age\" class=\"age dependent-age\" name=\"Request.Dependents").concat(depNum, ".Age\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"3\"> <input type=\"text\" placeholder=\"Height\" required id=\"dependent").concat(depID, "-height\" class=\"height dependent-height\" name=\"Request.Dependents").concat(depNum, ".Height\" onfocus=\"(this.placeholder='0&lsquo; 00&ldquo;')\" onblur=\"(this.placeholder='Height')\" onkeyup=\"automask();\" minlength=\"2\" maxlength=\"6\"> <input type=\"text\" placeholder=\"Weight\" required id=\"dependent").concat(depID, "-weight\" class=\"weight dependent-weight\" name=\"Request.Dependents").concat(depNum, ".Weight\" onkeyup=\"automask();\" minlength=\"2\" maxlength=\"4\"> <input type=\"text\" placeholder=\"Primary Care Physician (First Name)\" required id=\"dependent").concat(depID, "-pcp-first-name\" class=\"dependent-pcp-first-name\" name=\"Request.Dependents").concat(depNum, ".PcpFirstName\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Primary Care Physician (Last Name)\" required id=\"dependent").concat(depID, "-pcp-last-name\" class=\"dependent-pcp-last-name\" name=\"Request.Dependents").concat(depNum, ".PcpLastName\" minlength=\"2\" maxlength=\"128\"> <div class=\"question\"> <p>Are you an established patient?</p><select required id=\"dependent").concat(depID, "-question-1\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsEstablishedPatient\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id=\"dependent").concat(depID, "-question-2\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasBeenDeclined\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id=\"dependent").concat(depID, "-question-3\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasInsuranceOverlap\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id=\"dependent").concat(depID, "-question-4\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsExpectantParent\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id=\"dependent").concat(depID, "-question-5\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsOverweight\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn\u2019s disease, ulcerative colitis or hepatitis?</p><select required id=\"dependent").concat(depID, "-question-6\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasSeriousHealthCondition\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id=\"dependent").concat(depID, "-question-7\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasImmuneDisorder\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div></div>");
-      var codeSignatureBlock = "<div class=\"codeBlock\"> <input type=\"text\" placeholder=\"Signature of Dependent ".concat(depNumUI, "(ONLY if to be insured and 18 or older)\" id=\"dependent").concat(depID, "-signature\" class=\"signature dependent-signature\" name=\"Request.Dependents").concat(depNum, ".AgreementSignature\" minlength=\"2\" maxlength=\"128\" required/> <input type=\"text\" placeholder=\"Date of Sign\" id=\"dependent").concat(depID, "-signature-date\" name=\"Request.Dependents").concat(depNum, ".AgreementSignatureDate\" class=\"date dependent-signature-date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\" required/> </div>");
-      var codeSignatureBlock2 = "<div class=\"codeBlock2\"> <input type=\"text\" placeholder=\"Signature of Dependent ".concat(depNumUI, "(ONLY if to be insured and 18 or older)\" required id=\"dependent").concat(depID, "-authorization-signature\" class=\"dependent-signature\" name=\"Request.Dependents").concat(depNum, ".AuthorizationSignature\" minlength=\"2\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Date of Sign\" required id=\"dependent").concat(depID, "-authorization-signature-date\" name=\"Request.Dependents").concat(depNum, ".AuthorizationSignatureDate\" class=\"date dependent-signature-date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"> </div>");
+      var codeSignatureBlock = "<div class=\"codeBlock\"> <input type=\"text\" placeholder=\"Signature of Dependent ".concat(depNumUI, "(ONLY if to be insured and 18 or older)\" id=\"dependent").concat(depID, "-signature\" class=\"signature dependent-signature\" name=\"Request.Dependents").concat(depNum, ".AgreementSignature\" minlength=\"1\" maxlength=\"128\" required/> <input type=\"text\" placeholder=\"Date of Sign\" id=\"dependent").concat(depID, "-signature-date\" name=\"Request.Dependents").concat(depNum, ".AgreementSignatureDate\" class=\"date dependent-signature-date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\" required/> </div>");
+      var codeSignatureBlock2 = "<div class=\"codeBlock2\"> <input type=\"text\" placeholder=\"Signature of Dependent ".concat(depNumUI, "(ONLY if to be insured and 18 or older)\" required id=\"dependent").concat(depID, "-authorization-signature\" class=\"signature dependent-signature\" name=\"Request.Dependents").concat(depNum, ".AuthorizationSignature\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Date of Sign\" required id=\"dependent").concat(depID, "-authorization-signature-date\" name=\"Request.Dependents").concat(depNum, ".AuthorizationSignatureDate\" class=\"date dependent-signature-date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"> </div>");
       dependentBlock.insertAdjacentHTML('beforeend', codeBlock);
       dependentSignatureBlock.insertAdjacentHTML('beforeend', codeSignatureBlock);
       dependentSignatureBlock2.insertAdjacentHTML('beforeend', codeSignatureBlock2);
@@ -299,41 +299,32 @@ var validate = function validate() {
 
   validateSSN(); //validate dates
 
-  var dateNumbers = function dateNumbers() {
-    var findDateInput = container.find('input.date');
-    var dateArray = findDateInput.toArray();
-    var value = dateArray[0].value;
-    var month = value.slice(0, 2);
-    var day = value.slice(3, 5);
-    var year = value.slice(6, 10);
-    parseInt(month);
-    parseInt(day);
-    parseInt(year);
-
-    if (month <= 12 && day <= 31 && year <= 2050) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   var validateDates = function validateDates() {
     var thisBox = container.find('input.date');
     var boxArray = thisBox.toArray();
+    console.log(boxArray);
 
     var runLoop = function runLoop() {
       for (var _i2 = 0; _i2 < boxArray.length; _i2++) {
         var _ids2 = boxArray[_i2].id;
         var _values2 = boxArray[_i2].value;
 
-        if (_values2.length == 10 && dateNumbers()) {
+        var month = _values2.slice(0, 2);
+
+        var day = _values2.slice(3, 5);
+
+        var year = _values2.slice(6, 10);
+
+        parseInt(month);
+        parseInt(day);
+        parseInt(year);
+
+        if (month <= 12 && day <= 31 && year <= 3000 && month > 0 && day > 0 && year > 0 && _values2.length == 10) {
           $("#".concat(_ids2)).removeClass('invalid');
           $("#".concat(_ids2)).addClass('passed');
-          return true;
         } else {
           $("#".concat(_ids2)).addClass('invalid');
           $("#".concat(_ids2)).removeClass('passed');
-          return false;
         }
       }
     };
@@ -632,7 +623,7 @@ var sendCoverage = function sendCoverage() {
 
 
 var addAgent = function addAgent() {
-  var codeBlock = '<div class="codeBlock"> <p class="header">I certify that:<\/p><p class="bullet">• All answers provided in this application were completed by or provided by the applicant.<\/p><p class="bullet">• I have reviewed this enrollment form to ensure that all required items have been completed.<\/p><p class="bullet">• I am not aware of any information not disclosed on this enrollment form relating to the health, habits or reputation of any person listed on this enrollment form, which might have a bearing on the risk.<\/p><p class="header">Agent / Broker Information<\/p><input type="text" placeholder="Full Name" required id="agent-name" name="agent-name" minlength="1" maxlength="128"/> <input type="text" placeholder="ID# / Code" required id="agent-ID" class="agent-ID" name="agent-ID" onfocus="(this.placeholder=\'000000\')" onblur="(this.placeholder=\'ID# / Code\')" onkeyup="automask();" minlength="1" maxlength="6"/> <input type="text" placeholder="Agency" required id="agent-agency" name="agent-agency" minlength="1" maxlength="256"/> <br><input type="text" placeholder="Home Phone" required id="agent-phone" name="agent-phone" class="phone" onkeyup="automask();"> <input type="email" placeholder="Email" required id="agent-email" name="agent-email" minlength="1" maxlength="256" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> <input type="text" placeholder="Producer Signature" required id="producer-signature" name="producer-signature" minlength="2" maxlength="128"/> <input type="text" placeholder="Date of Sign" required id="producer-signature-date" name="producer-signature-date" class="date" onfocus="(this.placeholder=\'MM-DD-YYYY\')" onblur="(this.placeholder=\'Date of Sign\')" onkeyup="automask();" minlength="8" maxlength="10"/> <div class="agree"> <label><input type="checkbox" value="check" required id="producer-signature-valid" name="producer-signature-valid">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label> <\/div></div>';
+  var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">I certify that:</p><p class=\"bullet\">\u2022 All answers provided in this application were completed by or provided by the applicant.</p><p class=\"bullet\">\u2022 I have reviewed this enrollment form to ensure that all required items have been completed.</p><p class=\"bullet\">\u2022 I am not aware of any information not disclosed on this enrollment form relating to the health, habits or reputation of any person listed on this enrollment form, which might have a bearing on the risk.</p><p class=\"header\">Agent / Broker Information</p><input type=\"text\" placeholder=\"Full Name\" required id=\"agent-name\" name=\"Request.Agent.Name\" minlength=\"1\" maxlength=\"128\"/> <input type=\"text\" placeholder=\"ID# / Code\" required id=\"agent-ID\" class=\"agent-ID\" name=\"Request.Agent.Code\" onfocus=\"(this.placeholder='000000')\" onblur=\"(this.placeholder='ID# / Code')\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"6\"/> <input type=\"text\" placeholder=\"Agency\" required id=\"agent-agency\" name=\"Request.Agent.Agency\" minlength=\"1\" maxlength=\"256\"/> <br><input type=\"text\" placeholder=\"Home Phone\" required id=\"agent-phone\" name=\"Request.Agent.Phone\" class=\"phone\" onkeyup=\"automask();\"> <input type=\"email\" placeholder=\"Email\" required id=\"agent-email\" name=\"Request.Agent.Email\" minlength=\"1\" maxlength=\"256\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$\"> <input type=\"text\" placeholder=\"Agent Signature\" required id=\"producer-signature\" name=\"Request.Agent.Signature\" minlength=\"1\" maxlength=\"128\"/> <input type=\"text\" placeholder=\"Date of Sign\" required id=\"producer-signature-date\" name=\"Request.Agent.SignatureDate\" class=\"date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"/> <div class=\"agree\"> <label><input type=\"checkbox\" value=\"check\" required id=\"producer-signature-valid\" name=\"producer-signature-valid\">I agree that the typed names above shall be treated as valid signatures for all purposes of this form.</label> </div></div>";
   document.getElementById('agent-block').innerHTML = codeBlock;
 };
 
@@ -666,7 +657,6 @@ var fileSize = function fileSize() {
 
 
 $('#form').submit(function (e) {
-  e.preventDefault();
   validate();
   var container = $(event.target).parent().parent();
   var finalValidation = container.find('input.invalid, select.invalid').toArray();
@@ -677,6 +667,7 @@ $('#form').submit(function (e) {
   } else {
     alert();
     console.log(finalValidation);
+    e.preventDefault();
     return false;
   }
 });

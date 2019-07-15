@@ -669,7 +669,7 @@
 
                     <input type="text" placeholder="Signature of Primary Applicant or Legally Authorized Representative" required
                     id="applicant-agreement-signature" name="Request.Applicant.AgreementSignature"
-                    minlength="2" maxlength="128"/>
+                    minlength="1" maxlength="128"/>
 
                     <input type="text" placeholder="Date of Sign" required
                     id="applicant-agreement-signature-date" name="Request.Applicant.AgreementSignatureDate" class="date"
@@ -694,7 +694,7 @@
                         <!-- <div class="codeBlock">
                             <input type="text" placeholder="Signature of Dependent ${depNumUI} (ONLY if to be insured and 18 or older)"
                             id="dependent${depID}-signature" class="signature dependent-signature"
-                            name="Request.Dependents${depNum}.AgreementSignature" minlength="2" maxlength="128" required />
+                            name="Request.Dependents${depNum}.AgreementSignature" minlength="1" maxlength="128" required />
                             <input type="text" placeholder="Date of Sign"
                             id="dependent${depID}-signature-date"
                             name="Request.Dependents${depNum}.AgreementSignatureDate" class="date dependent-signature-date"
@@ -738,7 +738,7 @@
                     <p class="bullet">• I further understand that eligibility of enrollment in this plan will be conditioned on receiving authorization to obtain protected health information, including medical records, with the exception of psychotherapy notes.</p>
                     <p class="authorize">A copy of this authorization and release shall be valid as the original and will remain in effect for two and one-half (2 ½) years from the latest signature date below or until revoked by me in writing.</p>
 
-                    <input type="text" placeholder="Signature of Applicant or Legally Authorized Representative" required id="applicant-authorization-signature" name="Request.Applicant.AuthorizationSignature" minlength="2" maxlength="128">
+                    <input type="text" placeholder="Signature of Applicant or Legally Authorized Representative" required id="applicant-authorization-signature" name="Request.Applicant.AuthorizationSignature" minlength="1" maxlength="128">
 
                     <input type="text" placeholder="Date of Sign" required id="applicant-authorization-signature-date" name="Request.Applicant.AuthorizationSignatureDate" class="date"
                         onfocus="(this.placeholder='MM/DD/YYYY')"
@@ -749,8 +749,8 @@
                     <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" class="optional" name="Request.Applicant.AuthorizationRelationship" minlength="2" maxlength="128">
 
                     <div id="spouse-signature-block-2">
-                        <!-- <div class="codeBlock2">
-                            <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="Request.Spouse.AuthorizationSignature" minlength="2" maxlength="128">
+                       <!--  <div class="codeBlock2">
+                            <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="Request.Spouse.AuthorizationSignature" minlength="1" maxlength="128">
                             <input type="text" placeholder="Date of Sign" required id="spouse-authorization-signature-date" name="Request.Spouse.AuthorizationSignatureDate" class="date"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
                             onblur="(this.placeholder='Date of Sign')"
@@ -763,7 +763,7 @@
                         <!-- <div class="codeBlock2">
                             <input type="text" placeholder="Signature of Dependent ${depNumUI} (ONLY if to be insured and 18 or older)" required id="dependent${depID}-authorization-signature"
                             class="signature dependent-signature"
-                            name="Request.Dependents${depNum}.AuthorizationSignature" minlength="2" maxlength="128">
+                            name="Request.Dependents${depNum}.AuthorizationSignature" minlength="1" maxlength="128">
                             <input type="text" placeholder="Date of Sign" required id="dependent${depID}-authorization-signature-date" 
                             name="Request.Dependents${depNum}.AuthorizationSignatureDate" class="date dependent-signature-date"
                                 onfocus="(this.placeholder='MM/DD/YYYY')"
@@ -853,7 +853,7 @@
 
                             <input type="text" placeholder="Agent Signature" required
                             id="producer-signature" name="Request.Agent.Signature"
-                            minlength="2" maxlength="128"/>
+                            minlength="1" maxlength="128"/>
 
                             <input type="text" placeholder="Date of Sign" required
                             id="producer-signature-date" name="Request.Agent.SignatureDate" class="date"
