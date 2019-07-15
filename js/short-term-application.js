@@ -591,21 +591,18 @@ const fileSize = () => {
 }
 
 //submit function
-const submitForm = () => {
-	validate();
-	const container = $(event.target).parent().parent();
-	let finalValidation = container.find('input.invalid, select.invalid').toArray();
-	if ( finalValidation.length === 0 ) {
-		removeAlert();
-		return true;
-	} else {
-		alert();
-		console.log(finalValidation);
-		return false;
-	}
-}
+$('#form').submit(function(e) {
+    e.preventDefault();
 
-const form = document.getElementById('form');
-if ( form ) {
-	form.addEventListener("submit", submitForm, true);
-}
+    validate();
+    const container = $(event.target).parent().parent();
+    let finalValidation = container.find('input.invalid, select.invalid').toArray();
+    if ( finalValidation.length === 0 ) {
+        removeAlert();
+        return true;
+    } else {
+        alert();
+        console.log(finalValidation);
+        return false;
+    }
+});
