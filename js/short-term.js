@@ -656,7 +656,7 @@ var removeAgent = function removeAgent() {
 
 var addPDF = function addPDF() {
   $('div#legal-block').children().remove();
-  var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">Please upload your Legally Authorized Representative Documents.</p><input type=\"file\" name=\"files\" id=\"files\" onchange=\"fileSize();\" multiple=\"multiple\" accept=\"image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document\" data-val=\"true\" data-val-allowedfileextensions=\"Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx\"/> </div>";
+  var codeBlock = "<div class=\"codeBlock\"> <input type=\"text\" placeholder=\"As a Legally Authorized Representative, please indicate your relationship to the individual\" id=\"applicant-relationship\" required name=\"Request.Applicant.AuthorizationRelationship\" minlength=\"2\" maxlength=\"128\"> <p class=\"header\">Please upload your Legally Authorized Representative Documents.</p><input type=\"file\" name=\"files\" id=\"files\" onchange=\"fileSize();\" multiple=\"multiple\" accept=\"image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document\" data-val=\"true\" data-val-allowedfileextensions=\"Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx\"/> </div>";
   document.getElementById('legal-block').innerHTML = codeBlock;
 };
 

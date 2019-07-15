@@ -746,8 +746,6 @@
                         onkeyup="automask();"
                     minlength="8" maxlength="10">
 
-                    <input type="text" placeholder="If signed by a Legally Authorized Representative, please indicate the relationship to the individual" id="applicant-relationship" class="optional" name="Request.Applicant.AuthorizationRelationship" minlength="2" maxlength="128">
-
                     <div id="spouse-signature-block-2">
                        <!--  <div class="codeBlock2">
                             <input type="text" placeholder="Signature of Spouse or Civil Union" required id="spouse-authorization-signature" name="Request.Spouse.AuthorizationSignature" minlength="1" maxlength="128">
@@ -788,7 +786,8 @@
                     </div>
                     
                     <div id="legal-block">
-                        <!-- <div class="codeBlock">
+                        <div class="codeBlock">
+                            <input type="text" placeholder="As a Legally Authorized Representative, please indicate your relationship to the individual" id="applicant-relationship" required name="Request.Applicant.AuthorizationRelationship" minlength="2" maxlength="128">
                             <p class="header">Please upload your Legally Authorized Representative Documents.</p>
                             <input type="file"
                                name="files" 
@@ -798,7 +797,7 @@
                                accept="image/jpeg,image/gif,image/png,application/pdf,image/tiff,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                data-val="true" 
                                data-val-allowedfileextensions="Allowed file extensions: pdf, jpg, jpeg, gif, tiff, png, txt, doc, docx" />
-                        </div> -->
+                        </div>
                     </div>
 
                     <p id="too-large" class="notice">This filesize is too large. Please upload a smaller file.</p>
