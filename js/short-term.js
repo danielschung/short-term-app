@@ -384,16 +384,22 @@ var validate = function validate() {
 
   var validateHeight = function validateHeight() {
     var heightInput = container.find('input.height');
-    var height = heightInput.val();
-    var feet = height.slice(0, 1);
-    var inches = height.slice(3, 5);
-    parseInt(feet);
-    parseInt(inches);
+    var heightArray = heightInput.toArray();
+    console.log(heightArray);
 
-    if (inches > 11) {
-      heightInput.addClass('invalid');
-    } else {
-      heightInput.removeClass('invalid');
+    for (var _i5 = 0; _i5 < heightArray.length; _i5++) {
+      var _ids5 = heightArray[_i5].id;
+      var height = heightArray[_i5].value;
+      var feet = height.slice(0, 1);
+      var inches = height.slice(3, 5);
+      parseInt(feet);
+      parseInt(inches);
+
+      if (inches > 11 || height.length == 0) {
+        $("#".concat(_ids5)).addClass('invalid');
+      } else {
+        $("#".concat(_ids5)).removeClass('invalid');
+      }
     }
   };
 
@@ -501,43 +507,43 @@ var validate = function validate() {
       return today;
     };
 
-    for (var _i5 = 0; _i5 < signature.length; _i5++) {
-      var value = signature[_i5].value;
+    for (var _i6 = 0; _i6 < signature.length; _i6++) {
+      var value = signature[_i6].value;
 
-      if (value == '' && dependentBlocks[_i5].value < 18) {
-        signature[_i5].value = 'signature not required due to less than 18 years old';
-        date[_i5].value = dateOfToday();
-        signature[_i5].style.color = '#E3E3E3';
-        date[_i5].style.color = '#E3E3E3';
-      } else if (dependentBlocks[_i5].value >= 18 && value == 'signature not required due to less than 18 years old') {
-        signature[_i5].value = '';
-        date[_i5].value = '';
-        signature[_i5].style.color = '#5844A7';
-        date[_i5].style.color = '#5844A7';
+      if (value == '' && dependentBlocks[_i6].value < 18) {
+        signature[_i6].value = 'signature not required due to less than 18 years old';
+        date[_i6].value = dateOfToday();
+        signature[_i6].style.color = '#E3E3E3';
+        date[_i6].style.color = '#E3E3E3';
+      } else if (dependentBlocks[_i6].value >= 18 && value == 'signature not required due to less than 18 years old') {
+        signature[_i6].value = '';
+        date[_i6].value = '';
+        signature[_i6].style.color = '#5844A7';
+        date[_i6].style.color = '#5844A7';
 
-        signature[_i5].classList.add('invalid');
+        signature[_i6].classList.add('invalid');
 
-        date[_i5].classList.add('invalid');
+        date[_i6].classList.add('invalid');
       }
     }
 
-    for (var _i6 = 0; _i6 < signature2.length; _i6++) {
-      var _value = signature2[_i6].value;
+    for (var _i7 = 0; _i7 < signature2.length; _i7++) {
+      var _value = signature2[_i7].value;
 
-      if (_value == '' && dependentBlocks[_i6].value < 18) {
-        signature2[_i6].value = 'signature not required due to less than 18 years old';
-        date2[_i6].value = dateOfToday();
-        signature2[_i6].style.color = '#E3E3E3';
-        date2[_i6].style.color = '#E3E3E3';
-      } else if (dependentBlocks[_i6].value >= 18 && _value == 'signature not required due to less than 18 years old') {
-        signature2[_i6].value = '';
-        date2[_i6].value = '';
-        signature2[_i6].style.color = '#5844A7';
-        date2[_i6].style.color = '#5844A7';
+      if (_value == '' && dependentBlocks[_i7].value < 18) {
+        signature2[_i7].value = 'signature not required due to less than 18 years old';
+        date2[_i7].value = dateOfToday();
+        signature2[_i7].style.color = '#E3E3E3';
+        date2[_i7].style.color = '#E3E3E3';
+      } else if (dependentBlocks[_i7].value >= 18 && _value == 'signature not required due to less than 18 years old') {
+        signature2[_i7].value = '';
+        date2[_i7].value = '';
+        signature2[_i7].style.color = '#5844A7';
+        date2[_i7].style.color = '#5844A7';
 
-        signature2[_i6].classList.add('invalid');
+        signature2[_i7].classList.add('invalid');
 
-        date2[_i6].classList.add('invalid');
+        date2[_i7].classList.add('invalid');
       }
     }
   };

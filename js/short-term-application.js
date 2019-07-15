@@ -337,16 +337,21 @@ const validate = () => {
 	//validate height
 	const validateHeight = () => {
 		const heightInput = container.find('input.height');
-		let height = heightInput.val();
-		let feet = height.slice(0,1);
-		let inches = height.slice(3,5);
-		parseInt(feet);
-		parseInt(inches);
-		if ( inches > 11 ) {
-			heightInput.addClass('invalid');
-		} else {
-			heightInput.removeClass('invalid');
-		}	
+		let heightArray = heightInput.toArray();
+		console.log(heightArray);
+		for (let i = 0; i < heightArray.length; i++) {
+			let ids = heightArray[i].id;
+			let height = heightArray[i].value;
+			let feet = height.slice(0,1);
+			let inches = height.slice(3,5);
+			parseInt(feet);
+			parseInt(inches);
+			if ( inches > 11 || height.length == 0 ) {
+				$(`#${ids}`).addClass('invalid');
+			} else {
+				$(`#${ids}`).removeClass('invalid');
+			}	
+		}
 	}
 	validateHeight();
 	//validate radio buttons
