@@ -597,7 +597,7 @@ const submitForm = () => {
 	let finalValidation = container.find('input.invalid, select.invalid').toArray();
 	if ( finalValidation.length === 0 ) {
 		removeAlert();
-		window.location.href = "./short-term-application-confirm";
+		// window.location.href = "./short-term-application-confirm";
 	} else {
 		alert();
 		console.log(finalValidation);
