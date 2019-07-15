@@ -597,10 +597,11 @@ const submitForm = () => {
 	let finalValidation = container.find('input.invalid, select.invalid').toArray();
 	if ( finalValidation.length === 0 ) {
 		removeAlert();
-		// window.location.href = "./short-term-application-confirm";
+		return true;
 	} else {
 		alert();
 		console.log(finalValidation);
+		return false;
 	}
 }
 
