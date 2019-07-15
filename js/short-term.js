@@ -665,7 +665,8 @@ var fileSize = function fileSize() {
 }; //submit function
 
 
-var submitForm = function submitForm() {
+$('#form').submit(function (e) {
+  e.preventDefault();
   validate();
   var container = $(event.target).parent().parent();
   var finalValidation = container.find('input.invalid, select.invalid').toArray();
@@ -678,10 +679,4 @@ var submitForm = function submitForm() {
     console.log(finalValidation);
     return false;
   }
-};
-
-var form = document.getElementById('form');
-
-if (form) {
-  form.addEventListener("submit", submitForm, true);
-}
+});
