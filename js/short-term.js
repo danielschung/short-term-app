@@ -489,11 +489,11 @@ var validate = function validate() {
       var value = signature[_i5].value;
 
       if (value == '' && dependentBlocks[_i5].value < 18) {
-        signature[_i5].value = 'signature intentionally blank due to less than 18yrs old';
+        signature[_i5].value = 'signature not required due to less than 18 years old';
         date[_i5].value = dateOfToday();
         signature[_i5].style.color = '#E3E3E3';
         date[_i5].style.color = '#E3E3E3';
-      } else if (dependentBlocks[_i5].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old') {
+      } else if (dependentBlocks[_i5].value >= 18 && value == 'signature not required due to less than 18 years old') {
         signature[_i5].value = '';
         date[_i5].value = '';
         signature[_i5].style.color = '#5844A7';
@@ -509,11 +509,11 @@ var validate = function validate() {
       var _value = signature2[_i6].value;
 
       if (_value == '' && dependentBlocks[_i6].value < 18) {
-        signature2[_i6].value = 'signature intentionally blank due to less than 18yrs old';
+        signature2[_i6].value = 'signature not required due to less than 18 years old';
         date2[_i6].value = dateOfToday();
         signature2[_i6].style.color = '#E3E3E3';
         date2[_i6].style.color = '#E3E3E3';
-      } else if (dependentBlocks[_i6].value >= 18 && _value == 'signature intentionally blank due to less than 18yrs old') {
+      } else if (dependentBlocks[_i6].value >= 18 && _value == 'signature not required due to less than 18 years old') {
         signature2[_i6].value = '';
         date2[_i6].value = '';
         signature2[_i6].style.color = '#5844A7';

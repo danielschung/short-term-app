@@ -424,11 +424,11 @@ const validate = () => {
 		for (let i = 0; i < signature.length; i++) {
 			let value = signature[i].value;
 			if ( value == '' && dependentBlocks[i].value < 18 ) {
-				signature[i].value = 'signature intentionally blank due to less than 18yrs old';
+				signature[i].value = 'signature not required due to less than 18 years old';
 				date[i].value = dateOfToday();
 				signature[i].style.color = '#E3E3E3';
 				date[i].style.color = '#E3E3E3';
-			} else if ( dependentBlocks[i].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old' ) {
+			} else if ( dependentBlocks[i].value >= 18 && value == 'signature not required due to less than 18 years old' ) {
 				signature[i].value = '';
 				date[i].value = '';
 				signature[i].style.color = '#5844A7';
@@ -441,11 +441,11 @@ const validate = () => {
 		for (let i = 0; i < signature2.length; i++) {
 			let value = signature2[i].value;
 			if ( value == '' && dependentBlocks[i].value < 18 ) {
-				signature2[i].value = 'signature intentionally blank due to less than 18yrs old';
+				signature2[i].value = 'signature not required due to less than 18 years old';
 				date2[i].value = dateOfToday();
 				signature2[i].style.color = '#E3E3E3';
 				date2[i].style.color = '#E3E3E3';
-			} else if ( dependentBlocks[i].value >= 18 && value == 'signature intentionally blank due to less than 18yrs old' ) {
+			} else if ( dependentBlocks[i].value >= 18 && value == 'signature not required due to less than 18 years old' ) {
 				signature2[i].value = '';
 				date2[i].value = '';
 				signature2[i].style.color = '#5844A7';
