@@ -14,7 +14,7 @@ gulp.task('scripts', function () {
         .pipe(babel())
         .pipe(concat('short-term.js'))
         .pipe(gulp.dest('./js'))
-        .pipe(rename('short-term.min.js'))
+        .pipe(rename('short-term-app.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./js'));
 });
@@ -23,7 +23,7 @@ gulp.task('styles', function () {
     return gulp
         .src('./styles/scss/short-term-app.scss')
         .pipe(sass())
-        .pipe(concat('short-term.min.css'))
+        .pipe(concat('short-term-app.min.css'))
         .pipe(cssmin())
         .pipe(gulp.dest('./styles/css'));
 });

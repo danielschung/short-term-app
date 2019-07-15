@@ -590,22 +590,6 @@ const fileSize = () => {
 	}
 }
 
-//confirmation functions
-const confirmation = () => {
-	let urlPart = window.location.href;
-	for (let i = 0; i < urlPart.length; i++) {
-		if ( urlPart[i] === '=' ) {
-			let number = urlPart.slice(i+1);
-			let numberBlock = document.getElementById('numberBlock');
-			let codeBlock = `${number}`;
-			numberBlock.insertAdjacentHTML('beforeend',codeBlock);
-			console.log(number);
-		}
-	}
-}
-
-window.onload = confirmation();
-
 //submit function
 const submitForm = () => {
 	validate();

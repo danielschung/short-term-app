@@ -11,7 +11,7 @@
     <!-- styles -->
     <!-- when building change to ../css/ha.2019.css -->
     <link rel="stylesheet" href="./styles/css/ha.2019.css">
-    <!-- when building change to ../css/short-term.min.css -->
+    <!-- when building change to ../css/short-term-app.min.css -->
     <link rel="stylesheet" href="./styles/css/short-term.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
 
@@ -19,7 +19,7 @@
 
 <body>
     <header>
-        <!-- when building change to ../images/logo.png -->
+        <!-- when building change   ../images/logo.png -->
         <div class="logo"><img src="./assets/logo.png"></div>
     </header>
 
@@ -42,10 +42,34 @@
 
     <!-- scripts -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <!-- when building ../js/jquery.min.js -->
+    <!--         ../js/jquery.min.js -->
     <script src="./js/jquery.min.js"></script>
-    <!-- when building change to        ../js/short-term.min.js -->
-    <script type="text/javascript" src="./js/short-term.min.js"></script>
-    <script type="text/javascript" src="./js/mask.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('div.wrapper').hide();
+            $('div.wrapper').fadeIn(1000);
+
+            //accordian expand and bg color
+            $('div.accordian').click(function(){
+                $(this).next().slideToggle();
+                $(this).toggleClass('closed');
+            });
+        });
+        const confirmation = () => {
+            let urlPart = window.location.href;
+            for (let i = 0; i < urlPart.length; i++) {
+                if ( urlPart[i] === '=' ) {
+                    let number = urlPart.slice(i+1);
+                    let numberBlock = document.getElementById('numberBlock');
+                    let codeBlock = `${number}`;
+                    numberBlock.insertAdjacentHTML('beforeend',codeBlock);
+                    console.log(number);
+                }
+            }
+        }
+        window.onload = confirmation();
+
+    </script>
 </body>
 </html>

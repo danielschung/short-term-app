@@ -11,7 +11,7 @@
     <!-- styles -->
     <!-- when building change to ../css/ha.2019.css -->
     <link rel="stylesheet" href="./styles/css/ha.2019.css">
-    <!-- when building change to ../css/short-term.min.css -->
+    <!-- when building change to ../css/short-term-app.min.css -->
     <link rel="stylesheet" href="./styles/css/short-term-app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700">
 
@@ -19,7 +19,7 @@
 
 <body>
     <header>
-        <!-- when building change to ../images/logo.png -->
+        <!-- when building change   ../images/logo.png -->
         <div class="logo"><img src="./assets/logo.png"></div>
     </header>
 
@@ -608,7 +608,7 @@
                     <p class="note family">Note: This table shows prices for family plans.</p>
                     <p class="note disclaimer">Note: To view table, please complete Single / Dependent section.</p>
 
-                    <select required id="coverage-table-select" name="Request.Coverage.InNetworkDeductible" value="" class="purple-format" onchange="tableSelect(); sendCoverage();">
+                    <select required id="coverage-table-select" value="" class="purple-format" onchange="tableSelect(); sendCoverage();">
                         <option value="" disabled selected class="placeholder">Choose a Combination</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
@@ -933,10 +933,11 @@
 
     <!-- scripts -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <!-- when building ../js/jquery.min.js -->
+    <!--         ../js/jquery.min.js -->
     <script src="./js/jquery.min.js"></script>
-    <!-- when building change to        ../js/short-term.min.js -->
+    <!-- when building change to        ../js/short-term-app.min.js -->
     <script type="text/javascript" src="./js/short-term-application.js"></script>
+    <!-- when building change to        ../js/mask.min.js -->
     <script type="text/javascript" src="./js/mask.min.js"></script>
 </body>
 </html>

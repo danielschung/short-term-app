@@ -662,24 +662,8 @@ var fileSize = function fileSize() {
     filejq.removeClass('invalid');
     $('p#too-large').hide();
   }
-}; //confirmation functions
+}; //submit function
 
-
-var confirmation = function confirmation() {
-  var urlPart = window.location.href;
-
-  for (var i = 0; i < urlPart.length; i++) {
-    if (urlPart[i] === '=') {
-      var number = urlPart.slice(i + 1);
-      var numberBlock = document.getElementById('numberBlock');
-      var codeBlock = "".concat(number);
-      numberBlock.insertAdjacentHTML('beforeend', codeBlock);
-      console.log(number);
-    }
-  }
-};
-
-window.onload = confirmation(); //submit function
 
 var submitForm = function submitForm() {
   validate();
