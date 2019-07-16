@@ -68,8 +68,9 @@
                     <input type="text" placeholder="Birthday" required
                     id="applicant-birthday" name="Request.Applicant.Birthdate" class="date"
                     onfocus="(this.placeholder='MM/DD/YYYY')"
-                    onblur="(this.placeholder='Birthday')"
-                    onkeypress="automask();calculateAge();"
+                    onblur="(this.placeholder='Birthday');calculateAge();"
+                    onclick="lastElement();"
+                    onkeypress="automask();"
                     minlength="8" maxlength="10">
 
                     <select required id="applicant-gender" value="" class="purple-format" name="Request.Applicant.Sex">
@@ -283,8 +284,9 @@
                             <input type="text" placeholder="Birthday" required
                             id="spouse-birthday" name="Request.Spouse.Birthdate" class="date"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
-                            onblur="(this.placeholder='Birthday')"
-                            onkeyup="automask();calculateAge();"
+                            onblur="(this.placeholder='Birthday');calculateAge();"
+                            onkeyup="automask();"
+                            onclick="lastElement();"
                             minlength="8" maxlength="10"/>
 
                             <select required id="spouse-gender" value="" class="purple-format" name="Request.Spouse.Sex">
@@ -406,8 +408,9 @@
                             <input type="text" placeholder="Birthday" required id="dependent${depID}-birthday" class="date dependent-birthday"
                             name="Request.Dependents${depNum}.Birthdate"
                             onfocus="(this.placeholder='MM/DD/YYYY')"
-                            onblur="(this.placeholder='Birthday');checkAgeSignature();"
-                            onkeyup="automask();calculateAge();"
+                            onblur="(this.placeholder='Birthday');calcDependent();"
+                            onkeyup="automask();"
+                            onclick="lastElement();"
                             minlength="8" maxlength="10">
 
                             <select required id="dependent${depID}-gender" value="" class="purple-format dependent-gender"
