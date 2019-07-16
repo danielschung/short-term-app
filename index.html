@@ -265,13 +265,13 @@
                             <p class="header">Spouse Personal Information</p>
 
                             <input type="text" placeholder="First Name" required
-                            id="spouse-first-name" name="Request.Spouse.FirstName" minlength="2" maxlength="128"/>
+                            id="spouse-first-name" name="Request.Spouse.FirstName" minlength="1" maxlength="128"/>
 
                             <input type="text" placeholder="MI" class="optional"
                             id="spouse-MI" name="Request.Spouse.MiddleName" maxlength="1"/>
 
                             <input type="text" placeholder="Last Name" required
-                            id="spouse-last-name" name="Request.Spouse.LastName"minlength="2" maxlength="128"/>
+                            id="spouse-last-name" name="Request.Spouse.LastName"minlength="1" maxlength="128"/>
 
                             <input type="text" placeholder="SSN" required
                             id="spouse-SSN" name="Request.Spouse.Ssn" class="SSN"
@@ -304,18 +304,18 @@
                             onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                             onblur="(this.placeholder='Height')" 
                             onkeyup="automask();"
-                            minlength="2" maxlength="6"/>
+                            minlength="1" maxlength="6"/>
 
                             <input type="text" placeholder="Weight" required
                             id="spouse-weight" name="Request.Spouse.Weight" class="weight"
                             onkeyup="automask();"
-                            minlength="2" maxlength="4"/>
+                            minlength="1" maxlength="4"/>
 
                             <input type="text" placeholder="Primary Care Physician (First Name)" required
-                            id="spouse-pcp-first-name" name="Request.Spouse.PcpFirstName" minlength="2" maxlength="128"/>
+                            id="spouse-pcp-first-name" name="Request.Spouse.PcpFirstName" minlength="1" maxlength="128"/>
 
                             <input type="text" placeholder="Primary Care Physician (Last Name)" required
-                            id="spouse-pcp-last-name" name="Request.Spouse.PcpLastName" minlength="2" maxlength="128"/>
+                            id="spouse-pcp-last-name" name="Request.Spouse.PcpLastName" minlength="1" maxlength="128"/>
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
@@ -389,7 +389,7 @@
 
                             <input type="text" placeholder="First Name" required id="dependent${depID}-first-name" class="dependent-names"
                             name="Request.Dependents${depNum}.FirstName"
-                            minlength="2" maxlength="128">
+                            minlength="1" maxlength="128">
 
                             <input type="text" placeholder="MI" class=" optional dependent-MI" id="dependent${depID}-MI"
                             name="Request.Dependents${depNum}.MiddleName"
@@ -397,7 +397,7 @@
 
                             <input type="text" placeholder="Last Name" required id="dependent${depID}-last-name" class="dependent-names"
                             name="Request.Dependents${depNum}.LastName"
-                            minlength="2" maxlength="128">
+                            minlength="1" maxlength="128">
 
                             <input type="text" placeholder="SSN" required id="dependent${depID}-SSN" class="SSN dependent-SSN" 
                             name="Request.Dependents${depNum}.Ssn"
@@ -427,19 +427,19 @@
                             onfocus="(this.placeholder='0&lsquo; 00&ldquo;')"
                             onblur="(this.placeholder='Height')" 
                             onkeyup="automask();"
-                            minlength="2" maxlength="6">
+                            minlength="1" maxlength="6">
 
                             <input type="text" placeholder="Weight" required id="dependent${depID}-weight" class="weight dependent-weight"
                             name="Request.Dependents${depNum}.Weight"
-                            onkeyup="automask();" minlength="2" maxlength="4">
+                            onkeyup="automask();" minlength="1" maxlength="4">
 
                             <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent${depID}-pcp-first-name" class="dependent-pcp-first-name"
                             name="Request.Dependents${depNum}.PcpFirstName"
-                            minlength="2" maxlength="128">
+                            minlength="1" maxlength="128">
 
                             <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent${depID}-pcp-last-name" class="dependent-pcp-last-name"
                             name="Request.Dependents${depNum}.PcpLastName"
-                            minlength="2" maxlength="128">
+                            minlength="1" maxlength="128">
 
                             <div class="question">
                                 <p>Are you an established patient?</p>
@@ -787,7 +787,7 @@
                     
                     <div id="legal-block">
                         <!-- <div class="codeBlock">
-                            <input type="text" placeholder="As a Legally Authorized Representative, please indicate your relationship to the individual" id="applicant-relationship" required name="Request.Applicant.AuthorizationRelationship" minlength="2" maxlength="128">
+                            <input type="text" placeholder="As a Legally Authorized Representative, please indicate your relationship to the individual" id="applicant-relationship" required name="Request.Applicant.AuthorizationRelationship" minlength="1" maxlength="128">
                             <p class="header">Please upload your Legally Authorized Representative Documents.</p>
                             <input type="file"
                                name="files" 
