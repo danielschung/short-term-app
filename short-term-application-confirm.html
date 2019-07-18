@@ -56,18 +56,20 @@
                 $(this).toggleClass('closed');
             });
         });
-        const confirmation = () => {
-            let urlPart = window.location.href;
-            for (let i = 0; i < urlPart.length; i++) {
+
+        'use strict';
+        var confirmation = function confirmation() {
+            var urlPart = window.location.href;
+            for (var i = 0; i < urlPart.length; i++) {
                 if ( urlPart[i] === '=' ) {
-                    let number = urlPart.slice(i+1);
-                    let numberBlock = document.getElementById('numberBlock');
-                    let codeBlock = `${number}`;
-                    numberBlock.insertAdjacentHTML('beforeend',codeBlock);
+                    var number = urlPart.slice(i + 1);
+                    var numberBlock = document.getElementById('numberBlock');
+                    var codeBlock = '' + number;
+                    numberBlock.insertAdjacentHTML('beforeend', codeBlock);
                     console.log(number);
                 }
             }
-        }
+        };
         window.onload = confirmation();
 
     </script>
