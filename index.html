@@ -42,7 +42,7 @@
         <form action="/ShortTermMemberApplication/Submit" autocomplete="off" enctype="multipart/form-data" method="post" id="form" name="form">
             <div id="alert"></div>
             <fieldset> <!-- Applicant / Member Information -->
-                <div class="accordian first">Applicant / Member Information</div>
+                <div class="accordian first" onclick="expandAccordian();">Applicant / Member Information</div>
                 <div class="expanded">
                     <p class="header">Personal Information</p>
 
@@ -148,10 +148,13 @@
 
                     <input type="text" placeholder="Weight" required id="applicant-weight" name="Request.Applicant.Weight" class="weight" onkeyup="automask();" minlength="1" maxlength="4">
                     <br>
-                    <input type="text" placeholder="Primary Care Physician (First Name)" required id="applicant-pcp-first-name" name="Request.Applicant.PcpFirstName"
+
+                    <p class="tag">* If you plan on enrolling in a POS Plan, please include your Primary Care Physician details.</p>
+
+                    <input type="text" placeholder="Primary Care Physician (First Name)" id="applicant-pcp-first-name" name="Request.Applicant.PcpFirstName" class="optional"
                     minlength="1" maxlength="128">
 
-                    <input type="text" placeholder="Primary Care Physician (Last Name)" required id="applicant-pcp-last-name" name="Request.Applicant.PcpLastName"
+                    <input type="text" placeholder="Primary Care Physician (Last Name)" id="applicant-pcp-last-name" name="Request.Applicant.PcpLastName" class="optional"
                     minlength="1" maxlength="128">
 
                     <div class="question">
@@ -223,7 +226,7 @@
             </fieldset>
 
             <fieldset> <!-- Spouse / Dependent Information -->
-                <div class="accordian">Spouse / Dependent Information</div>
+                <div class="accordian" onclick="expandAccordian();">Spouse / Dependent Information</div>
                 <div class="expanded">
                     <div class="radio spouse">
                         <p>Would you like to add a spouse?</p>
@@ -313,10 +316,12 @@
                             onkeyup="automask();"
                             minlength="1" maxlength="4"/>
 
-                            <input type="text" placeholder="Primary Care Physician (First Name)" required
-                            id="spouse-pcp-first-name" name="Request.Spouse.PcpFirstName" minlength="1" maxlength="128"/>
+                            <p class="tag">* If you plan on enrolling in a POS Plan, please include your Primary Care Physician details.</p>
 
-                            <input type="text" placeholder="Primary Care Physician (Last Name)" required
+                            <input type="text" placeholder="Primary Care Physician (First Name)"
+                            id="spouse-pcp-first-name" name="Request.Spouse.PcpFirstName" class="optional" minlength="1" maxlength="128"/>
+
+                            <input type="text" placeholder="Primary Care Physician (Last Name)" class="optional"
                             id="spouse-pcp-last-name" name="Request.Spouse.PcpLastName" minlength="1" maxlength="128"/>
 
                             <div class="question">
@@ -436,11 +441,13 @@
                             name="Request.Dependents${depNum}.Weight"
                             onkeyup="automask();" minlength="1" maxlength="4">
 
-                            <input type="text" placeholder="Primary Care Physician (First Name)" required id="dependent${depID}-pcp-first-name" class="dependent-pcp-first-name"
+                            <p class="tag">* If you plan on enrolling in a POS Plan, please include your Primary Care Physician details.</p>
+
+                            <input type="text" placeholder="Primary Care Physician (First Name)" id="dependent${depID}-pcp-first-name" class="dependent-pcp-first-name optional"
                             name="Request.Dependents${depNum}.PcpFirstName"
                             minlength="1" maxlength="128">
 
-                            <input type="text" placeholder="Primary Care Physician (Last Name)" required id="dependent${depID}-pcp-last-name" class="dependent-pcp-last-name"
+                            <input type="text" placeholder="Primary Care Physician (Last Name)" id="dependent${depID}-pcp-last-name" class="dependent-pcp-last-name optional"
                             name="Request.Dependents${depNum}.PcpLastName"
                             minlength="1" maxlength="128">
 
@@ -522,7 +529,7 @@
             </fieldset>
 
             <fieldset> <!-- Coverage Information -->
-                <div class="accordian">Coverage Information</div>
+                <div class="accordian" onclick="expandAccordian();">Coverage Information</div>
                 <div class="expanded">
                     <p class="header">Coverage Applied For</p>
 
@@ -642,7 +649,7 @@
             </fieldset>
 
             <fieldset> <!-- Disclaimer and Agreement -->
-                <div class="accordian">Disclaimer and Agreement</div>
+                <div class="accordian" onclick="expandAccordian();">Disclaimer and Agreement</div>
                 <div class="expanded">
                     <div class="disclaimer-text">
                         <p>Adult applicants must sign this form below. Parent or guardian signature is required for applicants under the age of 18. By signing this form, you certify the following:</p>
@@ -717,7 +724,7 @@
             </fieldset>
 
             <fieldset> <!-- Authorization -->
-                <div class="accordian">Authorization</div>
+                <div class="accordian" onclick="expandAccordian();">Authorization</div>
                 <div class="expanded">
                     <input type="text" placeholder="Applicant's Full Name" required
                     id="applicant-full-name" name="Request.Applicant.AuthorizationFullName"
@@ -810,7 +817,7 @@
             </fieldset>
 
             <fieldset> <!-- Agent Information -->
-                <div class="accordian">Agent Information</div>
+                <div class="accordian" onclick="expandAccordian();">Agent Information</div>
                 <div class="expanded">
                     <div class="radio agent">
                         <p>Would you like to add an agent?</p>
@@ -875,7 +882,7 @@
             </fieldset>
 
             <fieldset> <!-- Final Steps -->
-                <div class="accordian">Final Steps</div>
+                <div class="accordian" onclick="expandAccordian();">Final Steps</div>
                 <div class="expanded last">
                     <div class="non-discrimination-text">
                         <p>DISCRIMINATION IS AGAINST THE LAW</p>
