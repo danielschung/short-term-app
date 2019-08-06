@@ -1,6 +1,7 @@
 $light-grey:#E3E3E3;
 $purple:#5844A7;
-$light-purple:#978EBA;
+// $light-purple:#978EBA;
+$light-purple:#857BAD;
 $black:#282828;
 $white:#EFEFEF;
 
@@ -16,6 +17,10 @@ div.clear {
 
 div, p, input, select {
 	margin:0;
+}
+
+p, input::placeholder, select::placeholder, input {
+	font-weight:400;
 }
 
 .hover {
