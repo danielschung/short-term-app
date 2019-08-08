@@ -1,23 +1,10 @@
 "use strict";
 
-var _this = void 0;
-
 //jquery rules
 $(document).ready(function () {
   $('div.wrapper').hide();
   $('div.wrapper').fadeIn(1000);
-}); //accordian expand and bg color
-
-var expandAccordian = function expandAccordian() {
-  // let expandable = event.target.nextElementSibling;
-  var expandable = $(event.target).next();
-  validate();
-
-  if (validate()) {
-    expandable.slideToggle();
-    $(_this).toggleClass('closed');
-  }
-};
+});
 
 var automask = function automask() {
   //automask functions src=http://igorescobar.github.io/jQuery-Mask-Plugin/
@@ -64,6 +51,11 @@ var removeAlert = function removeAlert() {
 var next = function next() {
   $(event.target).parent().parent().slideToggle();
   $(event.target).parent().parent().prev().toggleClass('closed');
+};
+
+var nextExpand = function nextExpand() {
+  $(event.target).parent().next().slideToggle();
+  $(event.target).toggleClass('closed');
 }; //Prior last name function
 
 
@@ -89,7 +81,7 @@ var spouseProgress = function spouseProgress() {
 };
 
 var addSpouse = function addSpouse() {
-  var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">Spouse Personal Information</p><input type=\"text\" placeholder=\"First Name\" required id=\"spouse-first-name\" name=\"Request.Spouse.FirstName\" minlength=\"1\" maxlength=\"128\"/> <input type=\"text\" placeholder=\"MI\" class=\"optional\" id=\"spouse-MI\" name=\"Request.Spouse.MiddleName\" maxlength=\"1\"/> <input type=\"text\" placeholder=\"Last Name\" required id=\"spouse-last-name\" name=\"Request.Spouse.LastName\"minlength=\"1\" maxlength=\"128\"/> <input type=\"text\" placeholder=\"SSN\" required id=\"spouse-SSN\" name=\"Request.Spouse.Ssn\" class=\"SSN\" onfocus=\"(this.placeholder='000-00-0000')\" onblur=\"(this.placeholder='SSN')\" onkeyup=\"automask();\" minlength=\"9\" maxlength=\"9\"/> <input type=\"text\" placeholder=\"Birthday\" required id=\"spouse-birthday\" name=\"Request.Spouse.Birthdate\" class=\"date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Birthday');calculateAge();\" onkeyup=\"automask();\" onclick=\"lastElement();\" minlength=\"8\" maxlength=\"10\"/> <select required id=\"spouse-gender\" value=\"\" class=\"purple-format\" name=\"Request.Spouse.Sex\"> <option value=\"\" disabled selected class=\"placeholder\">Gender</option> <option value=\"male\">Male</option> <option value=\"female\">Female</option> </select> <p class=\"header\">Health Information</p><input type=\"hidden\" placeholder=\"Age\" required id=\"spouse-age\" name=\"Request.Spouse.Age\" class=\"age\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"3\"/> <input type=\"text\" placeholder=\"Height\" required id=\"spouse-height\" name=\"Request.Spouse.Height\" class=\"height\" onfocus=\"(this.placeholder='0&lsquo; 00&ldquo;')\" onblur=\"(this.placeholder='Height')\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"6\"/> <input type=\"text\" placeholder=\"Weight\" required id=\"spouse-weight\" name=\"Request.Spouse.Weight\" class=\"weight\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"4\"/> <p class=\"tag\">* If you plan on enrolling in a POS Plan, please include your Primary Care Physician details.</p><input type=\"text\" placeholder=\"Primary Care Physician (First Name)\" id=\"spouse-pcp-first-name\" name=\"Request.Spouse.PcpFirstName\" class=\"optional\" minlength=\"1\" maxlength=\"128\"/> <input type=\"text\" placeholder=\"Primary Care Physician (Last Name)\" class=\"optional\" id=\"spouse-pcp-last-name\" name=\"Request.Spouse.PcpLastName\" minlength=\"1\" maxlength=\"128\"/> <div class=\"question\"> <p>Are you an established patient?</p><select required id=\"spouse-question-1\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.IsEstablishedPatient\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id=\"spouse-question-2\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasBeenDeclined\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id=\"spouse-question-3\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasInsuranceOverlap\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id=\"spouse-question-4\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.IsExpectantParent\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id=\"spouse-question-5\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.IsOverweight\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn\u2019s disease, ulcerative colitis or hepatitis?</p><select required id=\"spouse-question-6\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasSeriousHealthCondition\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id=\"spouse-question-7\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasImmuneDisorder\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div></div>";
+  var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">Spouse Personal Information</p><input type=\"text\" placeholder=\"First Name\" required id=\"spouse-first-name\" name=\"Request.Spouse.FirstName\" minlength=\"1\" maxlength=\"128\"/> <input type=\"text\" placeholder=\"MI\" class=\"optional\" id=\"spouse-MI\" name=\"Request.Spouse.MiddleName\" maxlength=\"1\"/> <input type=\"text\" placeholder=\"Last Name\" required id=\"spouse-last-name\" name=\"Request.Spouse.LastName\"minlength=\"1\" maxlength=\"128\"/> <p class=\"tag\">* If you do not have a SSN, please submit all zeros.</p><input type=\"text\" placeholder=\"SSN\" required id=\"spouse-SSN\" name=\"Request.Spouse.Ssn\" class=\"SSN\" onfocus=\"(this.placeholder='000-00-0000')\" onblur=\"(this.placeholder='SSN')\" onkeyup=\"automask();\" minlength=\"9\" maxlength=\"9\"/> <input type=\"text\" placeholder=\"Birthday\" required id=\"spouse-birthday\" name=\"Request.Spouse.Birthdate\" class=\"date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Birthday');calculateAge();\" onkeyup=\"automask();\" onclick=\"lastElement();\" minlength=\"8\" maxlength=\"10\"/> <select required id=\"spouse-gender\" value=\"\" class=\"purple-format\" name=\"Request.Spouse.Sex\"> <option value=\"\" disabled selected class=\"placeholder\">Gender</option> <option value=\"male\">Male</option> <option value=\"female\">Female</option> </select> <p class=\"header\">Health Information</p><input type=\"hidden\" placeholder=\"Age\" required id=\"spouse-age\" name=\"Request.Spouse.Age\" class=\"age\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"3\"/> <input type=\"text\" placeholder=\"Height\" required id=\"spouse-height\" name=\"Request.Spouse.Height\" class=\"height\" onfocus=\"(this.placeholder='0&lsquo; 00&ldquo;')\" onblur=\"(this.placeholder='Height')\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"6\"/> <input type=\"text\" placeholder=\"Weight\" required id=\"spouse-weight\" name=\"Request.Spouse.Weight\" class=\"weight\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"4\"/> <p class=\"tag\">* If you plan on enrolling in a POS Plan, please include your Primary Care Physician details.</p><input type=\"text\" placeholder=\"Primary Care Physician (First Name)\" id=\"spouse-pcp-first-name\" name=\"Request.Spouse.PcpFirstName\" class=\"optional\" minlength=\"1\" maxlength=\"128\"/> <input type=\"text\" placeholder=\"Primary Care Physician (Last Name)\" class=\"optional\" id=\"spouse-pcp-last-name\" name=\"Request.Spouse.PcpLastName\" minlength=\"1\" maxlength=\"128\"/> <div class=\"question\"> <p>Are you an established patient?</p><select required id=\"spouse-question-1\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.IsEstablishedPatient\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id=\"spouse-question-2\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasBeenDeclined\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id=\"spouse-question-3\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasInsuranceOverlap\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id=\"spouse-question-4\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.IsExpectantParent\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id=\"spouse-question-5\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.IsOverweight\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn\u2019s disease, ulcerative colitis or hepatitis?</p><select required id=\"spouse-question-6\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasSeriousHealthCondition\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id=\"spouse-question-7\" value=\"\" class=\"purple-format question\" name=\"Request.Spouse.HasImmuneDisorder\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div></div>";
   document.getElementById('spouse-block').innerHTML = codeBlock;
 };
 
@@ -171,9 +163,7 @@ var numOfDependents = function numOfDependents() {
       var depNum = "[".concat(amountArray[i], "]");
       var depNumUI = "".concat(amountArray[i] + 1, " ");
       var depID = "".concat(amountArray[i]);
-      var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">Dependent ".concat(depNumUI, "Personal Information</p><input type=\"text\" placeholder=\"First Name\" required id=\"dependent").concat(depID, "-first-name\" class=\"dependent-names\" name=\"Request.Dependents").concat(depNum, ".FirstName\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"MI\" class=\" optional dependent-MI\" id=\"dependent").concat(depID, "-MI\" name=\"Request.Dependents").concat(depNum, ".MiddleName\" maxlength=\"1\"> <input type=\"text\" placeholder=\"Last Name\" required id=\"dependent").concat(depID, "-last-name\" class=\"dependent-names\" name=\"Request.Dependents").concat(depNum, ".LastName\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"SSN\" required id=\"dependent").concat(depID, "-SSN\" class=\"SSN dependent-SSN\" name=\"Request.Dependents").concat(depNum, ".Ssn\" onkeyup=\"automask();\" minlength=\"9\" maxlength=\"9\"> <input type=\"text\" placeholder=\"Birthday\" required id=\"dependent").concat(depID, "-birthday\" class=\"date dependent-birthday\" name=\"Request.Dependents").concat(depNum, ".Birthdate\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Birthday');calcDependent();\" onkeyup=\"automask();\" onclick=\"lastElement();\" minlength=\"8\" maxlength=\"10\"> <select required id=\"dependent").concat(depID, "-gender\" value=\"\" class=\"purple-format dependent-gender\" name=\"Request.Dependents").concat(depNum, ".Sex\"> <option value=\"\" disabled selected class=\"placeholder\">Gender</option> <option value=\"male\">Male</option> <option value=\"female\">Female</option> </select> <p class=\"header\">Health Information</p><input type=\"hidden\" placeholder=\"Age\" required id=\"dependent").concat(depID, "-age\" class=\"age dependent-age\" name=\"Request.Dependents").concat(depNum, ".Age\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"3\"> <input type=\"text\" placeholder=\"Height\" required id=\"dependent").concat(depID, "-height\" class=\"height dependent-height\" name=\"Request.Dependents").concat(depNum, ".Height\" onfocus=\"(this.placeholder='0&lsquo; 00&ldquo;')\" onblur=\"(this.placeholder='Height')\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"6\"> <input type=\"text\" placeholder=\"Weight\" required id=\"dependent").concat(depID, "-weight\" class=\"weight dependent-weight\" name=\"Request.Dependents").concat(depNum, ".Weight\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"4\"> <p class=\"tag\">* If you plan on enrolling in a POS Plan, please include your Primary Care Physician details.</p><input type=\"text\" placeholder=\"Primary Care Physician (First Name)\" id=\"dependent").concat(depID, "-pcp-first-name\" class=\"dependent-pcp-first-name optional\" name=\"Request.Dependents").concat(depNum, ".PcpFirstName\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Primary Care Physician (Last Name)\" id=\"dependent").concat(depID, "-pcp-last-name\" class=\"dependent-pcp-last-name optional\" name=\"Request.Dependents").concat(depNum, ".PcpLastName\" minlength=\"1\" maxlength=\"128\"> <div class=\"question\"> <p>Are you an established patient?</p><select required id=\"dependent").concat(depID, "-question-1\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsEstablishedPatient\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id=\"dependent").concat(depID, "-question-2\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasBeenDeclined\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id=\"dependent").concat(depID, "-question-3\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasInsuranceOverlap\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id=\"dependent").concat(depID, "-question-4\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsExpectantParent\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id=\"dependent").concat(depID, "-question-5\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsOverweight\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn\u2019s disease, ulcerative colitis or hepatitis?</p><select required id=\"dependent").concat(depID, "-question-6\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasSeriousHealthCondition\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id=\"dependent").concat(depID, "-question-7\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasImmuneDisorder\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div></div>");
-      var codeSignatureBlock = "<div class=\"codeBlock\"> <input type=\"text\" placeholder=\"Signature of Dependent ".concat(depNumUI, "(ONLY if to be insured and 18 or older)\" id=\"dependent").concat(depID, "-signature\" class=\"signature dependent-signature\" name=\"Request.Dependents").concat(depNum, ".AgreementSignature\" minlength=\"1\" maxlength=\"128\" required/> <input type=\"text\" placeholder=\"Date of Sign\" id=\"dependent").concat(depID, "-signature-date\" name=\"Request.Dependents").concat(depNum, ".AgreementSignatureDate\" class=\"date dependent-signature-date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\" required/> </div>");
-      var codeSignatureBlock2 = "<div class=\"codeBlock2\"> <input type=\"text\" placeholder=\"Signature of Dependent ".concat(depNumUI, "(ONLY if to be insured and 18 or older)\" required id=\"dependent").concat(depID, "-authorization-signature\" class=\"signature dependent-signature\" name=\"Request.Dependents").concat(depNum, ".AuthorizationSignature\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Date of Sign\" required id=\"dependent").concat(depID, "-authorization-signature-date\" name=\"Request.Dependents").concat(depNum, ".AuthorizationSignatureDate\" class=\"date dependent-signature-date\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Date of Sign')\" onkeyup=\"automask();\" minlength=\"8\" maxlength=\"10\"> </div>");
+      var codeBlock = "<div class=\"codeBlock\"> <p class=\"header\">Dependent ".concat(depNumUI, "Personal Information</p><input type=\"text\" placeholder=\"First Name\" required id=\"dependent").concat(depID, "-first-name\" class=\"dependent-names\" name=\"Request.Dependents").concat(depNum, ".FirstName\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"MI\" class=\" optional dependent-MI\" id=\"dependent").concat(depID, "-MI\" name=\"Request.Dependents").concat(depNum, ".MiddleName\" maxlength=\"1\"> <input type=\"text\" placeholder=\"Last Name\" required id=\"dependent").concat(depID, "-last-name\" class=\"dependent-names\" name=\"Request.Dependents").concat(depNum, ".LastName\" minlength=\"1\" maxlength=\"128\"> <p class=\"tag\">* If you do not have a SSN, please submit all zeros.</p><input type=\"text\" placeholder=\"SSN\" required id=\"dependent").concat(depID, "-SSN\" class=\"SSN dependent-SSN\" name=\"Request.Dependents").concat(depNum, ".Ssn\" onkeyup=\"automask();\" minlength=\"9\" maxlength=\"9\"> <input type=\"text\" placeholder=\"Birthday\" required id=\"dependent").concat(depID, "-birthday\" class=\"date dependent-birthday\" name=\"Request.Dependents").concat(depNum, ".Birthdate\" onfocus=\"(this.placeholder='MM/DD/YYYY')\" onblur=\"(this.placeholder='Birthday');calcDependent();\" onkeyup=\"automask();\" onclick=\"lastElement();\" minlength=\"8\" maxlength=\"10\"> <select required id=\"dependent").concat(depID, "-gender\" value=\"\" class=\"purple-format dependent-gender\" name=\"Request.Dependents").concat(depNum, ".Sex\"> <option value=\"\" disabled selected class=\"placeholder\">Gender</option> <option value=\"male\">Male</option> <option value=\"female\">Female</option> </select> <p class=\"header\">Health Information</p><input type=\"hidden\" placeholder=\"Age\" required id=\"dependent").concat(depID, "-age\" class=\"age dependent-age\" name=\"Request.Dependents").concat(depNum, ".Age\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"3\"> <input type=\"text\" placeholder=\"Height\" required id=\"dependent").concat(depID, "-height\" class=\"height dependent-height\" name=\"Request.Dependents").concat(depNum, ".Height\" onfocus=\"(this.placeholder='0&lsquo; 00&ldquo;')\" onblur=\"(this.placeholder='Height')\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"6\"> <input type=\"text\" placeholder=\"Weight\" required id=\"dependent").concat(depID, "-weight\" class=\"weight dependent-weight\" name=\"Request.Dependents").concat(depNum, ".Weight\" onkeyup=\"automask();\" minlength=\"1\" maxlength=\"4\"> <p class=\"tag\">* If you plan on enrolling in a POS Plan, please include your Primary Care Physician details.</p><input type=\"text\" placeholder=\"Primary Care Physician (First Name)\" id=\"dependent").concat(depID, "-pcp-first-name\" class=\"dependent-pcp-first-name optional\" name=\"Request.Dependents").concat(depNum, ".PcpFirstName\" minlength=\"1\" maxlength=\"128\"> <input type=\"text\" placeholder=\"Primary Care Physician (Last Name)\" id=\"dependent").concat(depID, "-pcp-last-name\" class=\"dependent-pcp-last-name optional\" name=\"Request.Dependents").concat(depNum, ".PcpLastName\" minlength=\"1\" maxlength=\"128\"> <div class=\"question\"> <p>Are you an established patient?</p><select required id=\"dependent").concat(depID, "-question-1\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsEstablishedPatient\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you been declined for insurance due to health reasons within the past 18 months?</p><select required id=\"dependent").concat(depID, "-question-2\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasBeenDeclined\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you have hospital, major medical, group health, government or medical insurance coverage that will overlap during the duration of this coverage?</p><select required id=\"dependent").concat(depID, "-question-3\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasInsuranceOverlap\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>If you are female, are you now pregnant, or if you are male, are you an expectant parent?</p><select required id=\"dependent").concat(depID, "-question-4\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsExpectantParent\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Do you weigh more than 300 pounds if male or more than 250 pounds if female?</p><select required id=\"dependent").concat(depID, "-question-5\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".IsOverweight\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>In the past five years, have you taken medication for or been advised, consulted, tested, diagnosed, treated or hospitalized or recommended for treatment by a physician for any of the following: heart or circulatory system disorder, including heart attack or stroke; insulin-dependent diabetes; cancer or tumors; disorder of the blood, including hemophilia or leukemia; kidney or liver disorder; mental or nervous conditions or disorders; alcoholism or alcohol abuse; drug abuse, addiction or dependency; organ transplant; emphysema; Crohn\u2019s disease, ulcerative colitis or hepatitis?</p><select required id=\"dependent").concat(depID, "-question-6\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasSeriousHealthCondition\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div><div class=\"question\"> <p>Have you ever been diagnosed or treated by a physician for acquired immune deficiency syndrome (AIDS) or AIDS-related complex (ARC), or have you in the past five years tested positive for HIV virus or other immune disorders?</p><select required id=\"dependent").concat(depID, "-question-7\" value=\"\" class=\"purple-format question\" name=\"Request.Dependents").concat(depNum, ".HasImmuneDisorder\"> <option value=\"\" disabled selected class=\"placeholder\">Choose</option> <option value=\"true\">Yes</option> <option value=\"false\">No</option> </select> <div class=\"clear\"></div></div></div>");
       dependentBlock.insertAdjacentHTML('beforeend', codeBlock);
       dependentSignatureBlock.insertAdjacentHTML('beforeend', codeSignatureBlock);
       dependentSignatureBlock2.insertAdjacentHTML('beforeend', codeSignatureBlock2);
@@ -241,11 +231,13 @@ var colorize = function colorize() {
   } else if (amount > 10 || amount === '0') {
     inputBox.addClass('invalid');
   }
-};
+}; //accordian expand and bg color
 
-var validate = function validate() {
+
+var expandAccordian = function expandAccordian() {
   //declare constant variables
-  var container = $(event.target).parent().parent();
+  var findButton = $(event.target).parent().next().find($('button.next'));
+  var container = findButton.parent().parent();
   var inputs = container.find('input:required, select:required').toArray(); //validate checkboxes and text inputs (else)
 
   var validateCheckBoxes = function validateCheckBoxes() {
@@ -558,6 +550,337 @@ var validate = function validate() {
         signature2[_i7].classList.add('invalid');
 
         date2[_i7].classList.add('invalid');
+      }
+    }
+  };
+
+  emptySignature(); // final section check
+
+  var empty = container.find('input.invalid, select.invalid').toArray();
+
+  if (empty.length == 0) {
+    removeAlert();
+    nextExpand();
+  } else {
+    alert();
+  }
+};
+
+var validate = function validate() {
+  //declare constant variables
+  var container = $(event.target).parent().parent();
+  var inputs = container.find('input:required, select:required').toArray(); //validate checkboxes and text inputs (else)
+
+  var validateCheckBoxes = function validateCheckBoxes() {
+    var boxArray = container.find($('input[value="check"]')).toArray();
+
+    if (boxArray.length == 0) {
+      console.log('valid');
+    } else {
+      for (var i = 0; i < boxArray.length; i++) {
+        var boxIds = boxArray[i].id;
+
+        if (boxArray[i].checked) {
+          $("#".concat(boxIds)).removeClass('invalid');
+        }
+      }
+    }
+  };
+
+  for (var i = 0; i < inputs.length; i++) {
+    var ids = inputs[i].id;
+    var names = inputs[i].name;
+    var values = inputs[i].value;
+
+    if (inputs[i].type == 'radio') {
+      if (values == '') {
+        $("#".concat(names)).addClass('invalid');
+      } else {
+        $("#".concat(names)).removeClass('invalid');
+      }
+    } else {
+      if (values == '' || values == 'check') {
+        $("#".concat(ids)).addClass('invalid');
+        validateCheckBoxes();
+      } else {
+        $("#".concat(ids)).removeClass('invalid');
+      }
+    }
+  } //validate ssn
+
+
+  var validateSSN = function validateSSN() {
+    var thisBox = container.find('input.SSN');
+    var boxArray = thisBox.toArray();
+
+    var runLoop = function runLoop() {
+      for (var _i8 = 0; _i8 < boxArray.length; _i8++) {
+        var _ids6 = boxArray[_i8].id;
+        var _values4 = boxArray[_i8].value;
+
+        if (_values4.length == 11) {
+          $("#".concat(_ids6)).removeClass('invalid');
+          return true;
+        } else {
+          $("#".concat(_ids6)).addClass('invalid');
+          return false;
+        }
+      }
+    };
+
+    if (boxArray.length == 0) {
+      return true;
+    } else {
+      runLoop();
+    }
+  };
+
+  validateSSN(); //validate dates
+
+  var validateDates = function validateDates() {
+    var thisBox = container.find('input.date');
+    var boxArray = thisBox.toArray();
+
+    var runLoop = function runLoop() {
+      for (var _i9 = 0; _i9 < boxArray.length; _i9++) {
+        var _ids7 = boxArray[_i9].id;
+        var _values5 = boxArray[_i9].value;
+
+        var month = _values5.slice(0, 2);
+
+        var day = _values5.slice(3, 5);
+
+        var year = _values5.slice(6, 10);
+
+        parseInt(month);
+        parseInt(day);
+        parseInt(year);
+
+        if (month <= 12 && day <= 31 && year <= 3000 && month > 0 && day > 0 && year > 0 && _values5.length == 10) {
+          $("#".concat(_ids7)).removeClass('invalid');
+          $("#".concat(_ids7)).addClass('passed');
+        } else {
+          $("#".concat(_ids7)).addClass('invalid');
+          $("#".concat(_ids7)).removeClass('passed');
+        }
+      }
+    };
+
+    if (boxArray.length == 0) {
+      return true;
+    } else {
+      runLoop();
+    }
+  };
+
+  validateDates(); //validate phone numbers
+
+  var validatePhone = function validatePhone() {
+    var thisBox = container.find('input.phone');
+    var boxArray = thisBox.toArray();
+
+    var runLoop = function runLoop() {
+      for (var _i10 = 0; _i10 < boxArray.length; _i10++) {
+        var _ids8 = boxArray[_i10].id;
+        var _values6 = boxArray[_i10].value;
+
+        if (_values6.length > 13) {
+          $("#".concat(_ids8)).removeClass('invalid');
+          return true;
+        } else {
+          $("#".concat(_ids8)).addClass('invalid');
+          return false;
+        }
+      }
+    };
+
+    if (boxArray.length == 0) {
+      return true;
+    } else {
+      runLoop();
+    }
+  };
+
+  validatePhone(); //validate emails
+
+  var emailArray = container.find('input[type=email]').toArray();
+
+  if (emailArray.length > 0) {
+    for (var _i11 = 0; _i11 < emailArray.length; _i11++) {
+      var valid = emailArray[_i11].checkValidity();
+
+      var _ids9 = emailArray[_i11].id;
+
+      if (valid) {
+        $("input#".concat(_ids9)).removeClass('invalid');
+      } else {
+        $("input#".concat(_ids9)).addClass('invalid');
+      }
+    }
+  } //validate height
+
+
+  var validateHeight = function validateHeight() {
+    var heightInput = container.find('input.height');
+    var heightArray = heightInput.toArray();
+
+    for (var _i12 = 0; _i12 < heightArray.length; _i12++) {
+      var _ids10 = heightArray[_i12].id;
+      var height = heightArray[_i12].value;
+      var feet = height.slice(0, 1);
+      var inches = height.slice(3, 5);
+      parseInt(feet);
+      parseInt(inches);
+
+      if (inches > 11 || height.length == 0) {
+        $("#".concat(_ids10)).addClass('invalid');
+      } else {
+        $("#".concat(_ids10)).removeClass('invalid');
+      }
+    }
+  };
+
+  validateHeight(); //validate radio buttons
+
+  var validateRadio = function validateRadio() {
+    var spouseArray = container.find('input[type=radio][name=add-spouse]').toArray();
+    var dependentArray = container.find('input[type=radio][name=add-spouse]').toArray();
+    var representativeArray = container.find('input[type=radio][name="Request.Applicant.IsLegallyAuthorized"]').toArray();
+    var agentArray = container.find('input[type=radio][name=add-agent]').toArray();
+
+    var checkSpouse = function checkSpouse() {
+      var spouseYes = container.find('input[type=radio][name=add-spouse][value=yes]');
+      var spouseNo = container.find('input[type=radio][name=add-spouse][value=no]');
+
+      if (spouseYes.is(':checked') || spouseNo.is(':checked')) {
+        $('input[name=add-spouse]').removeClass('invalid');
+        return true;
+      } else if (!spouseYes.is('checked') && !spouseNo.is('checked')) {
+        $('input[name=add-spouse]').addClass('invalid');
+        return false;
+      }
+    };
+
+    if (spouseArray.length > 0) {
+      checkSpouse();
+    }
+
+    var checkDependent = function checkDependent() {
+      var dependentYes = container.find('input[type=radio][name=add-dependent][value=yes]');
+      var dependentNo = container.find('input[type=radio][name=add-dependent][value=no]');
+
+      if (dependentYes.is(':checked') || dependentNo.is(':checked')) {
+        $('input[name=add-dependent').removeClass('invalid');
+        return true;
+      } else if (!dependentYes.is('checked') && !dependentNo.is('checked')) {
+        $('input[name=add-dependent').addClass('invalid');
+        return false;
+      }
+    };
+
+    if (dependentArray.length > 0) {
+      checkDependent();
+    }
+
+    var checkRepresentative = function checkRepresentative() {
+      var representativeYes = container.find('input[type=radio][name="Request.Applicant.IsLegallyAuthorized"][value=true]');
+      var representativeNo = container.find('input[type=radio][name="Request.Applicant.IsLegallyAuthorized"][value=false]');
+
+      if (representativeYes.is(':checked') || representativeNo.is(':checked')) {
+        $('input[name=legal-representative').removeClass('invalid');
+        return true;
+      } else if (!representativeYes.is('checked') && !representativeNo.is('checked')) {
+        $('input[name=legal-representative').addClass('invalid');
+        return false;
+      }
+    };
+
+    if (representativeArray.length > 0) {
+      checkRepresentative();
+    }
+
+    var checkAgent = function checkAgent() {
+      var agentYes = container.find('input[type=radio][name=add-agent][value=yes]');
+      var agentNo = container.find('input[type=radio][name=add-agent][value=no]');
+
+      if (agentYes.is(':checked') || agentNo.is(':checked')) {
+        $('input[name=add-agent').removeClass('invalid');
+        return true;
+      } else if (!agentYes.is('checked') && !agentNo.is('checked')) {
+        $('input[name=add-agent').addClass('invalid');
+        return false;
+      }
+    };
+
+    if (agentArray.length > 0) {
+      checkAgent();
+    }
+  };
+
+  validateRadio(); //validate dependent signatures
+
+  var emptySignature = function emptySignature() {
+    var signature = $('#dependent-signature-block').children().find('input.dependent-signature').toArray();
+    var date = $('#dependent-signature-block').children().find('input.dependent-signature-date').toArray();
+    var signature2 = $('#dependent-signature-block-2').children().find('input.dependent-signature').toArray();
+    var date2 = $('#dependent-signature-block-2').children().find('input.dependent-signature-date').toArray();
+    var dependentBlocks = $('#dependent-block').find('input[type=hidden]').toArray();
+
+    var dateOfToday = function dateOfToday() {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      today = mm + '/' + dd + '/' + yyyy;
+      return today;
+    };
+
+    for (var _i13 = 0; _i13 < signature.length; _i13++) {
+      var value = signature[_i13].value;
+
+      if (value == '' && dependentBlocks[_i13].value < 18) {
+        signature[_i13].value = 'signature not required due to less than 18 years old';
+        date[_i13].value = dateOfToday();
+        signature[_i13].style.color = '#E3E3E3';
+        date[_i13].style.color = '#E3E3E3';
+      } else if (dependentBlocks[_i13].value >= 18 && value == 'signature not required due to less than 18 years old') {
+        signature[_i13].value = '';
+        date[_i13].value = '';
+        signature[_i13].style.color = '#5844A7';
+        date[_i13].style.color = '#5844A7';
+
+        signature[_i13].classList.add('invalid');
+
+        date[_i13].classList.add('invalid');
+      }
+    }
+
+    for (var _i14 = 0; _i14 < signature2.length; _i14++) {
+      var _value2 = signature2[_i14].value;
+
+      if (_value2 == '' && dependentBlocks[_i14].value < 18) {
+        signature2[_i14].value = 'signature not required due to less than 18 years old';
+        date2[_i14].value = dateOfToday();
+        signature2[_i14].style.color = '#E3E3E3';
+        date2[_i14].style.color = '#E3E3E3';
+      } else if (dependentBlocks[_i14].value >= 18 && _value2 == 'signature not required due to less than 18 years old') {
+        signature2[_i14].value = '';
+        date2[_i14].value = '';
+        signature2[_i14].style.color = '#5844A7';
+        date2[_i14].style.color = '#5844A7';
+
+        signature2[_i14].classList.add('invalid');
+
+        date2[_i14].classList.add('invalid');
       }
     }
   };

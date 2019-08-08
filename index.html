@@ -42,7 +42,7 @@
         <form action="/ShortTermMemberApplication/Submit" autocomplete="off" enctype="multipart/form-data" method="post" id="form" name="form">
             <div id="alert"></div>
             <fieldset> <!-- Applicant / Member Information -->
-                <div class="accordian first" onclick="expandAccordian();">Applicant / Member Information</div>
+                <div><div class="accordian first" onclick="expandAccordian();">Applicant / Member Information</div></div>
                 <div class="expanded">
                     <p class="header">Personal Information</p>
 
@@ -58,6 +58,7 @@
                     id="applicant-last-name" name="Request.Applicant.LastName"
                     minlength="1" maxlength="128"/>
 
+                    <p class="tag">* If you do not have a SSN, please submit all zeros.</p>
                     <input type="text" placeholder="SSN" required
                     id="applicant-SSN" name="Request.Applicant.Ssn" class="SSN"
                     onfocus="(this.placeholder='000-00-0000')"
@@ -226,7 +227,7 @@
             </fieldset>
 
             <fieldset> <!-- Spouse / Dependent Information -->
-                <div class="accordian" onclick="expandAccordian();">Spouse / Dependent Information</div>
+                <div><div class="accordian" onclick="expandAccordian();">Spouse / Dependent Information</div></div>
                 <div class="expanded">
                     <div class="radio spouse">
                         <p>Would you like to add a spouse?</p>
@@ -277,6 +278,7 @@
                             <input type="text" placeholder="Last Name" required
                             id="spouse-last-name" name="Request.Spouse.LastName"minlength="1" maxlength="128"/>
 
+                            <p class="tag">* If you do not have a SSN, please submit all zeros.</p>
                             <input type="text" placeholder="SSN" required
                             id="spouse-SSN" name="Request.Spouse.Ssn" class="SSN"
                             onfocus="(this.placeholder='000-00-0000')"
@@ -406,6 +408,7 @@
                             name="Request.Dependents${depNum}.LastName"
                             minlength="1" maxlength="128">
 
+                            <p class="tag">* If you do not have a SSN, please submit all zeros.</p>
                             <input type="text" placeholder="SSN" required id="dependent${depID}-SSN" class="SSN dependent-SSN" 
                             name="Request.Dependents${depNum}.Ssn"
                             onkeyup="automask();" minlength="9" maxlength="9">
@@ -529,7 +532,7 @@
             </fieldset>
 
             <fieldset> <!-- Coverage Information -->
-                <div class="accordian" onclick="expandAccordian();">Coverage Information</div>
+                <div><div class="accordian" onclick="expandAccordian();">Coverage Information</div></div>
                 <div class="expanded">
                     <p class="header">Coverage Applied For</p>
 
@@ -649,7 +652,7 @@
             </fieldset>
 
             <fieldset> <!-- Disclaimer and Agreement -->
-                <div class="accordian" onclick="expandAccordian();">Disclaimer and Agreement</div>
+                <div><div class="accordian" onclick="expandAccordian();">Disclaimer and Agreement</div></div>
                 <div class="expanded">
                     <div class="disclaimer-text">
                         <p>Adult applicants must sign this form below. Parent or guardian signature is required for applicants under the age of 18. By signing this form, you certify the following:</p>
@@ -724,7 +727,7 @@
             </fieldset>
 
             <fieldset> <!-- Authorization -->
-                <div class="accordian" onclick="expandAccordian();">Authorization</div>
+                <div><div class="accordian" onclick="expandAccordian();">Authorization</div></div>
                 <div class="expanded">
                     <input type="text" placeholder="Applicant's Full Name" required
                     id="applicant-full-name" name="Request.Applicant.AuthorizationFullName"
@@ -817,7 +820,7 @@
             </fieldset>
 
             <fieldset> <!-- Agent Information -->
-                <div class="accordian" onclick="expandAccordian();">Agent Information</div>
+                <div><div class="accordian" onclick="expandAccordian();">Agent Information</div></div>
                 <div class="expanded">
                     <div class="radio agent">
                         <p>Would you like to add an agent?</p>
@@ -882,7 +885,7 @@
             </fieldset>
 
             <fieldset> <!-- Final Steps -->
-                <div class="accordian" onclick="expandAccordian();">Final Steps</div>
+                <div><div class="accordian" onclick="expandAccordian();">Final Steps</div></div>
                 <div class="expanded last">
                     <div class="non-discrimination-text">
                         <p>DISCRIMINATION IS AGAINST THE LAW</p>
