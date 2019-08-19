@@ -974,7 +974,7 @@ var sendCoverage = function sendCoverage() {
       networkOOP.value = 20000;
       outNetworkOOP.value = 40000;
     } else if (tableChoice === 'D') {
-      networkDeductible.value = 1500;
+      networkDeductible.value = 15000;
       outNetworkDeductible.value = 30000;
       networkOOP.value = 30000;
       outNetworkOOP.value = 60000;
