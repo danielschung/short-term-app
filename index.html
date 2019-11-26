@@ -528,7 +528,7 @@
                         </div> -->
                     </div>
 
-                    <a href="#form"><button type="button" value="next" class="next" onclick="validate(); tableAdd();">Next</button></a>
+                    <a href="#form"><button type="button" value="next" class="next" onclick="validate(); storeTableData(); tableAdd(); planTypeTable();">Next</button></a>
                 </div>
             </fieldset>
 
@@ -547,7 +547,7 @@
                         <option value="6-months">6 months</option>
                     </select>
 
-                    <select required id="coverage-plan-type" name="Request.Coverage.PlanType" class="purple-format">
+                    <select required id="coverage-plan-type" name="Request.Coverage.PlanType" class="purple-format" onchange="tableAdd(); planTypeTable();">
                         <option value="" disabled selected class="placeholder">Pick a plan type:</option>
                         <option value="PPO">PPO</option>
                         <option value="POS">POS</option>
@@ -566,22 +566,26 @@
                                     <th colspan="2">OOP-Max</th>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>A</td>
+                                    <td class="ppoPlan">PPO 1000</td>
+                                    <td class="posPlan">POS 1000</td>
                                     <td colspan="2">In-Network: $1,000<br>Out-of-Network: $2,000</td>
                                     <td colspan="2">In-Network: $2,000<br>Out-of-Network: $4,000</td>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>B</td>
+                                    <td class="ppoPlan">PPO 2000</td>
+                                    <td class="posPlan">POS 2000</td>
                                     <td colspan="2">In-Network: $2,000<br>Out-of-Network: $4,000</td>
                                     <td colspan="2">In-Network: $4,000<br>Out-of-Network: $8,000</td>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>C</td>
+                                    <td class="ppoPlan">PPO 5000</td>
+                                    <td class="posPlan">POS 5000</td>
                                     <td colspan="2">In-Network: $5,000<br>Out-of-Network: $10,000</td>
                                     <td colspan="2">In-Network: $10,000<br>Out-of-Network: $20,000</td>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>D</td>
+                                    <td class="ppoPlan">PPO 7500</td>
+                                    <td class="posPlan">POS 7500</td>
                                     <td colspan="2">In-Network: $7,500<br>Out-of-Network: $15,000</td>
                                     <td colspan="2">In-Network: $15,000<br>Out-of-Network: $30,000</td>
                                 </tr>
@@ -595,22 +599,26 @@
                                     <th colspan="2">OOP-Max</th>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>A</td>
+                                    <td class="ppoPlan">PPO 1000</td>
+                                    <td class="posPlan">POS 1000</td>
                                     <td colspan="2">In-Network: $2,000<br>Out-of-Network: $4,000</td>
                                     <td colspan="2">In-Network: $4,000<br>Out-of-Network: $8,000</td>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>B</td>
+                                    <td class="ppoPlan">PPO 2000</td>
+                                    <td class="posPlan">POS 2000</td>
                                     <td colspan="2">In-Network: $4,000<br>Out-of-Network: $8,000</td>
                                     <td colspan="2">In-Network: $8,000<br>Out-of-Network: $16,000</td>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>C</td>
+                                    <td class="ppoPlan">PPO 5000</td>
+                                    <td class="posPlan">POS 5000</td>
                                     <td colspan="2">In-Network: $10,000<br>Out-of-Network: $20,000</td>
-                                    <td colspan="2">In-Network: $20,000<br>Out-of-Network: $40,000</td>
+                                    <td colspan="2">In-Network: $20,000<br>Out-of-Network:s $40,000</td>
                                 </tr>
                                 <tr class="selectable">
-                                    <td>D</td>
+                                    <td class="ppoPlan">PPO 7500</td>
+                                    <td class="posPlan">POS 7500</td>
                                     <td colspan="2">In-Network: $15,000<br>Out-of-Network: $30,000</td>
                                     <td colspan="2">In-Network: $30,000<br>Out-of-Network: $60,000</td>
                                 </tr>
@@ -620,15 +628,27 @@
 
                     <p class="note single">Note: This table shows prices for single plans.</p>
                     <p class="note family">Note: This table shows prices for family plans.</p>
-                    <p class="note disclaimer">Note: To view table, please complete Single / Dependent section.</p>
+                    <p class="note disclaimer">Note: To view table, please complete Single / Dependent section and pick a plan type.</p>
 
-                    <select required id="coverage-table-select" value="" class="purple-format" onchange="tableSelect(); sendCoverage();">
-                        <option value="" disabled selected class="placeholder">Choose a Combination</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                    </select>
+                    <div id="coverage-table-dropdown">
+                        <!-- <select required id="coverage-table-select" value="" class="purple-format" onchange="tableSelect(); sendCoverage();">
+                            <option value="" disabled selected class="placeholder">Choose a Plan</option>
+                            <option value="A">PPO Short Term 1000</option>
+                            <option value="B">PPO Short Term 2000</option>
+                            <option value="C">PPO Short Term 5000</option>
+                            <option value="D">PPO Short Term 7500</option>
+                        </select> -->
+                        <!-- <select required id="coverage-table-select" value="" class="purple-format" onchange="tableSelect(); sendCoverage();">
+                            <option value="" disabled selected class="placeholder">Choose a Plan</option>
+                            <option value="A">POS Short Term 1000</option>
+                            <option value="B">POS Short Term 2000</option>
+                            <option value="C">POS Short Term 5000</option>
+                            <option value="D">POS Short Term 7500</option>
+                        </select> -->
+                    </div>
+
+                    <input data-val="true" required type="hidden"
+                    id="plan-name" maxlength="32" name="Request.Coverage.PlanName" type="text" value="">
 
                     <input data-val="true" required type="hidden"
                     id="network-deductible" maxlength="32" name="Request.Coverage.InNetworkDeductible" type="text" value="">

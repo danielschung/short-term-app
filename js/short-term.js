@@ -109,34 +109,31 @@ var dropNotice = function dropNotice() {
     $('p#six-month-notice').hide();
   }
 }; // add either single or family table
-
-
-var tableAdd = function tableAdd() {
-  var spouse = document.getElementsByName('add-spouse')[1];
-  var dependents = document.getElementsByName('add-dependent')[1];
-  var coverageTable = document.getElementById('coverage-table');
-  var singleNote = $('p.note.single');
-  var familyNote = $('p.note.family');
-  var disclaimer = $('p.note.disclaimer');
-  var singleTable = "<table class=\"coverage-table single\"> <tbody> <tr> <th></th> <th colspan=\"2\">Deductible</th> <th colspan=\"2\">OOP-Max</th> </tr><tr class=\"selectable\"> <td>A</td><td colspan=\"2\">In-Network: $1,000<br>Out-of-Network: $2,000</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td></tr><tr class=\"selectable\"> <td>B</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class=\"selectable\"> <td>C</td><td colspan=\"2\">In-Network: $5,000<br>Out-of-Network: $10,000</td><td colspan=\"2\">In-Network: $10,000<br>Out-of-Network: $20,000</td></tr><tr class=\"selectable\"> <td>D</td><td colspan=\"2\">In-Network: $7,500<br>Out-of-Network: $15,000</td><td colspan=\"2\">In-Network: $15,000<br>Out-of-Network: $30,000</td></tr></tbody> </table>";
-  var familyTable = "<table class=\"coverage-table family\"> <tbody> <tr> <th></th> <th colspan=\"2\">Deductible</th> <th colspan=\"2\">OOP-Max</th> </tr><tr class=\"selectable\"> <td>A</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class=\"selectable\"> <td>B</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td><td colspan=\"2\">In-Network: $8,000<br>Out-of-Network: $16,000</td></tr><tr class=\"selectable\"> <td>C</td><td colspan=\"2\">In-Network: $10,000<br>Out-of-Network: $20,000</td><td colspan=\"2\">In-Network: $20,000<br>Out-of-Network: $40,000</td></tr><tr class=\"selectable\"> <td>D</td><td colspan=\"2\">In-Network: $15,000<br>Out-of-Network: $30,000</td><td colspan=\"2\">In-Network: $30,000<br>Out-of-Network: $60,000</td></tr></tbody> </table>";
-
-  while (coverageTable.firstChild) {
-    coverageTable.removeChild(coverageTable.firstChild);
-  }
-
-  if (spouse.checked && dependents.checked) {
-    coverageTable.innerHTML = singleTable;
-    disclaimer.hide();
-    familyNote.hide();
-    singleNote.show();
-  } else {
-    coverageTable.innerHTML = familyTable;
-    disclaimer.hide();
-    singleNote.hide();
-    familyNote.show();
-  }
-}; //dependents form progress
+// const tableAdd = () => {
+// 	const spouse = document.getElementsByName('add-spouse')[1];
+// 	const dependents = document.getElementsByName('add-dependent')[1];
+// 	const coverageTable = document.getElementById('coverage-table');
+// 	const singleNote = $('p.note.single');
+// 	const familyNote = $('p.note.family');
+// 	const disclaimer = $('p.note.disclaimer');
+// 	let singleTable = `<table class="coverage-table single"> <tbody> <tr> <th></th> <th colspan="2">Deductible</th> <th colspan="2">OOP-Max</th> </tr><tr class="selectable"> <td class="ppoPlan">PPO 1000</td><td class="posPlan">POS 1000</td><td colspan="2">In-Network: $1,000<br>Out-of-Network: $2,000</td><td colspan="2">In-Network: $2,000<br>Out-of-Network: $4,000</td></tr><tr class="selectable"> <td class="ppoPlan">PPO 2000</td><td class="posPlan">POS 2000</td><td colspan="2">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan="2">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class="selectable"> <td class="ppoPlan">PPO 5000</td><td class="posPlan">POS 5000</td><td colspan="2">In-Network: $5,000<br>Out-of-Network: $10,000</td><td colspan="2">In-Network: $10,000<br>Out-of-Network: $20,000</td></tr><tr class="selectable"> <td colspan="2">In-Network: $7,500<br>Out-of-Network: $15,000</td><td colspan="2">In-Network: $15,000<br>Out-of-Network: $30,000</td></tr></tbody> </table>`;
+// 	let familyTable = `<table class="coverage-table family"> <tbody> <tr> <th></th> <th colspan="2">Deductible</th> <th colspan="2">OOP-Max</th> </tr><tr class="selectable"> <td class="ppoPlan">PPO 1000</td><td class="posPlan">POS 1000</td><td colspan="2">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan="2">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class="selectable"> <td class="ppoPlan">PPO 2000</td><td class="posPlan">POS 2000</td><td colspan="2">In-Network: $4,000<br>Out-of-Network: $8,000</td><td colspan="2">In-Network: $8,000<br>Out-of-Network: $16,000</td></tr><tr class="selectable"> <td class="ppoPlan">PPO 5000</td><td class="posPlan">POS 5000</td><td colspan="2">In-Network: $10,000<br>Out-of-Network: $20,000</td><td colspan="2">In-Network: $20,000<br>Out-of-Network:s $40,000</td></tr><tr class="selectable"> <td class="ppoPlan">PPO 5000</td><td class="posPlan">POS 5000</td><td colspan="2">In-Network: $15,000<br>Out-of-Network: $30,000</td><td colspan="2">In-Network: $30,000<br>Out-of-Network: $60,000</td></tr></tbody> </table>`;
+// 	while (coverageTable.firstChild) {
+// 		coverageTable.removeChild(coverageTable.firstChild);
+// 	}
+// 	if ( spouse.checked && dependents.checked ) {
+// 		coverageTable.innerHTML = singleTable;
+// 		disclaimer.hide();
+// 		familyNote.hide();
+// 		singleNote.show();
+// 	} else {
+// 		coverageTable.innerHTML = familyTable;
+// 		disclaimer.hide();
+// 		singleNote.hide();
+// 		familyNote.show();
+// 	}
+// }
+//dependents form progress
 
 
 var dependentsProgress = function dependentsProgress() {
@@ -897,7 +894,66 @@ var validate = function validate() {
   } else {
     alert();
   }
-}; //table highlight
+}; //choose plan table
+
+
+var coverageTableType = '';
+
+var storeTableData = function storeTableData() {
+  var spouse = document.getElementsByName('add-spouse')[1];
+  var dependents = document.getElementsByName('add-dependent')[1];
+  var tableType = '';
+
+  if (spouse.checked && dependents.checked) {
+    coverageTableType = 'single';
+  } else {
+    coverageTableType = 'family';
+  }
+};
+
+var tableAdd = function tableAdd() {
+  var coverageTable = document.getElementById('coverage-table');
+  var singleNote = $('p.note.single');
+  var familyNote = $('p.note.family');
+  var disclaimer = $('p.note.disclaimer');
+  var singleTable = "<table class=\"coverage-table single\"> <tbody> <tr> <th></th> <th colspan=\"2\">Deductible</th> <th colspan=\"2\">OOP-Max</th> </tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 1000</td><td class=\"posPlan\">POS 1000</td><td colspan=\"2\">In-Network: $1,000<br>Out-of-Network: $2,000</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td></tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 2000</td><td class=\"posPlan\">POS 2000</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 5000</td><td class=\"posPlan\">POS 5000</td><td colspan=\"2\">In-Network: $5,000<br>Out-of-Network: $10,000</td><td colspan=\"2\">In-Network: $10,000<br>Out-of-Network: $20,000</td></tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 7500</td><td class=\"posPlan\">POS 7500</td><td colspan=\"2\">In-Network: $7,500<br>Out-of-Network: $15,000</td><td colspan=\"2\">In-Network: $15,000<br>Out-of-Network: $30,000</td></tr></tbody> </table>";
+  var familyTable = "<table class=\"coverage-table family\"> <tbody> <tr> <th></th> <th colspan=\"2\">Deductible</th> <th colspan=\"2\">OOP-Max</th> </tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 1000</td><td class=\"posPlan\">POS 1000</td><td colspan=\"2\">In-Network: $2,000<br>Out-of-Network: $4,000</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td></tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 2000</td><td class=\"posPlan\">POS 2000</td><td colspan=\"2\">In-Network: $4,000<br>Out-of-Network: $8,000</td><td colspan=\"2\">In-Network: $8,000<br>Out-of-Network: $16,000</td></tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 5000</td><td class=\"posPlan\">POS 5000</td><td colspan=\"2\">In-Network: $10,000<br>Out-of-Network: $20,000</td><td colspan=\"2\">In-Network: $20,000<br>Out-of-Network:s $40,000</td></tr><tr class=\"selectable\"> <td class=\"ppoPlan\">PPO 7500</td><td class=\"posPlan\">POS 7500</td><td colspan=\"2\">In-Network: $15,000<br>Out-of-Network: $30,000</td><td colspan=\"2\">In-Network: $30,000<br>Out-of-Network: $60,000</td></tr></tbody> </table>";
+
+  while (coverageTable.firstChild) {
+    coverageTable.removeChild(coverageTable.firstChild);
+  }
+
+  if (coverageTableType == 'single') {
+    coverageTable.innerHTML = singleTable;
+    disclaimer.hide();
+    familyNote.hide();
+    singleNote.show();
+  } else if (coverageTableType == 'family') {
+    coverageTable.innerHTML = familyTable;
+    disclaimer.hide();
+    singleNote.hide();
+    familyNote.show();
+  }
+};
+
+var planTypeTable = function planTypeTable() {
+  var coveragePlanType = document.getElementById('coverage-plan-type');
+  var coverageTableDropdown = document.getElementById('coverage-table-dropdown');
+  var ppoPlan = $('td.ppoPlan');
+  var posPlan = $('td.posPlan');
+  var ppoSelect = "<select required id=\"coverage-table-select\" value=\"\" class=\"purple-format\" onchange=\"tableSelect(); sendCoverage();\"> <option value=\"\" disabled selected class=\"placeholder\">Choose a Plan</option> <option value=\"A\">PPO Short Term 1000</option> <option value=\"B\">PPO Short Term 2000</option> <option value=\"C\">PPO Short Term 5000</option> <option value=\"D\">PPO Short Term 7500</option> </select>";
+  var posSelect = "<select required id=\"coverage-table-select\" value=\"\" class=\"purple-format\" onchange=\"tableSelect(); sendCoverage();\"> <option value=\"\" disabled selected class=\"placeholder\">Choose a Plan</option> <option value=\"A\">POS Short Term 1000</option> <option value=\"B\">POS Short Term 2000</option> <option value=\"C\">POS Short Term 5000</option> <option value=\"D\">POS Short Term 7500</option> </select>";
+
+  if (coveragePlanType.value == 'PPO') {
+    coverageTableDropdown.innerHTML = ppoSelect;
+    ppoPlan.show();
+    posPlan.hide();
+  } else if (coveragePlanType.value == 'POS') {
+    coverageTableDropdown.innerHTML = posSelect;
+    posPlan.show();
+    ppoPlan.hide();
+  }
+}; //table select
 
 
 var tableSelect = function tableSelect() {
@@ -928,58 +984,21 @@ var tableSelect = function tableSelect() {
 };
 
 var sendCoverage = function sendCoverage() {
-  var networkDeductible = document.getElementById('network-deductible');
-  var outNetworkDeductible = document.getElementById('out-network-deductible');
-  var networkOOP = document.getElementById('network-OOP');
-  var outNetworkOOP = document.getElementById('out-network-OOP');
-  var coverageTable = document.getElementById('coverage-table').firstChild;
+  var planName = document.getElementById('plan-name');
   var tableChoice = document.getElementById('coverage-table-select').value;
+  var planType = document.getElementById('coverage-plan-type').value;
 
-  if (coverageTable.classList.contains('single')) {
-    if (tableChoice === 'A') {
-      networkDeductible.value = 1000;
-      outNetworkDeductible.value = 2000;
-      networkOOP.value = 2000;
-      outNetworkOOP.value = 4000;
-    } else if (tableChoice === 'B') {
-      networkDeductible.value = 2000;
-      outNetworkDeductible.value = 4000;
-      networkOOP.value = 4000;
-      outNetworkOOP.value = 8000;
-    } else if (tableChoice === 'C') {
-      networkDeductible.value = 5000;
-      outNetworkDeductible.value = 10000;
-      networkOOP.value = 10000;
-      outNetworkOOP.value = 20000;
-    } else if (tableChoice === 'D') {
-      networkDeductible.value = 7500;
-      outNetworkDeductible.value = 15000;
-      networkOOP.value = 15000;
-      outNetworkOOP.value = 30000;
-    }
-  } else if (coverageTable.classList.contains('family')) {
-    if (tableChoice === 'A') {
-      networkDeductible.value = 2000;
-      outNetworkDeductible.value = 4000;
-      networkOOP.value = 4000;
-      outNetworkOOP.value = 8000;
-    } else if (tableChoice === 'B') {
-      networkDeductible.value = 4000;
-      outNetworkDeductible.value = 8000;
-      networkOOP.value = 8000;
-      outNetworkOOP.value = 16000;
-    } else if (tableChoice === 'C') {
-      networkDeductible.value = 10000;
-      outNetworkDeductible.value = 20000;
-      networkOOP.value = 20000;
-      outNetworkOOP.value = 40000;
-    } else if (tableChoice === 'D') {
-      networkDeductible.value = 15000;
-      outNetworkDeductible.value = 30000;
-      networkOOP.value = 30000;
-      outNetworkOOP.value = 60000;
-    }
+  if (tableChoice === 'A') {
+    planName.value = "".concat(planType, " Short Term 1000");
+  } else if (tableChoice === 'B') {
+    planName.value = "".concat(planType, " Short Term 2000");
+  } else if (tableChoice === 'C') {
+    planName.value = "".concat(planType, " Short Term 5000");
+  } else if (tableChoice === 'D') {
+    planName.value = "".concat(planType, " Short Term 7500");
   }
+
+  console.log(planName.value);
 }; //agent form progress function
 
 
