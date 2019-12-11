@@ -14,7 +14,7 @@ const automask = () => {
 	$('input.height').mask('0\' 00\"');
 	$('input.weight').mask('0000');
 	$('input.num').mask('00');
-	$('input.agent-ID').mask('00000');
+	$('input.agent-ID').mask('000000');
 	$('input.date').mask('00/00/0000');
 }
 
